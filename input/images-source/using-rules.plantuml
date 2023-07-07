@@ -1,0 +1,126 @@
+@startuml
+'skinparam linetype ortho
+skinparam linetype polyline
+hide circle
+hide stereotype
+allow_mixing
+skinparam linetype ortho
+<style>
+rectangle {LineColor transparent}
+</style>
+
+skinparam class<<MD>> {
+ BorderColor DarkSlateGray
+ BackgroundColor WhiteSmoke
+ HeaderBackgroundColor #909090
+}
+
+skinparam class<<TM>> {
+ BorderColor #505090
+ BackgroundColor APPLICATION
+ HeaderBackgroundColor SkyBlue
+}
+
+
+Package "Specification" as S {
+
+rectangle {
+class "**Roles**" as RR<<TM>> {
+|_ patient
+|_ physician
+|_ nurse
+|_ psychiatric-nurse
+|_ practical-nurse
+|_ midwife
+|_ pharmacist-office
+|_ pharmacist-hospital   
+'|_ pharmacist-clinical-biologist   
+|_ dentist
+|_ physiotherapist
+|_ ...
+'|_ clinical-psychologist
+'|_ clinical-orthopedagogist
+'|_ pharmacist-technical-assistant
+'|_ audiologist
+'|_ audicien
+'|_ truss-maker
+'|_ dietician
+'|_ occupational-therapist
+'|_ lab-technologist
+'|_ logopedist
+'|_ orthopedist
+'|_ podologist
+'|_ dental-hygienist
+}
+}
+
+rectangle {
+Package "**Access Rules**" as AR {
+file "Permissions" as P
+}
+}
+
+rectangle {
+class "**Data Categories**" as DC<<TM>> {
+|_ summary
+  |_ contact-info
+'  |_ name
+'  |_ address
+'  |_ contact-persons
+'  |_ gmf-holder
+'  |_ healthcare-professionals
+  |_ adverse-drug-reaction   
+  |_ allergies
+  |_ social-risks
+  |_ risks
+  |_ problems
+  |_ treatments
+  |_ patient-will
+|_ medication-scheme
+    }
+}
+RR -r[hidden]- AR : "               " 
+AR -r[hidden]- DC : "               "
+AR -r[hidden]- P 
+'DC -l[hidden]-> AR
+
+}
+
+
+
+
+node "Implementation" as I {
+
+rectangle " " as D1 {
+  circle "Request" as Req
+}
+
+rectangle " " as D2{
+component "Access Control" as AC
+}
+
+rectangle " " as D3 {
+  database "DB" as DB
+}
+
+Req -r-> AC : "  "
+AC -r-> DB : "   "
+
+}
+
+
+D1 -r[hidden]- D2
+D2 -r[hidden]- D2
+
+
+'RR -d[hidden]- I 
+
+DC .d. DB
+RR .d. Req
+P -d-> AC
+
+
+
+
+
+@enduml
