@@ -6,7 +6,7 @@ This is an empty IG
 ### Publication
 This ImplementationGuide is published in the following locations:
 
-Continuous Build: __http://build.fhir.org/ig/<handle>/<repo>/branches/main/index.html__  
+Continuous Build: __http://build.fhir.org/ig/hl7/data-policies/index.html__  
 Canonical / permanent URL: 
 <br> </br>
 
