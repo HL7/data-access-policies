@@ -4,6 +4,11 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
+<artifact id="MeasureReport/ex-measurereport" key="MeasureReport-ex-measurereport" name="Dummy MeasureReport example"/>
+<artifact id="Organization/ex-organization" key="Organization-ex-organization" name="Dummy Organization example"/>
+<artifact id="Patient/ex-patient" key="Patient-ex-patient" name="Dummy Patient example"/>
+<artifact id="Practitioner/ex-practitioner" key="Practitioner-ex-practitioner" name="Dummy Practitioner example"/>
+<artifact id="Permission/ex-saner" key="Permission-ex-saner" name="Simple Permission of non-patient data"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="artifacts" name="Artifacts Summary"/>
@@ -11,6 +16,7 @@
 <page key="changes" name="Changes"/>
 <page key="downloads" name="Downloads"/>
 <page key="index" name="Home"/>
+<page key="non-patient" name="Non Patient"/>
 <page key="spec" name="Spec"/>
 <page key="toc" name="Table of Contents"/>
 </specification>
