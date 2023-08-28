@@ -9,13 +9,12 @@
 
 id: hl7.fhir.uv.dap
 canonical: http://hl7.org/fhir/uv/dap
-url: http://hl7.org/fhir/uv/dap
 name: DataAccessPolicies
 title: "HL7 FHIR Implementation Guide: Data Access Policies"
 description: Data Access Policies.
 status: active
 license: CC0-1.0
-date: 2020-02-26
+#date: 2020-02-26
 version: 1.0.0
 
 # Although fhirVersions is 0..* in the ImplementationGuide resource
@@ -53,8 +52,7 @@ contact:
 # code syntax can be used here.
 
 #jurisdiction: urn:iso:std:iso:3166#US "United States of America"
-jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
-
+jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
@@ -136,6 +134,14 @@ jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 #    title: Examples Overview
 #    simpleExamples.xml:
 #    complexExamples.xml:
+pages:
+  index.xml:
+  spec.md:
+    consent.md:
+    non-patient.md:
+  downloads.xml:
+  changes.xml:
+
 
 # The ImplementationGuide resource defines several other properties
 # not represented above. These properties can be used as-is and
@@ -166,6 +172,16 @@ jurisdiction: http://unstats.un.org/unsd/methods/m49/m49.htm#001 "World"
 #    Value Sets: artifacts.html#4
 #  Downloads: downloads.html
 #  History: http://hl7.org/fhir/us/example/history.html
+menu:
+  Home: index.html
+  Analysis:
+    "Overall" : spec.html
+    "Simple data analytics" : non-patient.html
+    "Consent" : consent.html
+  Artifacts: artifacts.html
+  Other:
+    "changes" : changes.html
+    "downloads" : downloads.html
 
 # The parameters property represents IG.definition.parameter. Rather
 # than a list of code/value pairs (as in the ImplementationGuide
