@@ -13,6 +13,7 @@
 <artifact id="Permission/ex-saner" key="Permission-ex-saner" name="Simple Permission of non-patient data"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
+<page key="analysis" name="Analysis"/>
 <page key="artifacts" name="Artifacts Summary"/>
 <page key="changes" name="Changes"/>
 <page key="consent" name="Consent"/>

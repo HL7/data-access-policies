@@ -141,6 +141,7 @@ pages:
     non-patient.md:
   downloads.xml:
   changes.xml:
+  analysis.md:
 
 
 # The ImplementationGuide resource defines several other properties
@@ -182,6 +183,7 @@ menu:
   Other:
     "changes" : changes.html
     "downloads" : downloads.html
+    "analysis" : analysis.html
 
 # The parameters property represents IG.definition.parameter. Rather
 # than a list of code/value pairs (as in the ImplementationGuide

@@ -8,7 +8,7 @@ Thus we show some Consent use-cases and how they are encoded in FHIR Consent.pro
 
 This Consent is covered in [PCF - Consent allowing data authored by a practitioner](https://profiles.ihe.net/ITI/PCF/Consent-ex-consent-intermediate-authoredby.html)
 
-```fsh
+```fs
 * provision.type = #permit
 * provision.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
 * provision.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
@@ -32,7 +32,7 @@ This Permission encodes
 
 Given [PCF example](https://profiles.ihe.net/ITI/PCF/Consent-ex-consent-intermediate-not-authoredby.html)
 
-```fsh
+```fs
 * provision.type = #permit
 * provision.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
 * provision.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
@@ -51,7 +51,7 @@ This Permission encodes
   - [practitioner 1](Practitioner-ex-practitioner.html)
 - nothing else is authorized by this Permission
 
-```fsh
+```fs
 * combining = #deny-overrides
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
