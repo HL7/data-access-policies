@@ -57,6 +57,7 @@ Usage: #inline
 
 Profile: BundleWithPermission
 Parent: Bundle
+Id: dap.bundleWithPermission
 Title: "Bundle with an imposed Permission"
 Description: "Bundle includes an imposed Permission"
 * meta.security.extension contains PermissionImposedOnBundle named permissionImposedOnBundle 0..1
