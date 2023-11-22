@@ -1,4 +1,4 @@
-These use-cases show the alternative way to encode Consent rules using the Permission. The Consent resource would still be used to capture the consent ceremony, but would not include any access control rules. The Consent would point at the Permission that holds the access control rules. 
+These use-cases show the alternative way to encode Consent rules using the Permission. The Consent resource would still be used to capture the consent ceremony, but would not include any access control rules. The Consent would point at the Permission that holds the access control rules.
 
 Leverage for documentation sake the IG published by [IHE on Privacy Consent on FHIR (PCF)](https://profiles.ihe.net/ITI/PCF/index.html)
 
@@ -21,7 +21,7 @@ This Consent is covered in [PCF - Consent allowing data authored by a practition
 
 This Permission encodes
 
-- base rule is #permit 
+- base rule is #permit
 - base rule includes TPO so as to be clear this is a consent about TPO
 - Permits access to data authored by [practitioner 1](Practitioner-ex-practitioner.html)
 - Given that there is only one targeted permit rule, then nothing else is allowed.

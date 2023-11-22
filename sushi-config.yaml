@@ -15,7 +15,7 @@ description: Data Access Policies.
 status: active
 license: CC0-1.0
 #date: 2020-02-26
-version: 1.0.0
+version: 1.0.0-current
 
 # Although fhirVersions is 0..* in the ImplementationGuide resource
 # it can be a single item OR and array here (but so far SUSHI only
@@ -29,7 +29,7 @@ fhirVersion: 5.0.0
 # will recognize them as well. In either case, they'll be copied
 # to the IG JSON using the formal names.
 copyrightYear: 2023+
-releaseLabel: STU1
+releaseLabel: ci-build
 
 # The publisher can be a single item or a list, each with a name and
 # optional url and/or email. The first publisher's name will be used
@@ -38,14 +38,18 @@ releaseLabel: STU1
 publisher:
   name: HL7 International - FHIR Security Work Group
   url: https://www.hl7.org/Special/committees/secure
-  email: my-group@example.com
 
 # ContactDetail is required by the template.
 contact:
-  - name: Bob Smith
+  - name: John Moehrke
     telecom:
       - system: email
-        value: bobsmith@example.com
+        value: johnmoehrke@gmail.com
+        use: work
+  - name: Jose Costa Teixeira
+    telecom:
+      - system: email
+        value: jose.a.teixeira@gmail.com
         use: work
 
 # The jurisdiction can be a single item or a list. The FHIR Shorthand
@@ -139,6 +143,7 @@ pages:
   spec.md:
     consent.md:
     non-patient.md:
+    residual.md:
   downloads.xml:
   changes.xml:
   analysis.md:
@@ -179,6 +184,7 @@ menu:
     "Overall" : spec.html
     "Simple data analytics" : non-patient.html
     "Consent" : consent.html
+    "Residual" : residual.html
   Artifacts: artifacts.html
   Other:
     "changes" : changes.html

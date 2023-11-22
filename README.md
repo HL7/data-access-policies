@@ -13,5 +13,3 @@ This ImplementationGuide is published in the following locations:
 Issues and change requests are managed here:  
 
 Issues:  https://github.com/HL7/data-access-policies/issues
-
- 
