@@ -8,7 +8,7 @@ Actors:
 ```Gherkin
 Feature: Residual Permission Bundle
 
-Background: This use-case is about how to use a Permission to carry residual access control rules in a Bundle with the expectation that the Bundle recipient will enforce these rules.
+Background: This use-case is about how to use a Permission to carry residual access control rules in a Bundle with the expectation that the Bundle recipient will enforce these rules. This might be used in Search response, bulk data access, export/excerpt as data input for ML/AL.
 
 Scenario Outline: Bundle needs to carry residual rules
 
