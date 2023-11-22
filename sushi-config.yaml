@@ -1,45 +1,37 @@
-# ╭─────────────────────────────────ImplementationGuide-fish.json──────────────────────────────────╮
-# │  The properties below are used to create the ImplementationGuide resource.                     │
-# │  For a list of supported properties, see:                                                      │
-# │  https://fshschool.org/docs/sushi/configuration/#full-configuration                            │
-# │  SUSHI will use id as both id and packageId in the IG unless a                                 │
-# │  specific packageId is also provided in this file.                                             │
-# ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 
+# │  The properties below are used to create the ImplementationGuide resource. 
+# │  For a list of supported properties, see: 
+# │  https://fshschool.org/docs/sushi/configuration/#full-configuration
+# │  SUSHI will use id as both id and packageId in the IG unless a
+# │  specific packageId is also provided in this file. 
 
 id: hl7.fhir.uv.dap
 canonical: http://hl7.org/fhir/uv/dap
 name: DataAccessPolicies
 title: "HL7 FHIR Implementation Guide: Data Access Policies"
 description: Data Access Policies.
-status: active
+status: draft
 license: CC0-1.0
 #date: 2020-02-26
 version: 1.0.0-current
-
-# Although fhirVersions is 0..* in the ImplementationGuide resource
-# it can be a single item OR and array here (but so far SUSHI only
-# supports 4.0.1 anyway).
 fhirVersion: 5.0.0
-
-# The following two lines correspond to items that used to be in
-# ig.ini but were moved to IG.definition.parameter. For
-# consistency within this file, the names are represented using
-# camelcase, but if authors use the formal parameter names, SUSHI
-# will recognize them as well. In either case, they'll be copied
-# to the IG JSON using the formal names.
 copyrightYear: 2023+
 releaseLabel: ci-build
 
-# The publisher can be a single item or a list, each with a name and
-# optional url and/or email. The first publisher's name will be used
-# as IG.publisher.  The contact details and/or additional publishers
-# will be translated into IG.contact values.
-publisher:
-  name: HL7 International - FHIR Security Work Group
-  url: https://www.hl7.org/Special/committees/secure
+extension:
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
+    valueCode: sec
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+    valueCode: informative
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
+    valueInteger: 0
 
-# ContactDetail is required by the template.
+publisher:
+  name: HL7 International / Security
+  url: http://www.hl7.org/Special/committees/secure
+  email: security-cc@lists.hl7.org
+
+
 contact:
   - name: John Moehrke
     telecom:
@@ -52,11 +44,50 @@ contact:
         value: jose.a.teixeira@gmail.com
         use: work
 
-# The jurisdiction can be a single item or a list. The FHIR Shorthand
-# code syntax can be used here.
-
-#jurisdiction: urn:iso:std:iso:3166#US "United States of America"
 jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
+
+pages:
+  index.xml:
+  spec.md:
+    consent.md:
+    non-patient.md:
+    residual.md:
+  downloads.xml:
+  changes.xml:
+  analysis.md:
+
+menu:
+  Home: index.html
+  Analysis:
+    "Overall" : spec.html
+    "Simple data analytics" : non-patient.html
+    "Consent" : consent.html
+    "Residual" : residual.html
+  Artifacts: artifacts.html
+  Other:
+    "changes" : changes.html
+    "downloads" : downloads.html
+    "analysis" : analysis.html
+
+# The parameters property represents IG.definition.parameter. Rather
+# than a list of code/value pairs (as in the ImplementationGuide
+# resource), the code is the YAML key. If a parameter allows repeating
+# values, the value in the YAML should be a sequence/array. For a
+# partial list of allowed parameters see:
+# https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
+parameters:
+  usage-stats-opt-out: 'false'
+  logging: progress
+  shownav: 'true'
+  active-tables: 'false'
+  apply-contact: 'true'
+  apply-jurisdiction: 'true'
+  apply-publisher: 'true'
+  apply-version: 'true'
+  apply-wg: 'true'
+  propagate-status: 'true'
+
+
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
@@ -120,92 +151,4 @@ jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
 #    - StructureDefinition/bark-control
 #    - StructureDefinition/bee-sting
 
-# The pages property corresponds to IG.definition.page. SUSHI can
-# auto-generate the page list, but if the author includes pages in
-# this file, it is assumed that the author will fully manage the
-# pages section and SUSHI will not generate any page entries.
-# The page file name is used as the key. If title is not provided,
-# then the title will be generated from the file name.  If a
-# generation value is not provided, it will be inferred from the
-# file name extension.  Any subproperties that are valid filenames
-# with supported extensions (e.g., .md/.xml) will be treated as
-# sub-pages.
-#pages:
-#  index.md:
-#    title: Example Home
-#  implementation.xml:
-#  examples.xml:
-#    title: Examples Overview
-#    simpleExamples.xml:
-#    complexExamples.xml:
-pages:
-  index.xml:
-  spec.md:
-    consent.md:
-    non-patient.md:
-    residual.md:
-  downloads.xml:
-  changes.xml:
-  analysis.md:
 
-
-# The ImplementationGuide resource defines several other properties
-# not represented above. These properties can be used as-is and
-# should follow the format defined in ImplementationGuide:
-# * meta
-# * implicitRules
-# * language
-# * text
-# * contained
-# * extension
-# * modifierExtension
-# * experimental
-# * useContext
-# * copyright
-# * packageId
-
-# The menu property will be used to generate the input/menu.xml file.
-# The menu is represented as a simple structure where the YAML key
-# is the menu item name and the value is the URL. The IG publisher
-# currently only supports one level deep on sub-menus.
-# To provide a custom menu.xml file, do not include this property and
-# include a `menu.xml` file in input/includes.
-#menu:
-#  Home: index.html
-#  Artifacts:
-#    Profiles: artifacts.html#2
-#    Extensions: artifacts.html#3
-#    Value Sets: artifacts.html#4
-#  Downloads: downloads.html
-#  History: http://hl7.org/fhir/us/example/history.html
-menu:
-  Home: index.html
-  Analysis:
-    "Overall" : spec.html
-    "Simple data analytics" : non-patient.html
-    "Consent" : consent.html
-    "Residual" : residual.html
-  Artifacts: artifacts.html
-  Other:
-    "changes" : changes.html
-    "downloads" : downloads.html
-    "analysis" : analysis.html
-
-# The parameters property represents IG.definition.parameter. Rather
-# than a list of code/value pairs (as in the ImplementationGuide
-# resource), the code is the YAML key. If a parameter allows repeating
-# values, the value in the YAML should be a sequence/array. For a
-# partial list of allowed parameters see:
-# https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
-#parameters:
-#  excludettl: true
-#  validation: [allow-any-extensions, no-broken-links]
-
-# The FSHOnly flag indicates if only FSH resources should be exported.
-# If set to true, no IG related content will be generated.
-# The default value for this property is false.
-FSHOnly: false
-
-# When set to true, the "short" and "definition" field on the root element of an Extension will
-# be set to the "Title" and "Description" of that Extension. Default is true.
-#applyExtensionMetadataToRoot: false

@@ -1,4 +1,5 @@
 
+This use-case is about how to use a Permission to carry residual access control rules in a Bundle with the expectation that the Bundle recipient will enforce these rules. This might be used in Search response, bulk data access, export/excerpt as data input for ML/AL.
 
 Actors:
 
@@ -8,7 +9,7 @@ Actors:
 ```Gherkin
 Feature: Residual Permission Bundle
 
-Background: This use-case is about how to use a Permission to carry residual access control rules in a Bundle with the expectation that the Bundle recipient will enforce these rules. This might be used in Search response, bulk data access, export/excerpt as data input for ML/AL.
+Background: Carry residual Permissions to be enforced by recipient of a Bundle.
 
 Scenario Outline: Bundle needs to carry residual rules
 
@@ -31,6 +32,8 @@ In order to make it clear that a Bundle contains a Permission that the Bundle Re
 - Bundle that [adds the extension](StructureDefinition-BundlePermission.html)
 - Example [SearchSet Bundle using the extension](Bundle-ex-SearchSet-withPermission.html)
 
+TODO: should this be added to FHIR core or to DS4P?
+
 ### Do Not Redisclose without explicit consent
 
 ```Gherkin
@@ -51,6 +54,15 @@ This Permission encodes
 - base rule is #permit
 - base rule includes TPO so as to be clear this is authorizes TPO (TODO is this needed?)
 - includes a residual (limit) using code NODSCLCDS
+
+```fs
+* combining = #deny-unless-permit
+* rule[+].type = #permit
+* rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
+* rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
+* rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
+* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
+```
 
 [Example Permission allowing given PurposeOfUse, but limiting redisclosure](Permission-ex-permission-redisclose-forbidden-without-consent.html)
 
