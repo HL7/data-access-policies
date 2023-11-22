@@ -23,7 +23,7 @@ Usage: #example
 * rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
 
 Extension: PermissionImposedOnBundle
-Id: permissionImposedOnBundle
+Id: dap.permissionImposedOnBundle
 Title: "Permission imposed on a Bundle"
 Description: "When a Bundle carries a Permissiont that must be enforced"
 * ^context[+].type = #element
