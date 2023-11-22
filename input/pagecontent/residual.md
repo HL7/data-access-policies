@@ -26,10 +26,10 @@ Note that the Permission rules would be a subset of all possible Permission rule
 
 ### Bundle with Permission
 
-In order to make it clear that a Bundle contains a Permission that the Bundle Recipient must enforce, we add an extension to Bundle.meta.security to carry the pointer to this Permission. Thus a Permission in a bundle that is not referenced by a Bundle.meta.security is not a request to enforce. The Bundle.meta.security should also carry #CPLYPOL to explain that this policy must be complied with.
+In order to make it clear that a Bundle contains a Permission that the Bundle Recipient must enforce, we add an extension to Bundle.meta.security to carry the pointer to this Permission. Thus a Permission in a bundle that is not referenced by a Bundle.meta.security is not a request to enforce. The Bundle.meta.security should also carry #CPLYPOL to explain that this policy must be complied with. The Permission would tend to be included in the Bundle as an #include entry, but it is possible the recipient is expected to dereference externally.
 
-- Extension [on Bundle.meta.security for Permission](StructureDefinition-bundlePermission.html)
-- Bundle that [adds the extension](StructureDefinition-BundlePermission.html)
+- Extension [on Bundle.meta.security imposing a Permission](StructureDefinition-PermissionImposedOnBundle.html)
+- Bundle that [adds the extension](StructureDefinition-BundleWithPermission.html)
 - Example [SearchSet Bundle using the extension](Bundle-ex-SearchSet-withPermission.html)
 
 TODO: should this be added to FHIR core or to DS4P?

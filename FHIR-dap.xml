@@ -15,7 +15,7 @@
 <artifact id="Permission/ex-permission-intermediate-not-authoredby" key="Permission-ex-permission-intermediate-not-authoredby" name="Permission allowing most sharing but NOT data authored by a practitioner"/>
 <artifact id="Permission/ex-permission-not-bob" key="Permission-ex-permission-not-bob" name="Permission allowing most use but NOT a given practitioner"/>
 <artifact id="Permission/ex-permission-timeout" key="Permission-ex-permission-timeout" name="Permission allowing most use but expires in a year"/>
-<artifact id="StructureDefinition/bundlePermission" key="StructureDefinition-bundlePermission" name="Permission imposed in a Bundle"/>
+<artifact id="StructureDefinition/permissionImposedOnBundle" key="StructureDefinition-permissionImposedOnBundle" name="Permission imposed on a Bundle"/>
 <artifact id="Permission/ex-saner" key="Permission-ex-saner" name="Simple Permission of non-patient data"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>

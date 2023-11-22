@@ -22,9 +22,9 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
 * rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
 
-Extension: BundlePermission
-Id: bundlePermission
-Title: "Permission imposed in a Bundle"
+Extension: PermissionImposedOnBundle
+Id: permissionImposedOnBundle
+Title: "Permission imposed on a Bundle"
 Description: "When a Bundle carries a Permissiont that must be enforced"
 * ^context[+].type = #element
 * ^context[=].expression = "Bundle.meta.security"
@@ -59,7 +59,7 @@ Profile: BundleWithPermission
 Parent: Bundle
 Title: "Bundle with an imposed Permission"
 Description: "Bundle includes an imposed Permission"
-* meta.security.extension contains BundlePermission named bundlePermission 0..1
+* meta.security.extension contains PermissionImposedOnBundle named permissionImposedOnBundle 0..1
 
 
 Instance:   ex-SearchSet-withPermission
@@ -69,7 +69,7 @@ Description: "Permission in a SearchSet Bundle"
 Usage: #example
 * meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
 * meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYPOL
-* meta.security[=].extension[bundlePermission].valueReference.reference = "http://test.fhir.net/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"
+* meta.security[=].extension[permissionImposedOnBundle].valueReference.reference = "http://test.fhir.net/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"
 * type = #searchset
 * link[0].relation = #self
 * link[0].url = "http://test.fhir.net/R4/fhir/Observation?patient=9876&status=current"
