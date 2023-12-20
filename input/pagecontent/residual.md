@@ -128,3 +128,33 @@ This Permission encodes
 ```
 
 [Example Permission allowing most use but not a given practitioner](Permission-ex-permission-timeout.html)
+
+### allowing Research access with a given K-Anonymity
+
+This use-case is releasing data to a Research project with a limit to not release the data without meeting a given K-Anonymity (4). 
+
+```Gherkin
+Scenario Outline: Allow only a given K-Anonymity
+    Given that a Bundle Recipient is allowed Research access
+    When the terms of the release need to impose a given K-Anonymity value
+    Then the Bundle Permission needs to express this limit
+```
+
+#### Analysis
+
+This Permission encodes
+
+- base rule includes Research so as to be clear this is allowing only Research
+- this permit has a limit of a given K-anonymity value (4)
+- nothing else is authorized by this Permission
+
+```fs
+* combining = #deny-overrides
+* rule[+].type = #permit
+* rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HRESCH
+// could use ANONY, but I prefer DEID as it is the higher concept allowing pseudonymization or anonymization
+* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID
+* rule[=].limit.extension[ka].valueInteger = 4
+```
+
+[Example Permission allowing Research with a given K-anonymity (4)](Permission-ex-permission-k-anonymity.html)
