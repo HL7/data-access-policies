@@ -52,6 +52,7 @@ pages:
     consent.md:
     non-patient.md:
     residual.md:
+    overriding.md:
   downloads.xml:
   changes.xml:
   analysis.md:
@@ -63,6 +64,7 @@ menu:
     "Simple data analytics" : non-patient.html
     "Consent" : consent.html
     "Residual" : residual.html
+    "Overriding" : overriding.html
   Artifacts: artifacts.html
   Other:
     "changes" : changes.html
