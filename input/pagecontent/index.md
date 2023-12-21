@@ -9,7 +9,7 @@ The top menu allows quick navigation to the different sections, and a [Table of 
 
 ### Use-Case analysis
 
-This IG purpose is to include use-case analysis to enable the FHIR [Permission]({{site.data.fhir.path}}Permission) resource to mature. These use-cases will confirm where the Permission resource is properly constructed, where updates are needed, and where core extensions and vocabulary are needed.
+This IG purpose is to include use-case analysis to enable the FHIR [Permission]({{site.data.fhir.path}}permission.html) resource to mature. These use-cases will confirm where the Permission resource is properly constructed, where updates are needed, and where core extensions and vocabulary are needed.
 
 The use-cases and analysis are found on these pages:
 
@@ -19,7 +19,7 @@ The use-cases and analysis are found on these pages:
 
 ### Permission
 
-[Permission]({{site.data.fhir.path}}Permission) is a portion of an Access Control environment. It is provided in FHIR form to enable Access Control rules to more naturally utilize the FHIR model.
+[Permission]({{site.data.fhir.path}}permission.html) is a portion of an Access Control environment. It is provided in FHIR form to enable Access Control rules to more naturally utilize the FHIR model.
 
 <figure>
 {%include using-rules.svg%}
