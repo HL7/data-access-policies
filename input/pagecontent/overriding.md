@@ -28,3 +28,10 @@ should the action codes be more CRUD vs current privacy codes? or both?
 Not clear how to define permission enabled by relationship to the data. For example 
 - Doctors can Update Observations that they authored, but can't update the Observations created by someone else.
 - Patient can access THEIR data, but not all data
+
+
+- make multiple incrementally harder examples
+- add relationship to Consent / dissent -- default allow vs default deny
+- add break-glass
+- do we need a way to identify the overriding policy
+- explain what an overriding policy is, what it is based on, what kinds of use-cases it need address (grab from PCF if useful)
