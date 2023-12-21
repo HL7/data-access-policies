@@ -146,3 +146,43 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
 
+
+
+Extension: PermissionKanonymity
+Id: dap.permissionKanonymity
+Title: "Permission imposed K-Anonymity value"
+Description: "When a limit needs to impose a specific K-Anonymity value."
+* ^context[+].type = #element
+* ^context[=].expression = "Permission.rule.limit"
+* value[x] only integer
+* valueInteger 1..1
+
+Profile: PermissionWithKanonymity
+Parent: Permission
+Id: dap.PermissionWithKanonymity
+Title: "Permission with K-Anonymity"
+Description: "Permission with the extension for K-Anonymity"
+// could have a requirement that this extension be only used where the limit is a DEID or ANONY
+* rule.limit.extension contains dap.permissionKanonymity named ka 0..1
+
+Instance: ex-permission-k-anonymity
+InstanceOf: PermissionWithKanonymity
+Title: "Permission require exposure to meet a given k-anonymity value"
+Description: """
+Permission allowing use of data but requires exposure meet a given k-anonymity value. 
+
+This Permission encodes
+- base rule includes Research so as to be clear this generally authorizes Research
+- validity is a period of one year
+"""
+Usage: #example
+* meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
+* status = #active
+* date = "2023-12-20"
+* combining = #deny-overrides
+* rule[+].type = #permit
+* rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HRESCH
+// could use ANONY, but I prefer DEID as it is the higher concept allowing pseudonymization or anonymization
+* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID
+* rule[=].limit.extension[ka].valueInteger = 4
+
