@@ -47,27 +47,20 @@ contact:
 jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
 
 pages:
-  index.xml:
-  spec.md:
-    consent.md:
-    non-patient.md:
-    residual.md:
-  downloads.xml:
-  changes.xml:
-  analysis.md:
+  index.md:
+  non-patient.md:
+  consent.md:
+  residual.md:
+
 
 menu:
   Home: index.html
   Analysis:
-    "Overall" : spec.html
     "Simple data analytics" : non-patient.html
     "Consent" : consent.html
     "Residual" : residual.html
   Artifacts: artifacts.html
-  Other:
-    "changes" : changes.html
-    "downloads" : downloads.html
-    "analysis" : analysis.html
+
 
 # The parameters property represents IG.definition.parameter. Rather
 # than a list of code/value pairs (as in the ImplementationGuide
