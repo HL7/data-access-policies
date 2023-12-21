@@ -131,7 +131,13 @@ This Permission encodes
 
 ### allowing Research access with a given K-Anonymity
 
-This use-case is releasing data to a Research project with a limit to not release the data without meeting a given K-Anonymity (4). 
+This use-case is releasing data to a Research project with a limit to not release the data without meeting a given K-Anonymity (4).
+
+Where [K-Anonymity](https://en.wikipedia.org/wiki/K-anonymity) is a measure on a De-Identified dataset to determine within that specific dataset what the smallest grouping of individuals would be. Where this smallest grouping is defined as **k** and this would not be acceptable if it was smaller than the **K** value given in the release authorization (i.e. Permission attached to the Bundle).
+
+Thus the Bundle will contain fully identifiable data, with an obligation on the recipient to De-Identify (`.rule.limit` = `DEID`). Given that this obligation includes a specific K-Anonymity, a Permission is used rather than just using `Bundle.meta.security`.
+
+The purpose of including this use-case is to include a use-case where some parameter needs to go along with a obligation or refrain in order to add specificity. K-Anonymity is thus an examplar, not a recommendation.
 
 ```Gherkin
 Scenario Outline: Allow only a given K-Anonymity
@@ -146,15 +152,24 @@ This Permission encodes
 
 - base rule includes Research so as to be clear this is allowing only Research
 - this permit has a limit of a given K-anonymity value (4)
+  - Define an [extension to carry a K-Anonymity](StructureDefinition-dap.permissionKanonymity.html) number, which are integers
+  - Define a [profile binding this extension on the Permission.rule.limit](StructureDefinition-dap.PermissionWithKanonymity.html) to be used with either DEID or ANONY obligation code
 - nothing else is authorized by this Permission
 
 ```fs
 * combining = #deny-overrides
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HRESCH
-// could use ANONY, but I prefer DEID as it is the higher concept allowing pseudonymization or anonymization
 * rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID
 * rule[=].limit.extension[ka].valueInteger = 4
 ```
 
 [Example Permission allowing Research with a given K-anonymity (4)](Permission-ex-permission-k-anonymity.html)
+
+#### Alternatives
+
+Committee discussion indicates that there might be similar needs to carry parameters. This brings up alternative discussion on if we need a single multipurpose extension, or should continue to create extensions that are purpose specific. 
+
+I (John) favor purpose specific extensions, as the URI of the extension is an identifier of the purpose and has a link to the extension definition where this purpose can be expressed. The purpose specific extensions can also have purpose specific context and vocabulary.
+
+Next step is to bring forward other use-cases that will need parameters on obligations and restraints. Doing use-case analysis will lead us to a proper direction.
