@@ -223,10 +223,6 @@ ABAC can be role first or security tag first. The [Permission example for ABAC](
 
 ### TODO
 
-What does it mean when an element is not populated? Does this mean ANY?
-
-What does it mean when an element has more than one value? Does this mean OR? (the rule applies to both values?) I am presuming this is the meaning, which is the meaning in Consent too.
-
 Not obvious how to define a rule that is on a Resource type (note that Consent has documentType and resourceType) -- expression can do this --> Created [extension PermissionResourceType](StructureDefinition-dap.permissionResourceType.html)   an extension similar to Consent.rule.resourceType. Created [profile PermissionWithResourceType](StructureDefinition-dap.permissionWithResourceType.html). This might need to be added to Permission resource, unless the Expression method works just as well.
 
 Not obvious how to do security roles. Can use PractitionerRole if that applies, but that does not apply to Patients acting as a User.
