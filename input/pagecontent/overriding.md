@@ -223,11 +223,11 @@ ABAC can be role first or security tag first. The [Permission example for ABAC](
 
 ### TODO
 
-Not obvious how to define a rule that is on a Resource type (note that Consent has documentType and resourceType) -- expression can do this --> Created [extension PermissionResourceType](StructureDefinition-dap.permissionResourceType.html)   an extension similar to Consent.rule.resourceType. Created [profile PermissionWithResourceType](StructureDefinition-dap.permissionWithResourceType.html). This might need to be added to Permission resource, unless the Expression method works just as well.
+Not obvious how to define a rule that is on a Resource type (note that Consent has documentType and resourceType) -- expression can do this --> Created [extension PermissionResourceType](StructureDefinition-dap.permissionResourceType.html)   an extension similar to Consent.rule.resourceType. Created [profile PermissionWithResourceType](StructureDefinition-dap.permissionWithResourceType.html). This might need to be added to Permission resource, unless the Expression method works just as well. -- **2024-03-24 - Decided that this is likely a good idea to add this to Permission. [Jira FHIR-45077](https://jira.hl7.org/browse/FHIR-45077)**
 
-Not obvious how to do security roles. Can use PractitionerRole if that applies, but that does not apply to Patients acting as a User.
+Not obvious how to do security roles. Can use PractitionerRole if that applies, but that does not apply to Patients acting as a User. -- **2024-03-24 - Got close to agreeing to follow the pattern that Consent has.**
 
-should the action codes be more CRUD vs current privacy codes? or both?
+should the action codes be more CRUD vs current privacy codes? or both? -- **2024-03-24 - Seems to be a better valueSet, but if we switch we should not use the same element name so as to avoid confusion. Given that we both have example binding, it is not clear that the element name needs to be different as example binding allows all codes to be used.**
 - http://hl7.org/fhir/restful-interaction 
 
 Not clear how to define permission enabled by relationship to the data. These are easy to express in ABAC as it is simply using the fact that ABAC can address any attribute in a rule. For example 
