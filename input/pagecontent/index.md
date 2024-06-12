@@ -16,6 +16,7 @@ The use-cases and analysis are found on these pages:
 - [Simple explicit permission of a given resource to a given organization](non-patient.html)
 - [Consent with rules in Permissions](consent.html)
 - [Bundle with residual enforcement rules in Permission](residual.html)
+- [Overriding Policy in a Permission format](overriding.html)
 
 ### Permission
 
