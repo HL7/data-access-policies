@@ -2,6 +2,29 @@ This use-case analysis shows how a Permission can express an organization's over
 
 An Overriding policy is an important part of an organization’s overall risk management strategy. They help to protect the organization from potential legal liability, as well as from reputational damage. Overriding policies should be aligned with other policies within the organization, such as data security policies, employee training policies, and incident response plans.  Overriding policies should be reviewed and updated regularly to ensure that they reflect the latest legal and regulatory requirements. They should also be communicated to employees and customers in a clear and concise way.
 
+<div markdown="1" class="dragon">
+
+The use-case analysis is still a work in progress. Only the very basis has been described here. Many open-issues need further development, including:
+
+- Not obvious how to define a rule that is on a Resource type (note that Consent has documentType and resourceType) -- expression can do this --> Created [extension PermissionResourceType](StructureDefinition-dap.permissionResourceType.html)   an extension similar to Consent.rule.resourceType. Created [profile PermissionWithResourceType](StructureDefinition-dap.permissionWithResourceType.html). This might need to be added to Permission resource, unless the Expression method works just as well. -- **2024-03-24 - Decided that this is likely a good idea to add this to Permission. [Jira FHIR-45077](https://jira.hl7.org/browse/FHIR-45077)**
+- Not obvious how to do security roles. Can use PractitionerRole if that applies, but that does not apply to Patients acting as a User. -- **2024-03-24 - Got close to agreeing to follow the pattern that Consent has.**
+- should the action codes be more CRUD vs current privacy codes? or both? -- **2024-03-24 - Seems to be a better valueSet, but if we switch we should not use the same element name so as to avoid confusion. Given that we both have example binding, it is not clear that the element name needs to be different as example binding allows all codes to be used.**
+  - http://hl7.org/fhir/restful-interaction 
+- Not clear how to define permission enabled by relationship to the data. These are easy to express in ABAC as it is simply using the fact that ABAC can address any attribute in a rule. For example 
+    - Doctors can Update Observations that they authored, but can't update the Observations created by someone else.
+    - Patient can access THEIR data, but not all data
+    - PurposeOfUse of the activity
+    - Time-of-day restrictions. Some activities might be restricted to specific time of day, or day of the week. Such as registering new patients is only allowed during the day, except for emergency department. Should there be a .rule.activity.period to limit the time in which that activity is allowed? Or is this beyond 80% need and thus should be done with extensions.
+- do we need a way to identify the overriding policy among all the Permission instances found in a FHIR server. Or is there some other mechanism that knows which Permission instance is the overriding policy? Certainly any Consent instances would point at the overriding policy, so it is findable that way.
+
+The following is some other parts of an overriding policy that likely should be worked on here:
+
+- How break-glass rules are expressed, and how break-glass is authorized, and how break-glass is declared. Note that with just FHIR resources, this would likely need to be TWO PractitionerRole resources. The first one indicates who has the authority to declare break-glass, all the doctors that are allowed would be part of this PractitionerRole. The second one would be those that are currently in a break-glass state, where normally no Practitioners would be assigned this role. This role gets assigned as part of a workflow that is authorized by the First PractitionerRole, includes a user interaction to confirm the safety concern. Either a workflow to un-declare and emergency, or a timeout, would remove the Practitioner from this second PractitionerRole.
+- relationship to Consent / dissent -- default allow vs default deny -- Likely this could be expressed as two trees of rules, one tree when a consent is not found, one tree when the consent is found, and another when a dissent is found.
+- a dietician might be allowed to create Observations of a given type. So although they can't see the majority of Observations, they can create dietary Observations.
+
+</div>
+
 An Overriding policy expresses the default rules at an organization. An overriding policy must include all the rules necessary for the organization to function. This includes clinical workflows but also non-clinical workflows. Workflows such as billing, public-health reporting, response to legal requests, etc. 
 
 The Overriding policy fits within larger policies that cover operational aspects, such as how users are created, activated, and deactivated. How Patients are given access to their data as a User. 
@@ -221,27 +244,3 @@ ABAC can be role first or security tag first. The [Permission example for ABAC](
 - patient can authorize a related person to access that patient's data
 - use dynamic compartments such as CareTeam, List, and Group
 
-### TODO
-
-Not obvious how to define a rule that is on a Resource type (note that Consent has documentType and resourceType) -- expression can do this --> Created [extension PermissionResourceType](StructureDefinition-dap.permissionResourceType.html)   an extension similar to Consent.rule.resourceType. Created [profile PermissionWithResourceType](StructureDefinition-dap.permissionWithResourceType.html). This might need to be added to Permission resource, unless the Expression method works just as well. -- **2024-03-24 - Decided that this is likely a good idea to add this to Permission. [Jira FHIR-45077](https://jira.hl7.org/browse/FHIR-45077)**
-
-Not obvious how to do security roles. Can use PractitionerRole if that applies, but that does not apply to Patients acting as a User. -- **2024-03-24 - Got close to agreeing to follow the pattern that Consent has.**
-
-should the action codes be more CRUD vs current privacy codes? or both? -- **2024-03-24 - Seems to be a better valueSet, but if we switch we should not use the same element name so as to avoid confusion. Given that we both have example binding, it is not clear that the element name needs to be different as example binding allows all codes to be used.**
-- http://hl7.org/fhir/restful-interaction 
-
-Not clear how to define permission enabled by relationship to the data. These are easy to express in ABAC as it is simply using the fact that ABAC can address any attribute in a rule. For example 
-- Doctors can Update Observations that they authored, but can't update the Observations created by someone else.
-- Patient can access THEIR data, but not all data
-- PurposeOfUse of the activity
-- Time-of-day restrictions. Some activities might be restricted to specific time of day, or day of the week. Such as registering new patients is only allowed during the day, except for emergency department. Should there be a .rule.activity.period to limit the time in which that activity is allowed? Or is this beyond 80% need and thus should be done with extensions.
-
-- do we need a way to identify the overriding policy among all the Permission instances found in a FHIR server. Or is there some other mechanism that knows which Permission instance is the overriding policy? Certainly any Consent instances would point at the overriding policy, so it is findable that way.
-
-#### Other parts of Overriding policy
-
-The following is some other parts of an overriding policy that likely should be analysed here:
-
-- How break-glass rules are expressed, and how break-glass is authorized, and how break-glass is declared. Note that with just FHIR resources, this would likely need to be TWO PractitionerRole resources. The first one indicates who has the authority to declare break-glass, all the doctors that are allowed would be part of this PractitionerRole. The second one would be those that are currently in a break-glass state, where normally no Practitioners would be assigned this role. This role gets assigned as part of a workflow that is authorized by the First PractitionerRole, includes a user interaction to confirm the safety concern. Either a workflow to un-declare and emergency, or a timeout, would remove the Practitioner from this second PractitionerRole.
-- relationship to Consent / dissent -- default allow vs default deny -- Likely this could be expressed as two trees of rules, one tree when a consent is not found, one tree when the consent is found, and another when a dissent is found.
-- a dietician might be allowed to create Observations of a given type. So although they can't see the majority of Observations, they can create dietary Observations.
