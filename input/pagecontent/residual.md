@@ -32,7 +32,7 @@ In order to make it clear that a Bundle contains a Permission that the Bundle Re
 - Bundle that [adds the extension](StructureDefinition-dap.bundleWithPermission.html)
 - Example [SearchSet Bundle using the extension](Bundle-ex-SearchSet-withPermission.html)
 
-TODO: should this be added to FHIR core or to DS4P?
+<p class="stu-note">TODO: should this be added to FHIR core or to DS4P?</p>
 
 ### Do Not Redisclose without explicit consent
 
@@ -148,7 +148,8 @@ Scenario Outline: Allow only a given K-Anonymity
 
 #### Analysis
 
-This Permission encodes
+<div markdown="1" class="stu-note">
+This Permission requires an extension to express the K-Anonymity value encodes
 
 - base rule includes Research so as to be clear this is allowing only Research
 - this permit has a limit of a given K-anonymity value (4)
@@ -165,11 +166,14 @@ This Permission encodes
 ```
 
 [Example Permission allowing Research with a given K-anonymity (4)](Permission-ex-permission-k-anonymity.html)
+</div>
 
 #### Alternatives
 
+<div markdown="1" class="note-to-balloters">
 Committee discussion indicates that there might be similar needs to carry parameters. This brings up alternative discussion on if we need a single multipurpose extension, or should continue to create extensions that are purpose specific. 
 
 I (John) favor purpose specific extensions, as the URI of the extension is an identifier of the purpose and has a link to the extension definition where this purpose can be expressed. The purpose specific extensions can also have purpose specific context and vocabulary.
 
 Next step is to bring forward other use-cases that will need parameters on obligations and restraints. Doing use-case analysis will lead us to a proper direction.
+</div>
