@@ -17,6 +17,7 @@ The use-cases and analysis are found on these pages:
 - [Consent with rules in Permissions](consent.html)
 - [Bundle with residual enforcement rules in Permission](residual.html)
 - [Overriding Policy in a Permission format](overriding.html)
+- [Provider Directory Fine Grain exclusions](providerDirectoryFineGrain.html)
 
 ### Permission
 

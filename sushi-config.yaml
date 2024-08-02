@@ -46,12 +46,18 @@ contact:
 
 jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
 
+dependencies:
+  hl7.fhir.uv.security-label-ds4p: 
+    version: current
+    id: ds4p
+
 pages:
   index.md:
   non-patient.md:
   consent.md:
   residual.md:
   overriding.md:
+  providerDirectoryFineGrain.md:
 
 
 menu:
@@ -61,6 +67,7 @@ menu:
     "Consent" : consent.html
     "Residual" : residual.html
     "Overriding" : overriding.html
+    "Fine Grain" : providerDirectoryFineGrain.html
   Artifacts: artifacts.html
 
 
