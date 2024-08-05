@@ -32,6 +32,8 @@ Usage: #example
 * rule[=].extension[+].url = Canonical(ExcludeTagged)
 * rule[=].extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
 * rule[=].data.expression.expression = "Practitioner?_has:PractitionerRole:practitioner:code=http://terminology.hl7.org/CodeSystem/practitioner-role#doctor"
+* rule[=].data.expression.language = #text/fhirpath
+* rule[=].data.expression.description = "select all Practitioner resources where the Practitioner has a PractitionerRole with code of doctor"
 
 Extension: ExcludeTagged
 Id: dap.excludeTagged
