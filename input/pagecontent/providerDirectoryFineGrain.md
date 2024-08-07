@@ -82,18 +82,18 @@ For Example:
 
 Executing a search is possible:
 
-> GET [base]/Practitioner?name=moehrke&_has:PractitionerRole:practitioner:code=doctor
+> GET [base]/Practitioner?name=moehrke&_has:PractitionerRole:practitioner:role=doctor
 
-but the illustration here is to show that the Patient can't gain access to entries that they should not have access to by way of their authorization. The above search would work, but they would also get the same results if they just searched for "moehrke"
+#### rule using Expression
+
+The illustration here is to show that the Patient can't gain access to entries that they should not have access to by way of their authorization. The above search would work, but they would also get the same results if they just searched for "moehrke"
 
 > GET [base]/Practitioner?name=moehrke
 
-For this we use the Permission.rule.data.expression to select only those Practitioners that have a PractitionerRole.code=doctor. See [permission using this expression for data selection](Permission-ex-permission-exclude-location.html)
-
-@costateixeira - is this the right use of expression? Will the following select only Practitioner resources that have a PractitionerRole that has the PractitionerRole.code equal to doctor?
+For this we use the `Permission.rule.data.expression` to select only those Practitioners that have a PractitionerRole.code=doctor. See [permission using this expression for data selection](Permission-ex-permission-exclude-location.html)
 
 ```fs
 * rule[+].permit
-* rule[=].data.expression.expression = "Practitioner?_has:PractitionerRole:practitioner:code=doctor"
+* rule[=].data.expression.expression = "Practitioner?_has:PractitionerRole:practitioner:role=doctor"
 ```
 
