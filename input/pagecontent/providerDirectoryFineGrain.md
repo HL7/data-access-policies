@@ -50,10 +50,15 @@ The current Permission has the Permission.rule.limit, but this element can only 
 
 What we need is a way to indicate that further element level filters need to be applied before the Bundle is assembled. For this we create an extension [ExcludeTagged](StructureDefinition-dap.excludeTagged.html). This extension leverages the [DS4P Inline Security Labels]({{site.data.fhir.ds4p}}/inline_security_labels.html) which defines how to tag individual elements within a Resource, and also tag the Resource as having element level tags.
 
-- Example of a [permission using this extension](Permission-ex-permission-exclude-location.html)
+- Example of a [permission using this extension](Permission-ex-permission-directory-exclude-location.html)
 - Example of [Practitioner with element level tagging](Practitioner-ex-practitioner-sensitive.html)
 - Example of that Practitioner that has had permission applied to [exclude sensitive elements](Practitioner-ex-practitioner-de-sensitive.html)
 
+An alternative would have two rules, with one enabling Patients to have access to the directory, and a second rule that denies access to data element level tagged data. This alternative needs to leverage the combining rules, such that the second deny rule overrides the permit. With this kind of combining rule, the whole set of rules must be processed before a decision is known, where a deny-unless-permit the set of rules need only be processed until a permit applies. This alternative could treat the extension as just a data selector, so the extension could be then used with Permit rules or Deny.
+
+- Example of a [permission using this alternative encoding](Permission-ex-permission-directory-exclude-location-alt2.html)
+
+Discussion needed on which methodology works best, so that the extension (or new element) would be clear.
 </div>
 
 #### PractitionerRole resource
@@ -76,7 +81,7 @@ For Example:
   - Practitioner: Ryan Moehrke
     - PractitionerRole.code = claims-adjudicator
   - Practitioner: Daryl Moehrke
-    - PractitionerRole.code = veterinarian
+    - PractitionerRole.code = janitor
   - Practitioner: Diesel Moehrke
     - PractitionerRole.code = comfort-cat
 
@@ -90,10 +95,41 @@ The illustration here is to show that the Patient can't gain access to entries t
 
 > GET [base]/Practitioner?name=moehrke
 
-For this we use the `Permission.rule.data.expression` to select only those Practitioners that have a PractitionerRole.code=doctor. See [permission using this expression for data selection](Permission-ex-permission-exclude-location.html)
+For this we use the `Permission.rule.data.expression` to select only those Practitioners that have a PractitionerRole.code=doctor. See [permission using this expression for data selection](Permission-ex-permission-directory-doctors-only.html)
 
 ```fs
 * rule[+].permit
 * rule[=].data.expression.expression = "Practitioner?_has:PractitionerRole:practitioner:role=doctor"
 ```
 
+### Public-Health
+
+This use-case would enable public-health access to only the doctors, only their names and their NPI number.
+
+I did not mock this up, as I expect this is similar to the Patient, with more data removed.
+
+### Administration
+
+There are actors that would have rights to maintain the directory. HR would be one of these so that they can add new employees, and manage changes over time. There may be other administrative actors that might be responsible for changes not beyond HR. These users would have the role / clearance to use the `HDIRECT` purposeOfUse. The Permission would them indicate that this purposeOfUse has rights to all the actions. 
+
+<div markdown="1" class="stu-note">
+The vocabulary bound to the `.action` element are the Privacy actions. These are good action verbs regarding privacy, but are not sufficient or appropriate at the security level. The vocabulary needs to be changed to the [RESTful Actions (CRUDE)]({{site.data.fhir.path}}valueset-audit-event-action.html), which are defined for AuditEvent.action. Fortunately the current binding is example binding, so it does not keep us from using the CRUDE verbs. But the CRUDE verbs are better for Permission use.
+</div>
+
+```fs
+* combining = #deny-unless-permit
+* rule[+].type = #permit
+* rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT
+* rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN
+* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#C
+* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
+* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#U
+* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#D
+* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
+```
+
+- Permission [enabling administrative CRUDE](Permission-ex-permission-directory-admin.html)
+
+### Everything combined
+
+All the above fragments of a Permission would then be [combined into one Permission for the Director](Permission-ex-permission-directory-all.html)
