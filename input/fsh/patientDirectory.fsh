@@ -31,8 +31,8 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#FAMRQT
 * rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
 * rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
-* rule[=].extension[+].url = Canonical(ExcludeTagged)
-* rule[=].extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
+* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
+* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
 * rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NOAUTH
 
 * rule[+].type = #permit
@@ -132,7 +132,7 @@ Usage: #example
 * meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
 * status = #active
 * date = "2022-06-13"
-* category = https://loinc.org#59284-0 "Consent Document"
+* category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
 * policyBasis.reference = Reference(ex-permission-patient-directory-all)
@@ -152,7 +152,7 @@ Usage: #example
 * meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
 * status = #active
 * date = "2022-06-13"
-* category = https://loinc.org#59284-0 "Consent Document"
+* category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
 * policyBasis.reference = Reference(ex-permission-patient-directory-all)
@@ -173,7 +173,7 @@ Usage: #example
 * meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
 * status = #active
 * date = "2022-06-13"
-* category = https://loinc.org#59284-0 "Consent Document"
+* category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-practitioner)
 * policyBasis.reference = Reference(ex-permission-patient-directory-all)

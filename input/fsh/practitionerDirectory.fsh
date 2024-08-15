@@ -41,14 +41,14 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
 * rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
 * rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
-* rule[=].extension[+].url = Canonical(ExcludeTagged)
-* rule[=].extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
+* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
+* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT
 * rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
 * rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
-* rule[=].extension[+].url = Canonical(ExcludeTagged)
-* rule[=].extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
+* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
+* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
 * rule[=].data.expression.expression = "Practitioner?_has:PractitionerRole:practitioner:role=http://terminology.hl7.org/CodeSystem/practitioner-role|doctor"
 * rule[=].data.expression.language = #application/x-fhir-query
 * rule[=].data.expression.description = "select all Practitioner resources where the Practitioner has a PractitionerRole with code of doctor"
@@ -111,8 +111,8 @@ Usage: #example
 * combining = #deny-unless-permit
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT
-* rule[=].extension[+].url = Canonical(ExcludeTagged)
-* rule[=].extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
+* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
+* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
 
 Instance: ex-permission-directory-exclude-location-alt2
 InstanceOf: Permission
@@ -137,8 +137,8 @@ Usage: #example
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT
 * rule[+].type = #deny
-* rule[=].extension[+].url = Canonical(ExcludeTagged)
-* rule[=].extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
+* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
+* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
 
 
 Instance: ex-practitioner-sensitive
