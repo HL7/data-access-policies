@@ -61,3 +61,17 @@ This Permission encodes
 * rule[=].data.resource.reference = Reference(Practitioner/ex-practitioner)
 * rule[=].data.resource.meaning = http://hl7.org/fhir/consent-data-meaning#authoredby
 ```
+
+#### Consent pointing at this
+
+Given that a Consent provisions are rather encoded in Permissions. Here is how that [Consent could reference the Permission](Consent-ex-consent-permission.html).
+
+```fs
+...
+* decision = #permit
+* provision[+].expression.expression = "Permission/ex-permission-intermediate-not-authoredby"
+* provision[=].expression.language = #application/x-fhir-query
+* provision[=].expression.description = "Points to the instance of Permission with THIS patients provisions encoded in Permission.rule form."
+```
+
+Note that there is a [JIRA ticket FHIR-46021](https://jira.hl7.org/browse/FHIR-46021) on file to add clarity for FHIR R6.

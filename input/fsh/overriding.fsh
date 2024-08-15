@@ -433,3 +433,18 @@ Usage: #example
 * rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 
+Instance: ex-consent-overriding
+InstanceOf: Consent
+Title: "Consent that uses Overriding Permission for base rules"
+Description: """
+Where there is a Permssion resource that describes the base policy, then a Consent can point at that Permission rather than a URL alone.
+"""
+Usage: #example
+* meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
+* status = #active
+* date = "2024-08-15"
+* category = http://loinc.org#59284-0 "Consent Document"
+* subject = Reference(ex-patient)
+* grantor = Reference(ex-patient)
+* policyBasis.reference = Reference(ex-overriding-rbac-by-role)
+* decision = #permit
