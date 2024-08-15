@@ -235,6 +235,30 @@ ABAC can be role first or security tag first. The [Permission example for ABAC](
 ...
 ```
 
+### Using Overriding Permission
+
+Given that an Overriding Policy could be written using Permission. Then a [Consent.policyBasis could point at that Permission](Consent-ex-consent-permission.html).
+
+```fs
+...
+Instance: ex-consent-permission
+InstanceOf: Consent
+Title: "Consent that uses Permission for rules"
+Description: """
+Some would prefer to use the Permission rule encoding, and not the Consent.provision; thus the Consent is used to capture the ceremony, and points at a Permission for the rules.
+"""
+Usage: #example
+* meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
+* status = #active
+* date = "2022-06-13"
+* category = http://loinc.org#59284-0 "Consent Document"
+* subject = Reference(ex-patient)
+* grantor = Reference(ex-patient)
+* policyBasis.reference = Reference(ex-overriding-rbac-by-role)
+* decision = #permit
+...
+```
+
 #### Deep ABAC analysis
 
 - doctors can change data that they authored, but can not change data they did not author
