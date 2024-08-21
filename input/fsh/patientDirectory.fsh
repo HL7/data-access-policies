@@ -78,8 +78,8 @@ Usage: #example
 * address.country = "USA"
 * extension[+].url = "http://hl7.org/fhir/StructureDefinition/patient-religion"
 * extension[=].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation#1041 "Roman Catholic Church"
-* extension[=].value[x].extension[+].url = "http://hl7.org/fhir/uv/security-label-ds4p/StructureDefinition/extension-inline-sec-label"
-* extension[=].value[x].extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
+* extension[=].valueCodeableConcept.extension[+].url = "http://hl7.org/fhir/uv/security-label-ds4p/StructureDefinition/extension-inline-sec-label"
+* extension[=].valueCodeableConcept.extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
 
 
 Instance: ex-permission-patient-authoredby
