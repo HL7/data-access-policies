@@ -158,5 +158,6 @@ Scope: Patient.read EXAMPLE
 2. Tagging relies on custom scripts, which may need adaptation for more complex criteria.
     - We are thinking about using Group resources to create specific groups of patients instead of using security tags, allowing more flexibility and negating the impact of our own managment inside of the Patient's resource.
     - Using expressions to specify criterias using resources elements is very interesting but we lack resource diversity for now and retrieve these informations from outside of the FHIR platform.
-3. Using custom `Identifier` element to retrieve permissions is not ideal, but fow now search parameters are restricted to identifier and status element, should we create a custom Search parmater to search depending on the actor ?
+3. Using custom `Identifier` element to retrieve permissions is not ideal, but for now search parameters are restricted to identifier and status element. 
+  - Should we create a custom Search parmater to search depending on the actor ?
 
