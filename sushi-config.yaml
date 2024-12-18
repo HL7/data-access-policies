@@ -58,6 +58,7 @@ pages:
   residual.md:
   overriding.md:
   providerDirectoryFineGrain.md:
+  fineGrainPatientAccess.md:
   patientDirectory.md:
 
 
@@ -69,6 +70,7 @@ menu:
     "Residual" : residual.html
     "Overriding" : overriding.html
     "Provider Directory" : providerDirectoryFineGrain.html
+    "Fine-Grained Patient Access" : fineGrainPatientAccess.html
     "Patient Directory" : patientDirectory.html
   Artifacts: artifacts.html
 
