@@ -14,7 +14,7 @@ Permission
 
 [Example Permission explicitly identifying this SANER report](Permission-ex-saner.html)
 
-NOTES:
+TODO:
 
 - How do you create structured policy with branching rules ==> Could bring in nesting that exists in Consent.provision (infinite .provision)
 - How do you address ordered rules?
