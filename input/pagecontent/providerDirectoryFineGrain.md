@@ -46,6 +46,9 @@ There is no elements in the Practitioner resource that can be used by ABAC to fi
 ##### excludeTagged Extension
 
 <div markdown="1" class="stu-note">
+
+TODO: Ready to move this into FHIR core. Need a backbone to hold limit and other things like excludeTag. 
+
 The current Permission has the Permission.rule.limit, but this element can only carry codes such as [obligations](https://terminology.hl7.org/ValueSet-v3-ObligationPolicy.html), [refrain](https://terminology.hl7.org/ValueSet-v3-RefrainPolicy.html), and [purposeOfUse](https://terminology.hl7.org/ValueSet-v3-PurposeOfUse.html). The intent of the .limit is to be instructions to the recipient. These codes would appear on the Bundle.meta.security that is returned to a requester, or delivered to a recipient.
 
 What we need is a way to indicate that further element level filters need to be applied before the Bundle is assembled. For this we create an extension [ExcludeTagged](StructureDefinition-dap.excludeTagged.html). This extension leverages the [DS4P Inline Security Labels]({{site.data.fhir.ds4p}}/inline_security_labels.html) which defines how to tag individual elements within a Resource, and also tag the Resource as having element level tags.
