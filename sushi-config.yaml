@@ -9,7 +9,7 @@ id: hl7.fhir.uv.dap
 canonical: http://hl7.org/fhir/uv/dap
 name: DataAccessPolicies
 title: "HL7 FHIR Implementation Guide: Data Access Policies"
-description: Data Access Policies.
+description: Data Access Policies..
 status: draft
 license: CC0-1.0
 #date: 2020-02-26
