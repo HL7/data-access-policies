@@ -64,7 +64,11 @@ This Permission encodes
 
 #### Consent pointing at this
 
-Given that a Consent provisions are rather encoded in Permissions. Here is how that [Consent could reference the Permission](Consent-ex-consent-permission.html).
+Given that a Consent provisions are rather encoded in Permissions.
+
+##### FHIR R5 and R4
+
+Here is how that [Consent could reference the Permission](Consent-ex-consent-permission.html).
 
 ```fs
 ...
@@ -74,4 +78,14 @@ Given that a Consent provisions are rather encoded in Permissions. Here is how t
 * provision[=].expression.description = "Points to the instance of Permission with THIS patients provisions encoded in Permission.rule form."
 ```
 
-Note that there is a [JIRA ticket FHIR-46021](https://jira.hl7.org/browse/FHIR-46021) on file to add clarity for FHIR R6.
+##### FHIR R6
+
+There is a [JIRA ticket FHIR-46021](https://jira.hl7.org/browse/FHIR-46021) on file to add clarity for [FHIR R6](https://build.fhir.org/consent.html). This added an `provisionReference` element to Consent that can point at one or more Permission Resources. In this case one would not have any `provision` elements. See Constraint ppc-1 that forces this.
+
+```fs
+...
+* decision = #permit
+* provisionReference[+] = Reference(Permission/ex-permission-intermediate-not-authoredby)
+```
+
+TODO: R5 ballot3 will be needed for this example. 
