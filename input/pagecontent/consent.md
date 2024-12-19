@@ -88,4 +88,4 @@ There is a [JIRA ticket FHIR-46021](https://jira.hl7.org/browse/FHIR-46021) on f
 * provisionReference[+] = Reference(Permission/ex-permission-intermediate-not-authoredby)
 ```
 
-TODO: When this IG can be built with the proposed R6 ballots, we can have an example. For now the above is sufficent.
+TODO: R5 ballot3 will be needed for this example. 
