@@ -70,6 +70,12 @@ Usage: #example
 * combining = #deny-unless-permit
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT
+* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#C
+* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
+* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#U
+* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#D
+* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
+* rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN
 * rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#C
 * rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
