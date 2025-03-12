@@ -1,6 +1,12 @@
 
 Play-space for some new IG work that may or may not eventually become a FHIR spec
 
+### Call details
+
+https://www.hl7.org/concalls/CallDetails.cfm?concall=77117
+
+Weekly, Wednesday, at 3:00 PM EST
+
 ### Publication
 
 This ImplementationGuide is published in the following locations:
