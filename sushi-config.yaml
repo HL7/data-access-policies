@@ -14,7 +14,7 @@ status: draft
 license: CC0-1.0
 #date: 2020-02-26
 version: 1.0.0-current
-fhirVersion: 6.0.0-ballot2
+fhirVersion: 5.0.0
 copyrightYear: 2023+
 releaseLabel: ci-build
 
@@ -58,6 +58,7 @@ pages:
   residual.md:
   overriding.md:
   providerDirectoryFineGrain.md:
+  fineGrainPatientAccess.md:
   patientDirectory.md:
 
 
@@ -69,6 +70,7 @@ menu:
     "Residual" : residual.html
     "Overriding" : overriding.html
     "Provider Directory" : providerDirectoryFineGrain.html
+    "Fine-Grained Patient Access" : fineGrainPatientAccess.html
     "Patient Directory" : patientDirectory.html
   Artifacts: artifacts.html
 
