@@ -3,7 +3,7 @@
 REST API scopes allow us to give CRUD rights to resource consumers.
 However, we cannot give detailed access to a specific pool of Patients or to only certain elements inside of the allowed resource.
 
-This use-case aims to enable fine-grained filtering using the Permission resource to express which pool of resources are accessible to a specific data collector and which data is allowed whithin these resources.
+This use-case aims to enable fine-grained filtering using the Permission resource to express which pool of resources are accessible to a specific data collector and which data is allowed whithin these resources.  
 For now this use-cases only applies to request on Patient resources, but aims to apply to any kind of resource in the futur.
 
 ### Security Layers
@@ -36,14 +36,14 @@ This EAI will interact with the FHIR server when it receives the request and app
 ---
 
 ### Tagging Resources
-Before applying Permissions, we must identify and tag resource pools. 
+Before applying Permissions, we must identify and tag resource pools.  
 For example, if we want to restrict access to patients from a specific department or age group, we use security labels within the `meta` element of resources.
 
 #### Example:
 ```json
 {
   "resourceType": "Patient",
-  "id": "EXAMPLE",
+  "id": "1",
   "meta": {
     "security": [
       {
@@ -62,7 +62,7 @@ We utilize custom scripts within the middleware to automate the tagging process,
 ### Building the Permission Resource
 The Permission resource defines the rules for granting or denying access to specific data pools or elements. It consists of general information and two primary rule types:
 
-1. **Permit Rules:** Specify the data allowed for access (e.g., resources tagged with `EXAMPLE`).
+1. **Permit Rules:** Specify the data allowed for access (e.g., resources tagged with `TAG_1`).
 2. **Deny Rules:** Restrict access to specific data (e.g., resources tagged with `VIP` or sensitive elements like addresses).
 
 #### Example Permission Resource:
@@ -112,7 +112,7 @@ In this example, the Permission resource allow consumer `EXAMPLE` to see exclusi
             {"language": "text/jsonpath", "expression": "$.birthdate"}
           ],
           "expression": [
-            {"language": "text/jsonpath", "expression": "$.name.given"}
+            {"language": "text/jsonpath", "expression": "$.meta"}
           ]
         }
       ]
@@ -126,6 +126,70 @@ In this example, the Permission resource allow consumer `EXAMPLE` to see exclusi
 
 ### Example of Applying Permissions in Request Handling
 
+#### Initial Patient:
+Patient 1 :
+```json
+{
+  "resourceType": "Patient",
+  "id": "1",
+   "name": [
+        {
+            "family": "Baker",
+            "given": [
+                "William Howard"
+            ],
+            "text": "William Howard Baker",
+            "use": "official",
+        }
+  ],
+  "meta": {
+    "security": [
+      {
+        "system": "http://your-fhir-server.com/fhir/ValueSet/local-tags",
+        "code": "VIP"
+      }
+    ]
+  }
+}
+```
+Patient 2 :
+```json
+{
+  "resourceType": "Patient",
+  "id": "2",
+  "name": [
+        {
+            "family": "Baker",
+            "given": [
+                "Joséphine"
+            ],
+            "text": "Joséphine Baker",
+            "use": "official",
+        }
+  ],
+  "address": [
+  {
+    "use": "home",
+    "text": "2127 Lucas Avenue, St. Louis, MO, USA",
+    "line": ["2127 Lucas Avenue"],
+    "city": "St. Louis",
+    "state": "MO",
+    "postalCode": "63103",
+    "country": "USA"
+  }
+  ],
+  "birthDate": "1906-06-03",
+  "gender": "female",
+  "meta": {
+    "security": [
+      {
+        "system": "http://your-fhir-server.com/fhir/ValueSet/local-tags",
+        "code": "TAG_1"
+      }
+    ]
+  }
+}
+```
 #### Initial Request:
 ```rest
 GET /Patient?family=Baker
@@ -141,7 +205,17 @@ Scope: Patient.read EXAMPLE
 ```json
 {
   "resourceType": "Patient",
-  "name": "Baker Joséphine",
+  "id": "2",
+  "name": [
+        {
+            "family": "Baker",
+            "given": [
+                "Joséphine"
+            ],
+            "text": "Joséphine Baker",
+            "use": "official",
+        }
+  ],
   "gender": "female"
 }
 ```
@@ -311,14 +385,12 @@ This `data.expression` is meant to be used as a data selector, like we use it in
 
 The `limit` element is meant for this use, but is a `CodeableConcept` which cannot refer to specific elements inside of a FHIR resource.
 
-Solution n°1 :
-
 The Jira ticket n°49031 refers a similar issues, it's solution being a change in the `limit` element :
   " change the limit element to a backbone element
     move the CodeableConcept from limit to `control` - 0..* - http://terminology.hl7.org/ValueSet/v3-SecurityControlObservationValue (preferred)
     add `.tag` - 0..* - Coding – http://terminology.hl7.org/ValueSet/v3-InformationSensitivityPolicy (preferred)
     add `.element` - 0..* - string - "path of the element in the hierarchy of elements"
-  "
+  " 
   
 #### Changes to Permission's search parameters
 
@@ -340,10 +412,11 @@ In addition to this mandatory change, we've thought of a few search parameters t
 4. `Data.expression.expression`
   The data.expression.expression element is a fhirpath expression used to specify which element we aim to use inside of the List, for now we only use Patient, but once we use several resources we might need to search for Permissions using a specific fhirpath expression.
 
+<div markdown="1" class="dragon">
 ### Pending questions
 
 1. Can we make all of these changes ? If so, what is the procedure ?
 2. Should the Data.expressions.expression element be used this way ?
 3. Adding patients to a List using a PATCH request is easy, but removing it is hard since we can't remove a item based on its reference but only using its index (e.g : entry/2), I developped a script that can parse through the List and create the according PATCH request but is there an easier way ?
 4. Sould we use fhirpath expressions instead of jsonpath to refer to elements that we want to remove ?
-
+</div>
