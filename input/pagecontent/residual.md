@@ -61,7 +61,7 @@ This Permission encodes
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
 ```
 
 [Example Permission allowing given PurposeOfUse, but limiting redisclosure](Permission-ex-permission-redisclose-forbidden-without-consent.html)
@@ -95,7 +95,7 @@ This Permission encodes
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
 * rule[+].type = #deny
-* rule[=].activity.actor = Reference(Practitioner/ex-practitioner)
+* rule[=].activity.actor.reference = Reference(Practitioner/ex-practitioner)
 ```
 
 [Example Permission allowing most use but not a given practitioner](Permission-ex-permission-not-bob.html)
@@ -161,7 +161,7 @@ This Permission requires an extension to express the K-Anonymity value encodes
 * combining = #deny-overrides
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HRESCH
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID
 * rule[=].limit.extension[ka].valueInteger = 4
 ```
 
