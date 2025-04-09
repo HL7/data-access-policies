@@ -20,7 +20,7 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
 
 Extension: PermissionImposedOnBundle
 Id: dap.permissionImposedOnBundle
@@ -53,7 +53,7 @@ Usage: #inline
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
 
 Profile: BundleWithPermission
 Parent: Bundle
@@ -122,7 +122,7 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
 * rule[+].type = #deny
-* rule[=].activity.actor = Reference(Practitioner/ex-practitioner)
+* rule[=].activity.actor.reference = Reference(Practitioner/ex-practitioner)
 
 Instance: ex-permission-timeout
 InstanceOf: Permission
@@ -183,6 +183,6 @@ Usage: #example
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HRESCH
 // could use ANONY, but I prefer DEID as it is the higher concept allowing pseudonymization or anonymization
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID
 * rule[=].limit.extension[ka].valueInteger = 4
 

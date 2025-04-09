@@ -33,7 +33,7 @@ Usage: #example
 * rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
 * rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
 * rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NOAUTH
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#NOAUTH
 
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN
