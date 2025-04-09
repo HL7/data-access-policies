@@ -1,6 +1,6 @@
 ### Use-Case
 
-REST API scopes allow us to give CRUD rights to resource consumers.
+REST API scopes allow us to give CRUD rights to resource consumers.  
 However, we cannot give detailed access to a specific pool of Patients or to only certain elements inside of the allowed resource.
 
 This use-case aims to enable fine-grained filtering using the Permission resource to express which pool of resources are accessible to a specific data collector and which data is allowed whithin these resources.  
@@ -26,7 +26,7 @@ This architecture, ensures that data collectors never directly interact with the
 This EAI will interact with the FHIR server when it receives the request and apply Permission-based filters to the request before sending the response to the initial request sender.
 
 #### Workflow:
-1. The data collector sends a REST API request (e.g., `GET /Patient?family=Baker`) with its scope and Permission ID within the Oauth2token.
+1. The data collector sends a REST API request (e.g., `GET /Patient?family=Baker`) with its scope and Permission ID within the OAuth2 token.
 2. The middleware retrieves the relevant Permission resource from the FHIR server.
 3. The middleware applies the 4th security layer by modifying the request to target only allowed resources (e.g., patients tagged with `TAG_1` and not patients tagged with `VIP`).
 4. The FHIR server responds with raw resource data.
@@ -67,7 +67,7 @@ The Permission resource defines the rules for granting or denying access to spec
 
 #### Example Permission Resource:
 
-In this example, the Permission resource allow consumer `EXAMPLE` to see exclusively Patient resources with the security label `TAG_1` but cannot see Patients with the security label `VIP`. They also cannot see the Patient's given name, address and metadata.
+In this example, the Permission resource allow consumer `EXAMPLE` to see exclusively Patient resources with the security label `TAG_1` but cannot see Patients with the security label `VIP`. They also cannot see the Patient's given birthdate, address and metadata.
 
 ```json
 {
@@ -293,7 +293,7 @@ The goal here is to create an empty list and then use a script to add patients t
 ### Changes to the Permission resource
 
 With these changes, the Permission resource needs some adjustments
-  - Stop using specific ids and instad use the actor element to refer to the Device resource
+  - Stop using specific ids and instead use the actor element to refer to the Device resource
   - Adding a FHIRPath expression to express that the Permission resource applies to the consumption of Patient resources in said List.
 
 Here is a new example of a Permission resource with these changes applied :
@@ -418,5 +418,5 @@ In addition to this mandatory change, we've thought of a few search parameters t
 1. Can we make all of these changes ? If so, what is the procedure ?
 2. Should the Data.expressions.expression element be used this way ?
 3. Adding patients to a List using a PATCH request is easy, but removing it is hard since we can't remove a item based on its reference but only using its index (e.g : entry/2), I developped a script that can parse through the List and create the according PATCH request but is there an easier way ?
-4. Sould we use fhirpath expressions instead of jsonpath to refer to elements that we want to remove ?
+4. Should we use fhirpath expressions instead of jsonpath to refer to elements that we want to remove ?
 </div>
