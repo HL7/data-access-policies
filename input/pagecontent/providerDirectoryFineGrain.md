@@ -114,6 +114,8 @@ There are actors that would have rights to maintain the directory. HR would be o
 
 <div markdown="1" class="stu-note">
 The vocabulary bound to the `.action` element are the Privacy actions. These are good action verbs regarding privacy, but are not sufficient or appropriate at the security level. The vocabulary needs to be changed to the [RESTful Actions (CRUDE)]({{site.data.fhir.path}}valueset-audit-event-action.html), which are defined for AuditEvent.action. Fortunately the current binding is example binding, so it does not keep us from using the CRUDE verbs. But the CRUDE verbs are better for Permission use.
+
+Propose change to FHIR Core Permission 
 </div>
 
 ```fs
