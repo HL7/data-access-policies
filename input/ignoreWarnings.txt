@@ -1,12 +1,22 @@
 == Suppressed Messages ==
 
+# there will be no jiraspec
+ERROR: There is no jira specification file defined with the expected name of FHIR-dap in the xml folder of the  https://github.com/HL7/Jira-Spec-Artifacts project.  This must exist before ballot or publication.
+
 # told we can ignore these
 Reference to deprecated ValueSet http://hl7.org/fhir/ValueSet/jurisdiction|6.0.0-ballot3
 
+# These are known issues 
+WARNING: ImplementationGuide/hl7.fhir.uv.dap: ImplementationGuide.dependsOn[0]: The ImplementationGuide is based on FHIR version 6.0.0-ballot3 but package hl7.terminology.r5#6.3.0 is based on FHIR version 5.0.0. In general, this version mismatch should be avoided - some tools will try to make this work with variable degrees of success, but others will not even try
+WARNING: ImplementationGuide/hl7.fhir.uv.dap: ImplementationGuide.dependsOn[1]: The ImplementationGuide is based on FHIR version 6.0.0-ballot3 but package hl7.fhir.uv.security-label-ds4p#current is based on FHIR version 4.0.1. In general, this version mismatch should be avoided - some tools will try to make this work with variable degrees of success, but others will not even try
+WARNING: ImplementationGuide/hl7.fhir.uv.dap: ImplementationGuide.dependsOn[1]: The ImplementationGuide uses package hl7.fhir.uv.security-label-ds4p#current released on 2023-04-17, but the most recent appropriate version is 1.0.0. This reference is getting old and the more recent version should be considered
+
+# this is an example CodeSystem
+INFORMATION: CodeSystem/MyOrgRolesCS: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
 # this is just an example URL
 WARNING: MeasureReport/ex-measurereport: MeasureReport: The Measure 'http://example.org/fhir/uv/saner/Measure/FEMADailyHospitalCOVID19Reporting' could not be resolved, so no validation can be performed against the Measure
-
+WARNING: Bundle/ex-SearchSet-withPermission: Bundle.link[0].url: URL value 'http://test.fhir.net/R4/fhir/Observation?patient=9876&status=current' does not resolve
 # ignorable
 Reference to experimental CodeSystem http://hl7.org/fhir/restful-interaction|6.0.0-ballot3
 
