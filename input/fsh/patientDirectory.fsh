@@ -29,19 +29,19 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#FAMRQT
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
 * rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
 * rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#NOAUTH
 
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#C
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#U
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#D
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#update
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#delete
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
 
 
 
@@ -136,7 +136,7 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* policyBasis.reference = Reference(ex-permission-patient-directory-all)
+* provisionReference = Reference(ex-permission-patient-directory-all)
 * decision = #permit
 
 Instance: ex-consent-patientDirectory-deny
@@ -156,7 +156,7 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* policyBasis.reference = Reference(ex-permission-patient-directory-all)
+* provisionReference = Reference(ex-permission-patient-directory-all)
 * decision = #deny
 
 
@@ -177,5 +177,5 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-practitioner)
-* policyBasis.reference = Reference(ex-permission-patient-directory-all)
+* provisionReference = Reference(ex-permission-patient-directory-all)
 * decision = #permit

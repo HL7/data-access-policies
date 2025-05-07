@@ -121,11 +121,11 @@ The vocabulary bound to the `.action` element are the Privacy actions. These are
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#C
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#U
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#D
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#update
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#delete
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
 ```
 
 - Permission [enabling administrative CRUDE](Permission-ex-permission-directory-admin.html)
