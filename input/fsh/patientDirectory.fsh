@@ -53,7 +53,7 @@ Description: "This patient is the same as ex-patient, with the extension for rel
 Usage: #example
 // history - http://playgroundjungle.com/2018/02/origins-of-john-jacob-jingleheimer-schmidt.html
 * meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
-* meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PROCESSINLINELABEL
+* meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActCode#PROCESSINLINELABEL
 * name[+].use = #usual
 * name[=].family = "Schmidt"
 * name[=].given = "John"
