@@ -1,5 +1,5 @@
 @startuml
-'skinparam linetype ortho
+left to right direction
 skinparam linetype polyline
 hide circle
 hide stereotype
@@ -8,11 +8,12 @@ skinparam linetype ortho
 <style>
 rectangle {LineColor transparent}
 </style>
+Title Using Permission for Access Control
 
 skinparam class<<MD>> {
  BorderColor DarkSlateGray
- BackgroundColor WhiteSmoke
- HeaderBackgroundColor #909090
+ BackgroundColor YellowGreen
+ HeaderBackgroundColor DarkOliveGreen
 }
 
 skinparam class<<TM>> {
@@ -21,106 +22,53 @@ skinparam class<<TM>> {
  HeaderBackgroundColor SkyBlue
 }
 
-
-Package "Specification" as S {
-
 rectangle {
-class "**Roles**" as RR<<TM>> {
-|_ patient
-|_ physician
-|_ nurse
-|_ psychiatric-nurse
-|_ practical-nurse
-|_ midwife
-|_ pharmacist-office
-|_ pharmacist-hospital   
-'|_ pharmacist-clinical-biologist   
-|_ dentist
-|_ physiotherapist
-|_ ...
-'|_ clinical-psychologist
-'|_ clinical-orthopedagogist
-'|_ pharmacist-technical-assistant
-'|_ audiologist
-'|_ audicien
-'|_ truss-maker
-'|_ dietician
-'|_ occupational-therapist
-'|_ lab-technologist
-'|_ logopedist
-'|_ orthopedist
-'|_ podologist
-'|_ dental-hygienist
+class "**Request Context**" as RC<<TM>> {
+|_ user identity
+|_ organization
+|_ purposeOfUse
+|_ activity (CRUDE)
+|_ patient / subject
+  |_ consent
+|_ data request parameters
+  |_ data categories
 }
 }
 
 rectangle {
-Package "**Access Rules**" as AR {
-file "Permissions" as P
-}
+  Package "**FHIR:  Rules**" as AR #OrangeRed {
+    collections "Permissions" as P #Orange
+    collections "Consent" as C #Orange
+  }
 }
 
 rectangle {
-class "**Data Categories**" as DC<<TM>> {
-|_ summary
-  |_ contact-info
-'  |_ name
-'  |_ address
-'  |_ contact-persons
-'  |_ gmf-holder
-'  |_ healthcare-professionals
-  |_ adverse-drug-reaction   
-  |_ allergies
-  |_ social-risks
-  |_ risks
-  |_ problems
-  |_ treatments
-  |_ patient-will
-|_ medication-scheme
-    }
-}
-RR -r[hidden]- AR : "               " 
-AR -r[hidden]- DC : "               "
-AR -r[hidden]- P 
-'DC -l[hidden]-> AR
-
+  class "**DataBase**" as Data<<MD>> {
+  |_ Metadata
+    |_ data sensitivity
+    |_ patient / subject
+    |_ organization
+    |_ author
+    |_ encounter
+    |_ purposes of Use allowed
+    |_ timeframe
+  |_ data
+  }
 }
 
-
-
-
-node "Implementation" as I {
-
-rectangle " " as D1 {
-  circle "Request" as Req
+node "Access Control Implementation" as ACC {
+component "Access Decision" as AC
+component "Access Enforcement" as AE
 }
 
-rectangle " " as D2{
-component "Access Control" as AC
-}
+circle "FHIR Resources" as done
 
-rectangle " " as D3 {
-  database "DB" as DB
-}
-
-Req -r-> AC : "  "
-AC -r-> DB : "   "
-
-}
-
-
-D1 -r[hidden]- D2
-D2 -r[hidden]- D2
-
-
-'RR -d[hidden]- I 
-
-DC .d. DB
-RR .d. Req
+' Connections
+RC -l-> AC
+Data -d-> AC
 P -d-> AC
-
-
-
-
+C -d-> AC
+AC -l-> AE : "Permit/Deny\nLimits"
+AE -l-> done
 
 @enduml
