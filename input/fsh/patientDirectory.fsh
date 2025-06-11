@@ -13,7 +13,7 @@ This Permission encodes:
 - combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.
 - rule is #permit for health directory use, patient requested, or family requested
     - This enables access all patients, provided Consent Permit is on file
-    - BUT includes an exclusion extension for any elements marked with Religious Sensitivity (`#REL`)
+    - BUT uses .limit.tag to exclude any elements marked with Religious Sensitivity (`#REL`)
     - Note that the Consent requirement is documented here with a .limit of NOAUTH. Might there be a better way?
 - rule is #permit for administrative actions on the directory
     - This enables maintenance by those with directory admin authorization
@@ -31,8 +31,7 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#FAMRQT
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
-* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
-* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
+* rule[=].limit.tag = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#NOAUTH
 
 * rule[+].type = #permit

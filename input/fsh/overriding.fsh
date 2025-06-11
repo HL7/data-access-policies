@@ -9,6 +9,8 @@ Note that this might be possible with Expression, but I don't know how."
 * value[x] only code
 * valueCode from http://hl7.org/fhir/ValueSet/resource-types (required)
 * valueCode 1..1
+// TODO Note that code is not used in FHIR R6 as they want to support more resource types not defined today, so now url
+
 
 Profile: PermissionWithResourceType
 Parent: Permission
@@ -437,7 +439,7 @@ Instance: ex-consent-overriding
 InstanceOf: Consent
 Title: "Consent that uses Overriding Permission for base rules"
 Description: """
-Where there is a Permssion resource that describes the base policy, then a Consent can point at that Permission rather than a URL alone.
+Where there is a Permission resource that describes the base policy, then a Consent can point at that Permission rather than a URL alone.
 """
 Usage: #example
 * meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
@@ -446,5 +448,6 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* provisionReference = Reference(ex-overriding-rbac-by-role)
+* policyBasis.reference = Reference(ex-overriding-rbac-by-role)
 * decision = #permit
+* provision.id = "fooBar"
