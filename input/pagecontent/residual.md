@@ -171,6 +171,9 @@ This Permission requires an extension to express the K-Anonymity value encodes
 #### Alternatives
 
 <div markdown="1" class="note-to-balloters">
+
+TODO: Do we think we are ready to propose a change to Permission?
+
 Committee discussion indicates that there might be similar needs to carry parameters. This brings up alternative discussion on if we need a single multipurpose extension, or should continue to create extensions that are purpose specific. 
 
 I (John) favor purpose specific extensions, as the URI of the extension is an identifier of the purpose and has a link to the extension definition where this purpose can be expressed. The purpose specific extensions can also have purpose specific context and vocabulary.
