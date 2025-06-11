@@ -43,23 +43,13 @@ The use-cases will be satisfied with [Attribute Based Access Control (ABAC)](ove
 
 There is no elements in the Practitioner resource that can be used by ABAC to filter on given the example policies here, but there are elements that would be filtered out for specific use-cases. For example, when the patient is searching, they have no access need for any of the Practitioner.address.
 
-##### excludeTagged Extension
+##### Limit by tag
 
-<div markdown="1" class="stu-note">
-The current Permission has the Permission.rule.limit, but this element can only carry codes such as [obligations](https://terminology.hl7.org/ValueSet-v3-ObligationPolicy.html), [refrain](https://terminology.hl7.org/ValueSet-v3-RefrainPolicy.html), and [purposeOfUse](https://terminology.hl7.org/ValueSet-v3-PurposeOfUse.html). The intent of the .limit is to be instructions to the recipient. These codes would appear on the Bundle.meta.security that is returned to a requester, or delivered to a recipient.
-
-What we need is a way to indicate that further element level filters need to be applied before the Bundle is assembled. For this we create an extension [ExcludeTagged](StructureDefinition-dap.excludeTagged.html). This extension leverages the [DS4P Inline Security Labels]({{site.data.fhir.ds4p}}/inline_security_labels.html) which defines how to tag individual elements within a Resource, and also tag the Resource as having element level tags.
+The current Permission has the Permission.rule.limit.tag, are tagged data to be removed from any Resources authorized by this itteration of `.rule` before the response Bundle is assembled. This tagging leverages the [DS4P Inline Security Labels]({{site.data.fhir.ds4p}}/inline_security_labels.html) which defines how to tag individual elements within a Resource, and also tag the Resource as having element level tags.
 
 - Example of a [permission using this extension](Permission-ex-permission-directory-exclude-location.html)
 - Example of [Practitioner with element level tagging](Practitioner-ex-practitioner-sensitive.html)
 - Example of that Practitioner that has had permission applied to [exclude sensitive elements](Practitioner-ex-practitioner-de-sensitive.html)
-
-An alternative would have two rules, with one enabling Patients to have access to the directory, and a second rule that denies access to data element level tagged data. This alternative needs to leverage the combining rules, such that the second deny rule overrides the permit. With this kind of combining rule, the whole set of rules must be processed before a decision is known, where a deny-unless-permit the set of rules need only be processed until a permit applies. This alternative could treat the extension as just a data selector, so the extension could be then used with Permit rules or Deny.
-
-- Example of a [permission using this alternative encoding](Permission-ex-permission-directory-exclude-location-alt2.html)
-
-Discussion needed on which methodology works best, so that the extension (or new element) would be clear.
-</div>
 
 #### PractitionerRole resource
 
@@ -121,11 +111,11 @@ The vocabulary bound to the `.action` element are the Privacy actions. These are
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#C
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#U
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#D
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#update
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#delete
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
 ```
 
 - Permission [enabling administrative CRUDE](Permission-ex-permission-directory-admin.html)

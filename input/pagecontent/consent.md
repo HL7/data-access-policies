@@ -88,4 +88,7 @@ There is a [JIRA ticket FHIR-46021](https://jira.hl7.org/browse/FHIR-46021) on f
 * provisionReference[+] = Reference(Permission/ex-permission-intermediate-not-authoredby)
 ```
 
-TODO: R5 ballot3 will be needed for this example. 
+See
+
+- [Consent using Permission for policy Basis](Consent-ex-consent-overriding.html)
+- [Consent using Permission for patient specific provisions](Consent-ex-consent-permission.html)

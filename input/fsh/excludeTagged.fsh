@@ -1,4 +1,5 @@
 
+/* now in core
 Extension: ExcludeTagged
 Id: dap.excludeTagged
 Title: "Tagged data elements to be excluded on Permit"
@@ -10,3 +11,4 @@ Description: "When a Permission permits data, some of the elements of that data 
 * value[x] only Coding
 * valueCoding 1..1
 
+*/

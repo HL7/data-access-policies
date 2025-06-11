@@ -6,7 +6,7 @@ An Overriding policy is an important part of an organization’s overall risk ma
 
 The use-case analysis is still a work in progress. Only the very basis has been described here. Many open-issues need further development, including:
 
-- Not obvious how to define a rule that is on a Resource type (note that Consent has documentType and resourceType) -- expression can do this --> Created [extension PermissionResourceType](StructureDefinition-dap.permissionResourceType.html)   an extension similar to Consent.rule.resourceType. Created [profile PermissionWithResourceType](StructureDefinition-dap.permissionWithResourceType.html). This might need to be added to Permission resource, unless the Expression method works just as well. -- **2024-03-24 - Decided that this is likely a good idea to add this to Permission. [Jira FHIR-45077](https://jira.hl7.org/browse/FHIR-45077)**
+- Not obvious how to define a rule that is on a Resource type (note that Consent has documentType and resourceType) -- expression can do this --> Created [extension PermissionResourceType](StructureDefinition-dap.permissionResourceType.html)   an extension similar to Consent.rule.resourceType. Created [profile PermissionWithResourceType](StructureDefinition-dap.permissionWithResourceType.html). This might need to be added to Permission resource, unless the Expression method works just as well. **[FHIR-51070](https://jira.hl7.org/browse/FHIR-51070)**
 - Not obvious how to do security roles. Can use PractitionerRole if that applies, but that does not apply to Patients acting as a User. -- **2024-03-24 - Got close to agreeing to follow the pattern that Consent has.**
 - should the action codes be more CRUD vs current privacy codes? or both? -- **2024-03-24 - Seems to be a better valueSet, but if we switch we should not use the same element name so as to avoid confusion. Given that we both have example binding, it is not clear that the element name needs to be different as example binding allows all codes to be used.**
   - http://hl7.org/fhir/restful-interaction 
@@ -100,12 +100,12 @@ Note that PurposeOfUse is also represented in this Permission instance as part o
 * rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Observation
 * rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#AllergyIntolerance
 * rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Condition
-* rule[=].activity.actor = Reference(DrRole)
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#C
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#U
+* rule[=].activity.actor.reference = Reference(DrRole)
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#update
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 // Doctor R
 * rule[+].type = #permit
@@ -116,10 +116,10 @@ Note that PurposeOfUse is also represented in this Permission instance as part o
 * rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#RelatedPerson
 * rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Organization
 * rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Location
-* rule[=].activity.actor = Reference(DrRole)
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
+* rule[=].activity.actor.reference = Reference(DrRole)
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 ...
 ```
 
@@ -153,16 +153,16 @@ Traversing [the Permission holding resource first rules](Permission-ex-overridin
 // Observation
 * rule[+].type = #permit
 * rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Observation
-* rule[=].activity[+].actor = Reference(DrRole)
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#C
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#U
+* rule[=].activity[+].actor.reference = Reference(DrRole)
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#update
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
-* rule[=].activity[+].actor = Reference(AdminRole)
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#D
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#U
+* rule[=].activity[+].actor.reference = Reference(AdminRole)
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#delete
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#update
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 ...
 ```
 
@@ -205,33 +205,33 @@ ABAC can be role first or security tag first. The [Permission example for ABAC](
 
 * rule[+].type = #permit
 * rule[=].data[+].security = http://terminology.hl7.org/CodeSystem/v3-Confidentiality#N
-* rule[=].activity[+].actor = Reference(DrRole)
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#C
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#U
+* rule[=].activity[+].actor.reference = Reference(DrRole)
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#update
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
-* rule[=].activity[+].actor = Reference(DieticianRole)
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#R
+* rule[=].activity[+].actor.reference = Reference(DieticianRole)
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].activity[+].actor = Reference(AdminRole)
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#D
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#U
+* rule[=].activity[+].actor.reference = Reference(AdminRole)
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#delete
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#update
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 * rule[+].type = #permit
 * rule[=].data[+].security = http://terminology.hl7.org/CodeSystem/v3-Confidentiality#R
-* rule[=].activity[+].actor = Reference(DrRole)
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#C
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#U
+* rule[=].activity[+].actor.reference = Reference(DrRole)
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#update
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#ETREAT
-* rule[=].activity[+].actor = Reference(AdminRole)
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#D
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/audit-event-action#U
+* rule[=].activity[+].actor.reference = Reference(AdminRole)
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#delete
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#update
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 ...
 ```
 

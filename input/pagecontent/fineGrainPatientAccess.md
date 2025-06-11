@@ -1,12 +1,11 @@
-### Use-Case
 
 REST API scopes allow us to give CRUD rights to resource consumers.  
 However, we cannot give detailed access to a specific pool of Patients or to only certain elements inside of the allowed resource.
 
-This use-case aims to enable fine-grained filtering using the Permission resource to express which pool of resources are accessible to a specific data collector and which data is allowed whithin these resources.  
-For now this use-cases only applies to request on Patient resources, but aims to apply to any kind of resource in the futur.
+This use-case aims to enable fine-grained filtering using the Permission resource to express which pool of resources are accessible to a specific data collector and which data is allowed within these resources.  
 
 ### Security Layers
+
 Our security design consists of five layers, each providing additional depth to data protection:
 
 1. **Network Authorization:** IP filtering and firewall protection.
@@ -20,12 +19,14 @@ Our security design consists of five layers, each providing additional depth to 
 ---
 
 ### Platform Architecture
+
 Our platform's architecture integrates a FHIR server and a middleware that acts as both an Enterprise Application Integration (EAI) layer and an proxy for Patient identity consumers.
 
 This architecture, ensures that data collectors never directly interact with the FHIR server, adding a layer of protection and allowing us to apply changes between the request and the response.  
 This EAI will interact with the FHIR server when it receives the request and apply Permission-based filters to the request before sending the response to the initial request sender.
 
-#### Workflow:
+#### Workflow
+
 1. The data collector sends a REST API request (e.g., `GET /Patient?family=Baker`) with its scope and Permission ID within the OAuth2 token.
 2. The middleware retrieves the relevant Permission resource from the FHIR server.
 3. The middleware applies the 4th security layer by modifying the request to target only allowed resources (e.g., patients tagged with `TAG_1` and not patients tagged with `VIP`).
@@ -33,13 +34,13 @@ This EAI will interact with the FHIR server when it receives the request and app
 5. The middleware applies the 5th security layer, filtering out restricted elements (e.g., address, birth date...).
 6. The secured response is sent back to the data collector.
 
----
-
 ### Tagging Resources
+
 Before applying Permissions, we must identify and tag resource pools.  
 For example, if we want to restrict access to patients from a specific department or age group, we use security labels within the `meta` element of resources.
 
-#### Example:
+#### Example
+
 ```json
 {
   "resourceType": "Patient",
@@ -57,62 +58,84 @@ For example, if we want to restrict access to patients from a specific departmen
 
 We utilize custom scripts within the middleware to automate the tagging process, based on events triggering PATCH requests, adding or removing security labels on specific patients using their national identifier, ensuring consistency and efficiency.
 
----
-
 ### Building the Permission Resource
+
 The Permission resource defines the rules for granting or denying access to specific data pools or elements. It consists of general information and two primary rule types:
 
 1. **Permit Rules:** Specify the data allowed for access (e.g., resources tagged with `TAG_1`).
 2. **Deny Rules:** Restrict access to specific data (e.g., resources tagged with `VIP` or sensitive elements like addresses).
 
-#### Example Permission Resource:
+#### Example Permission Resource
 
-In this example, the Permission resource allow consumer `EXAMPLE` to see exclusively Patient resources with the security label `TAG_1` but cannot see Patients with the security label `VIP`. They also cannot see the Patient's given birthdate, address and metadata.
+In this example, the Permission resource allow consumer to see exclusively Patient resources with the security label `TAG_1` but cannot see Patients with the security label `VIP`. They also cannot see the Patient's given birthdate, address and metadata.
+
+See the [FineGrain Patient Access Example](Permission-ex-fingrained-patient-access.html)
 
 ```json
 {
-  "resourceType": "Permission",
-  "id": "EXAMPLE"
-  "status": "active",
-  "combining": "permit-unless-deny",
-  "rule": [
+  "resourceType" : "Permission",
+  "id" : "ex-fingrained-patient-access",
+  "status" : "active",
+  "date" : [
+    "2023-11-22"
+  ],
+  "combining" : "permit-unless-deny",
+  "rule" : [
     {
-      "type": "permit",
-      "data": [
+      "type" : "permit",
+      "data" : [
         {
-          "resource": {
-            "type": "Patient",
-          },
-          "security": [
+          "resource" : [
             {
-              "system": "http://your-fhir-server.com/fhir/ValueSet/local-tags", 
-              "code": "TAG_1"
+              "meaning" : "instance",
+              "reference" : {
+                "type" : "http://hl7.org/fhir/StructureDefinition/Patient"
+              }
             }
+          ],
+          "security" : [
+            {
+              "system" : "http://your-fhir-server.com/fhir/ValueSet/local-tags",
+              "code" : "TAG_1"
+            }
+          ]
+        }
+      ],
+      "limit" : [
+        {
+          "element" : [
+            "Patient.address"
+          ]
+        },
+        {
+          "element" : [
+            "Patient.birthDate"
+          ]
+        },
+        {
+          "element" : [
+            "Patient.meta"
           ]
         }
       ]
     },
     {
-      "type": "deny",
-      "data": [
+      "type" : "deny",
+      "data" : [
         {
-          "resource": {
-            "type": "Patient",
-          },
-          "security": [
+          "resource" : [
             {
-              "system": "http://your-fhir-server.com/fhir/ValueSet/local-tags", 
-              "code": "VIP"
+              "meaning" : "instance",
+              "reference" : {
+                "type" : "http://hl7.org/fhir/StructureDefinition/Patient"
+              }
             }
           ],
-          "expression": [
-            {"language": "text/jsonpath", "expression": "$.address"}
-          ],
-          "expression": [
-            {"language": "text/jsonpath", "expression": "$.birthdate"}
-          ],
-          "expression": [
-            {"language": "text/jsonpath", "expression": "$.meta"}
+          "security" : [
+            {
+              "system" : "http://your-fhir-server.com/fhir/ValueSet/local-tags",
+              "code" : "VIP"
+            }
           ]
         }
       ]
@@ -120,8 +143,6 @@ In this example, the Permission resource allow consumer `EXAMPLE` to see exclusi
   ]
 }
 ```
-
----
 
 
 ### Example of Applying Permissions in Request Handling
@@ -220,21 +241,7 @@ Scope: Patient.read EXAMPLE
 }
 ```
 
----
-### Work in progress
-<div markdown="1" class="dragon">
-
-1. Current usage is limited to the `Patient` resource since it is the only resource we actually have.
-2. Tagging relies on custom scripts, which may need adaptation for more complex criteria.
-    - We are thinking about using List/Group resources to create specific groups of patients instead of using security tags, allowing more flexibility and negating the impact of our own managment inside of the Patient's resource.
-    - Using expressions to specify criterias using resources elements is very interesting but we lack resource diversity for now and retrieve these informations from outside of the FHIR platform.
-3. Using custom `Identifier` element to retrieve Permissions is not ideal, but for now search parameters are restricted to identifier and status element. 
-  - Should we create a custom Search parmater to search depending on the actor ?
-
----
-</div>
-
-
+TODO: Did not fixup the following
 
 ## Fine Grained patient access - Version 2
 

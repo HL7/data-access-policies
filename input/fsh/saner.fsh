@@ -13,10 +13,11 @@ Usage: #example
 * rule[+].type = #permit
 * rule[=].data.resource.reference = Reference(ex-measurereport)
 * rule[=].data.resource.meaning = http://hl7.org/fhir/consent-data-meaning#instance
-* rule[=].activity.actor = Reference(ex-organization)
-* rule[=].activity.action = http://terminology.hl7.org/CodeSystem/consentaction#access
+* rule[=].activity.actor.reference = Reference(ex-organization)
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
 * rule[=].activity.purpose = http://terminology.hl7.org/CodeSystem/v3-ActReason#HCOMPL
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 
 

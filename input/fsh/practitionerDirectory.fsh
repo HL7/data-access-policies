@@ -15,11 +15,11 @@ This Permission encodes:
     - This enables maintenance by those with directory admin authorization
 - rule is #permit for Treatment, Payment, and Operations
     - This enables workers to access all workers
-    - BUT includes an exclusion extension for any elements marked with Location Sensitivity (`#LOCIS`)
+    - BUT includes an .limit.tag to exclude any elements marked with Location Sensitivity (`#LOCIS`)
 - rule is #permit for Patient requested (`#PATRQT`)
     - permits access by patients (or authorized patient delegate)
     - BUT only Practitioners that have a PractitionerRole.code=#doctor
-    - BUT includes an exclusion extension for any elements marked with Location Sensitivity (`#LOCIS`)
+    - BUT includes an .limit.tag to exclude any elements marked with Location Sensitivity (`#LOCIS`)
 """
 Usage: #example
 * meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
@@ -30,25 +30,23 @@ Usage: #example
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#C
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#U
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#D
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#update
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#delete
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
-* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
-* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
+* rule[=].limit[+].tag = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
-* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
-* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
+* rule[=].limit[+].tag = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
 * rule[=].data.expression.expression = "Practitioner?_has:PractitionerRole:practitioner:role=http://terminology.hl7.org/CodeSystem/practitioner-role|doctor"
 * rule[=].data.expression.language = #application/x-fhir-query
 * rule[=].data.expression.description = "select all Practitioner resources where the Practitioner has a PractitionerRole with code of doctor"
@@ -71,11 +69,11 @@ Usage: #example
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#C
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#U
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#D
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#update
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#delete
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
 
 Instance: ex-permission-directory-doctors-only
 InstanceOf: Permission
@@ -111,34 +109,8 @@ Usage: #example
 * combining = #deny-unless-permit
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT
-* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
-* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
+* rule[=].limit[+].tag = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
 
-Instance: ex-permission-directory-exclude-location-alt2
-InstanceOf: Permission
-Title: "Alt2: Permission allowing data to be used, but don't expose sensitive location elements"
-Description: """
-Permission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. 
-
-Presumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag
-
-This alternative uses two rules, and leverages the combining algorithm 
-1. Allow Patient requested access
-2. Disallow access to any data tagged with LOCIS
-
-Using combining alrithm, the second rule applies to any otherwise permitted access. So it does need to be carefully combined with other permits such as permitting doctors full access to doctors.
-"""
-Usage: #example
-* meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
-* status = #active
-* asserter = Reference(ex-organization)
-* date = "2023-11-22"
-* combining = #ordered-deny-overrides
-* rule[+].type = #permit
-* rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT
-* rule[+].type = #deny
-* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
-* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
 
 
 Instance: ex-practitioner-sensitive

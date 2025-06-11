@@ -14,7 +14,7 @@ status: draft
 license: CC0-1.0
 #date: 2020-02-26
 version: 1.0.0-current
-fhirVersion: 5.0.0
+fhirVersion: 6.0.0-ballot3
 copyrightYear: 2023+
 releaseLabel: ci-build
 
@@ -45,10 +45,16 @@ contact:
 
 jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
 
+
 dependencies:
   hl7.fhir.uv.security-label-ds4p: 
-    version: current
+    version: latest
     id: ds4p
+    uri: http://hl7.org/fhir/uv/security-label-ds4p/ImplementationGuide/hl7.fhir.uv.security-label-ds4p
+  hl7.fhir.uv.extensions.r5:
+    version: latest
+    id: extensions
+    uri: http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions
 
 pages:
   index.md:
@@ -93,6 +99,7 @@ parameters:
   apply-version: 'true'
   apply-wg: 'true'
   propagate-status: 'true'
+  pin-canonicals: 'pin-multiples'
 
 
 
