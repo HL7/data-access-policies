@@ -86,7 +86,5 @@ Usage: #example
 * grantor = Reference(ex-patient)
 * policyBasis.reference = Reference(ex-overriding-rbac-by-role)
 * decision = #permit
-* provision[+].expression.expression = "Permission/ex-permission-intermediate-not-authoredby"
-* provision[=].expression.language = #application/x-fhir-query
-* provision[=].expression.description = "Points to the instance of Permission with THIS patients provisions encoded in Permission.rule form."
+* provisionReference = Reference(Permission/ex-permission-intermediate-not-authoredby)
 

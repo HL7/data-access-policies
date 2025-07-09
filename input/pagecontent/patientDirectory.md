@@ -54,8 +54,8 @@ Thus:
 - No access to an entry for this Patient is allowed when no Consent is on file.
   - No entry in the Directory would exist? Or is the registration desk always going to put the data in the directory. This seems like a policy/process/governance question that I can't answer, and for which the answer is not important for this analysis
   - Will presume that the Consent (either Practitioner or Patient) is the trigger to put the Patient data into the directory.
-- The Religious affiliation detail can be handled similar to the Provider Directory home location. A different tag `REL`. This uses the `REL` tag on the data element in the Patient, and the  [excludeTagged Extension](providerDirectoryFineGrain.html#excludetagged-extension)
-  - Given that Religious Affiliation is supported by an [extension on Patient](https://hl7.org/fhir/extensions/StructureDefinition-patient-religion.html), the tagging might not be necessary if business rules can understand the excludeTagged requirement.
+- The Religious affiliation detail can be handled similar to the Provider Directory home location. A different tag `REL`. This uses the `REL` tag on the data element in the Patient, and the `.limit.tag`
+  - Given that Religious Affiliation is supported by an [extension on Patient](https://hl7.org/fhir/extensions/StructureDefinition-patient-religion.html), the tagging might not be necessary if business rules can understand the `.limit.tag` requirement.
 
 ### Artifacts
 

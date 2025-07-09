@@ -20,7 +20,7 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
 
 Extension: PermissionImposedOnBundle
 Id: dap.permissionImposedOnBundle
@@ -53,7 +53,7 @@ Usage: #inline
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
 
 Profile: BundleWithPermission
 Parent: Bundle
@@ -70,16 +70,16 @@ Description: "Permission in a SearchSet Bundle"
 Usage: #example
 * meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
 * meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActCode#CPLYPOL
-* meta.security[=].extension[permissionImposedOnBundle].valueReference.reference = "http://test.fhir.net/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"
+* meta.security[=].extension[permissionImposedOnBundle].valueReference.reference = "http://example.org/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"
 * type = #searchset
 * link[0].relation = #self
-* link[0].url = "http://test.fhir.net/R4/fhir/Observation?patient=9876&status=current"
+* link[0].url = "http://example.org/R4/fhir/Observation?patient=9876&status=current"
 * total = 2
 * timestamp = 2023-11-22T09:32:24Z
-* entry[0].fullUrl = "http://test.fhir.net/R4/fhir/Observation/in-Observation"
+* entry[0].fullUrl = "http://example.org/R4/fhir/Observation/in-Observation"
 * entry[0].resource = in-Observation
 * entry[0].search.mode = #match
-* entry[1].fullUrl = "http://test.fhir.net/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"
+* entry[1].fullUrl = "http://example.org/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"
 * entry[1].resource = in-permission-redisclose-forbidden-without-consent
 * entry[1].search.mode = #include
 
@@ -122,7 +122,7 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
 * rule[+].type = #deny
-* rule[=].activity.actor = Reference(Practitioner/ex-practitioner)
+* rule[=].activity.actor.reference = Reference(Practitioner/ex-practitioner)
 
 Instance: ex-permission-timeout
 InstanceOf: Permission
@@ -183,6 +183,6 @@ Usage: #example
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HRESCH
 // could use ANONY, but I prefer DEID as it is the higher concept allowing pseudonymization or anonymization
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID
 * rule[=].limit.extension[ka].valueInteger = 4
 

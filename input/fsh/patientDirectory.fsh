@@ -13,7 +13,7 @@ This Permission encodes:
 - combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.
 - rule is #permit for health directory use, patient requested, or family requested
     - This enables access all patients, provided Consent Permit is on file
-    - BUT includes an exclusion extension for any elements marked with Religious Sensitivity (`#REL`)
+    - BUT uses .limit.tag to exclude any elements marked with Religious Sensitivity (`#REL`)
     - Note that the Consent requirement is documented here with a .limit of NOAUTH. Might there be a better way?
 - rule is #permit for administrative actions on the directory
     - This enables maintenance by those with directory admin authorization
@@ -29,19 +29,18 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HDIRECT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#FAMRQT
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
-* rule[=].modifierExtension[+].url = Canonical(ExcludeTagged)
-* rule[=].modifierExtension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
-* rule[=].limit = http://terminology.hl7.org/CodeSystem/v3-ActCode#NOAUTH
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
+* rule[=].limit.tag = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#NOAUTH
 
 * rule[+].type = #permit
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HSYSADMIN
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#C
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#R
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#U
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#D
-* rule[=].activity.action[+] = http://hl7.org/fhir/audit-event-action#E
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#update
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#delete
+* rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
 
 
 
@@ -53,7 +52,7 @@ Description: "This patient is the same as ex-patient, with the extension for rel
 Usage: #example
 // history - http://playgroundjungle.com/2018/02/origins-of-john-jacob-jingleheimer-schmidt.html
 * meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
-* meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PROCESSINLINELABEL
+* meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActCode#PROCESSINLINELABEL
 * name[+].use = #usual
 * name[=].family = "Schmidt"
 * name[=].given = "John"
@@ -136,7 +135,7 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* policyBasis.reference = Reference(ex-permission-patient-directory-all)
+* provisionReference = Reference(ex-permission-patient-directory-all)
 * decision = #permit
 
 Instance: ex-consent-patientDirectory-deny
@@ -156,7 +155,7 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* policyBasis.reference = Reference(ex-permission-patient-directory-all)
+* provisionReference = Reference(ex-permission-patient-directory-all)
 * decision = #deny
 
 
@@ -177,5 +176,5 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-practitioner)
-* policyBasis.reference = Reference(ex-permission-patient-directory-all)
+* provisionReference = Reference(ex-permission-patient-directory-all)
 * decision = #permit

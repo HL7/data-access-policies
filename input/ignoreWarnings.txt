@@ -1,9 +1,36 @@
 == Suppressed Messages ==
 
+# there will be no jiraspec
+ERROR: There is no jira specification file defined with the expected name of FHIR-dap in the xml folder of the  https://github.com/HL7/Jira-Spec-Artifacts project.  This must exist before ballot or publication.
+
 # told we can ignore these
-Reference to deprecated item http://hl7.org/fhir/ValueSet/jurisdiction|5.0.0
-Reference to draft item http://hl7.org/fhir/hl7-work-group|1.0.0
-Reference to draft item http://hl7.org/fhir/standards-status|1.0.0
+Reference to deprecated ValueSet http://hl7.org/fhir/ValueSet/jurisdiction|6.0.0-ballot3
+
+# These are known issues because we are building with R6
+WARNING: ImplementationGuide/hl7.fhir.uv.dap: ImplementationGuide.dependsOn[1]: The ImplementationGuide is based on FHIR version 6.0.0-ballot3 but package hl7.fhir.uv.security-label-ds4p#1.0.0 is based on FHIR version 4.0.1. In general, this version mismatch should be avoided - some tools will try to make this work with variable degrees of success, but others will not even try
+IG_DEPENDENCY_VERSION_WARNING
+IG_DEPENDENCY_CLASH_PACKAGEID
+
+# this is an example CodeSystem
+INFORMATION: CodeSystem/MyOrgRolesCS: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
 # this is just an example URL
 WARNING: MeasureReport/ex-measurereport: MeasureReport: The Measure 'http://example.org/fhir/uv/saner/Measure/FEMADailyHospitalCOVID19Reporting' could not be resolved, so no validation can be performed against the Measure
+
+# seems to be a problem in FHIR covered
+Constraint failed: eld-31: 'additionalBindings should have a key' (defined in http://hl7.org/fhir/StructureDefinition/ElementDefinition) (Best Practice Recommendation)
+
+# ignorable
+Reference to experimental CodeSystem http://hl7.org/fhir/restful-interaction|6.0.0-ballot3
+
+# yes it is experimental
+Reference to draft CodeSystem http://hl7.org/fhir/uv/dap/CodeSystem/MyOrgRolesCS|1.0.0-current
+
+# used in examples and know it is not validation
+INFORMATION: Permission/ex-fingrained-patient-access: Permission.rule[0].data[0].security[0]: A definition for CodeSystem 'http://your-fhir-server.com/fhir/ValueSet/local-tags' could not be found, so the code cannot be validated
+WARNING: Permission/ex-fingrained-patient-access: Permission.rule[0].data[0].security[0].system: No definition could be found for URL value 'http://your-fhir-server.com/fhir/ValueSet/local-tags'
+INFORMATION: Permission/ex-fingrained-patient-access: Permission.rule[1].data[0].security[0]: A definition for CodeSystem 'http://your-fhir-server.com/fhir/ValueSet/local-tags' could not be found, so the code cannot be validated
+WARNING: Permission/ex-fingrained-patient-access: Permission.rule[1].data[0].security[0].system: No definition could be found for URL value 'http://your-fhir-server.com/fhir/ValueSet/local-tags'
+
+# understood pin-canonicals does this
+PIN_VERSION
