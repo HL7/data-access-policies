@@ -6,10 +6,10 @@ ERROR: There is no jira specification file defined with the expected name of FHI
 # told we can ignore these
 Reference to deprecated ValueSet http://hl7.org/fhir/ValueSet/jurisdiction|6.0.0-ballot3
 
-# These are known issues 
-WARNING: ImplementationGuide/hl7.fhir.uv.dap: ImplementationGuide.dependsOn[0]: The ImplementationGuide is based on FHIR version 6.0.0-ballot3 but package hl7.terminology.r5#6.4.0 is based on FHIR version 5.0.0. In general, this version mismatch should be avoided - some tools will try to make this work with variable degrees of success, but others will not even try
+# These are known issues because we are building with R6
 WARNING: ImplementationGuide/hl7.fhir.uv.dap: ImplementationGuide.dependsOn[1]: The ImplementationGuide is based on FHIR version 6.0.0-ballot3 but package hl7.fhir.uv.security-label-ds4p#1.0.0 is based on FHIR version 4.0.1. In general, this version mismatch should be avoided - some tools will try to make this work with variable degrees of success, but others will not even try
-ERROR: ImplementationGuide/hl7.fhir.uv.dap: ImplementationGuide.dependsOn[2]: The canonical URL http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions points to the package hl7.fhir.uv.extensions which is inconsistent with the stated packageId of hl7.fhir.uv.extensions.r5
+IG_DEPENDENCY_VERSION_WARNING
+IG_DEPENDENCY_CLASH_PACKAGEID
 
 # this is an example CodeSystem
 INFORMATION: CodeSystem/MyOrgRolesCS: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
@@ -33,6 +33,4 @@ INFORMATION: Permission/ex-fingrained-patient-access: Permission.rule[1].data[0]
 WARNING: Permission/ex-fingrained-patient-access: Permission.rule[1].data[0].security[0].system: No definition could be found for URL value 'http://your-fhir-server.com/fhir/ValueSet/local-tags'
 
 # understood pin-canonicals does this
-Pinned the version of http://terminology.hl7.org/ValueSet/v3-PurposeOfUse to 3.1.0 from choices of 2.0.0 (hl7.terminology#5.1.0), 3.1.0 (hl7.terminology.r5#6.4.0)
-Pinned the version of http://terminology.hl7.org/ValueSet/v3-SecurityControlObservationValue to 3.0.0 from choices of 2.0.0 (hl7.terminology#5.1.0), 3.0.0 (hl7.terminology.r5#6.4.0)
-Pinned the version of http://terminology.hl7.org/ValueSet/v3-InformationSensitivityPolicy to 3.0.0 from choices of 2.0.0 (hl7.terminology#5.1.0), 3.0.0 (hl7.terminology.r5#6.4.0)
+PIN_VERSION
