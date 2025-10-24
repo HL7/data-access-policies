@@ -10,7 +10,7 @@ canonical: http://hl7.org/fhir/uv/dap
 name: DataAccessPolicies
 title: "HL7 FHIR Implementation Guide: Data Access Policies"
 description: Data Access Policies.
-status: draft
+status: active
 license: CC0-1.0
 #date: 2020-02-26
 version: 1.0.0-current
@@ -22,9 +22,9 @@ extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
     valueCode: sec
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
-    valueCode: informative
+    valueCode: trial-use
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
-    valueInteger: 0
+    valueInteger: 1
 
 publisher:
   name: HL7 International / Security
@@ -56,7 +56,7 @@ dependencies:
     version: latest
     id: extensions
     uri: http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions
-
+  
 pages:
   index.md:
   non-patient.md:
@@ -99,6 +99,10 @@ parameters:
   apply-wg: 'true'
   propagate-status: 'true'
   pin-canonicals: 'pin-multiples'
+  path-resources: 'input/resources'
+  additional-resource: 'input/resources/permission/structuredefinition-Permission.xml'
+  special-url-base: 'http://hl7.org/fhir'
+  generate-uml: 'source'
 
 
 
