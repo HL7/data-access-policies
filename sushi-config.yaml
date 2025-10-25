@@ -56,6 +56,7 @@ dependencies:
     version: latest
     id: extensions
     uri: http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions
+  hl7.fhir.uv.tools.r5: current
   
 pages:
   index.md:
