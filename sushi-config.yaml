@@ -56,8 +56,11 @@ dependencies:
     version: latest
     id: extensions
     uri: http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions
-  hl7.fhir.uv.tools.r5: current
-  
+  hl7.fhir.uv.tools.r5: 
+    version: current
+    id: hl7Tools
+    uri: http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools
+
 pages:
   index.md:
   non-patient.md:
