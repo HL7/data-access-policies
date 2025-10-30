@@ -47,19 +47,19 @@ contact:
 jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
 
 
-dependencies:
-  hl7.fhir.uv.security-label-ds4p: 
-    version: latest
-    id: ds4p
-    uri: http://hl7.org/fhir/uv/security-label-ds4p/ImplementationGuide/hl7.fhir.uv.security-label-ds4p
-  hl7.fhir.uv.extensions.r5:
-    version: latest
-    id: extensions
-    uri: http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions
-  hl7.fhir.uv.tools.r5: 
-    version: current
-    id: hl7Tools
-    uri: http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools
+#dependencies:
+#  hl7.fhir.uv.security-label-ds4p: 
+#    version: latest
+#    id: ds4p
+#    uri: http://hl7.org/fhir/uv/security-label-ds4p/ImplementationGuide/hl7.fhir.uv.security-label-ds4p
+#  hl7.fhir.uv.extensions.r5:
+#    version: latest
+#    id: extensions
+#    uri: http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions
+#  hl7.fhir.uv.tools.r5: 
+#    version: current
+#    id: hl7Tools
+#    uri: http://hl7.org/fhir/tools/ImplementationGuide/hl7.fhir.uv.tools
 
 pages:
   index.md:
@@ -103,8 +103,8 @@ parameters:
   apply-wg: 'true'
   propagate-status: 'true'
   pin-canonicals: 'pin-multiples'
-  path-resources: 'input/resources'
-  additional-resource: 'input/resources/permission/structuredefinition-Permission.xml'
+  path-resources: 'input/resources/permission'
+  additional-resource: 'input/resources/permission/StructureDefinition-Permission.xml'
   special-url-base: 'http://hl7.org/fhir'
   generate-uml: 'source'
 
