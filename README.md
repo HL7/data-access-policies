@@ -3,7 +3,7 @@ Play-space for some new IG work that may or may not eventually become a FHIR spe
 
 ### Call details
 
-https://www.hl7.org/concalls/CallDetails.cfm?concall=77117
+https://www.hl7.org/concalls/CallDetails.cfm?concall=78362
 
 Weekly, Wednesday, at 3:00 PM EST
 

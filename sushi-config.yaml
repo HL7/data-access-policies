@@ -38,11 +38,10 @@ contact:
       - system: email
         value: johnmoehrke@gmail.com
         use: work
-  - name: Jose Costa Teixeira
+  - name: HL7 Security Work Group
     telecom:
-      - system: email
-        value: jose.a.teixeira@gmail.com
-        use: work
+      - system: url
+        value: http://www.hl7.org/Special/committees/secure/index.cfm
 
 jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
 
@@ -70,6 +69,7 @@ pages:
   providerDirectoryFineGrain.md:
   fineGrainPatientAccess.md:
   patientDirectory.md:
+  about.md:
 
 
 menu:
@@ -83,6 +83,7 @@ menu:
     "Fine-Grained Patient Access" : fineGrainPatientAccess.html
     "Patient Directory" : patientDirectory.html
   Artifacts: artifacts.html
+  About: about.html
 
 
 # The parameters property represents IG.definition.parameter. Rather
