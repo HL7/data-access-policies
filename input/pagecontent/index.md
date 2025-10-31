@@ -39,15 +39,15 @@ licensing requirements may limit the systems that data captured using certain qu
 
 #### Dependency Table
 
-{% include dependency-table.xhtml %}
+{% lang-fragment dependency-table.xhtml %}
 
 #### Globals Table
 
-{% include globals-table.xhtml %}
+{% lang-fragment globals-table.xhtml %}
 
 #### IP Statements
 
-{% include ip-statements.xhtml %}
+{% lang-fragment ip-statements.xhtml %}
 
 ### Disclaimer
 
@@ -57,7 +57,7 @@ No liability can be inferred from the use or misuse of this specification, or it
 
 #### Cross Version Analysis
 
-{% include cross-version-analysis.xhtml %}
+{% lang-fragment cross-version-analysis.xhtml %}
 
 ### Download
 
