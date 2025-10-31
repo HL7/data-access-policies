@@ -68,3 +68,4 @@ You can also download:
 - the example resources in [json](examples.json.zip), [xml](examples.xml.zip) or [ttl](examples.ttl.zip) format.
   
 The source code for this Implementation Guide can be found on [IHE HL7 data-access-policies Github Repo](https://github.com/HL7/data-access-policies).
+
