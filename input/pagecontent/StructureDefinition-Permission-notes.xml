@@ -2,7 +2,7 @@
 
 <!-- insert xhtml content here -->
 <a name="Logic"> </a>
-<h3>Composite Permissions</h3>
+<h4>Composite Permissions</h4>
 <p>
 In some cases, there are common components across different <code>Permission</code> rules and repeating those common rules could lead 
 to redundancy which in turn could lead to the risk on inconsistency, if the common components are not formulated precisely in the same manner. 
@@ -29,7 +29,7 @@ Implementers shoud rely on pragmatic limits on the length of the chain of linked
 reasonable guardrails against (maliciously or erroneously) large chains that could lead to draining of resources at the time of processing.
 </p>
 
-<h3>Rules Processing Logic</h3>
+<h4>Rules Processing Logic</h4>
 <!-- These rules are repeated on the comment element within the StructureDefinition -->
 <p>
 Each <code>.rule</code> is evaulated within the combining rule identified in the <code>.combining</code> element.
