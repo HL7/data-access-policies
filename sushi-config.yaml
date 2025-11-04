@@ -62,28 +62,28 @@ dependencies:
 
 pages:
   index.md:
-  non-patient.md:
-  consent.md:
-  residual.md:
-  overriding.md:
-  providerDirectoryFineGrain.md:
-  fineGrainPatientAccess.md:
-  patientDirectory.md:
-  about.md:
+#  non-patient.md:
+#  consent.md:
+#  residual.md:
+#  overriding.md:
+#  providerDirectoryFineGrain.md:
+#  fineGrainPatientAccess.md:
+#  patientDirectory.md:
+#  about.md:
 
 
 menu:
   Home: index.html
-  Analysis:
-    "Simple data analytics" : non-patient.html
-    "Consent" : consent.html
-    "Residual" : residual.html
-    "Overriding" : overriding.html
-    "Provider Directory" : providerDirectoryFineGrain.html
-    "Fine-Grained Patient Access" : fineGrainPatientAccess.html
-    "Patient Directory" : patientDirectory.html
+#  Analysis:
+#    "Simple data analytics" : non-patient.html
+#    "Consent" : consent.html
+#    "Residual" : residual.html
+#    "Overriding" : overriding.html
+#   "Provider Directory" : providerDirectoryFineGrain.html
+#    "Fine-Grained Patient Access" : fineGrainPatientAccess.html
+#    "Patient Directory" : patientDirectory.html
   Artifacts: artifacts.html
-  About: about.html
+#  About: about.html
 
 
 # The parameters property represents IG.definition.parameter. Rather
@@ -104,7 +104,7 @@ parameters:
   apply-wg: 'true'
   propagate-status: 'true'
   pin-canonicals: 'pin-multiples'
-  path-resources: 'input/resources/permission'
+  path-resource: 'input/resources/permission'
   additional-resource: 'input/resources/permission/StructureDefinition-Permission.xml'
   special-url-base: 'http://hl7.org/fhir'
   generate-uml: 'source'
