@@ -3,12 +3,12 @@
 <a name="bnc"></a>
 <h3>Scope and Usage</h3>
 <p>
-A declarative <a href="security.html#binding">attribute-based access control</a> policy statement.
+A declarative <a href="http://build.fhir.org/security.html#binding">attribute-based access control</a> policy statement.
 
 Permission is used to express who has specific rights to specific data under specific conditions. Permission can express rules including
 </p>
 <ul>
-<li>security labels/codes (<a href="security-labels.html#6.1.1.4.0.2">policies, refrains, and obligations</a>),</li>
+<li>security labels/codes (<a href="http://build.fhir.org/security-labels.html#6.1.1.4.0.2">policies, refrains, and obligations</a>),</li>
 <li>user identity,</li>
 <li>application being used,</li>
 <li>location of the requester,</li>
@@ -28,8 +28,8 @@ The Permission resource may be used to record the access control constraints und
 The Permission resource is intended to be used to encode access control policies in a FHIR interoperable language. Where the access control policies protect access to FHIR defined interactions, resources, and operations; from actions done by organizations, practitioners, patients, and etc.
 </p>
 <p>
-The Permission resource is intended to be used where <a href="consent.html">Consent</a> resource does not apply or where exposure of the full <a href="consent.html">Consent</a> details are not needed or desired.
-The Permission resource may be used to express transactional access control rules that may be derived from a <a href="consent.html">Consent</a>.
+The Permission resource is intended to be used where <a href="http://build.fhir.org/consent.html">Consent</a> resource does not apply or where exposure of the full <a href="http://build.fhir.org/consent.html">Consent</a> details are not needed or desired.
+The Permission resource may be used to express transactional access control rules that may be derived from a <a href="http://build.fhir.org/consent.html">Consent</a>.
 </p>
 <p>
 Examples are:
@@ -43,7 +43,7 @@ Examples are:
 <li>consent provisions (i.e., `Consent.provision`) encoding in a different rule language (i.e., `Permission.rule`) using `Consent.provisionReference`.</li>
 </ul>
 <p>
-The Permission resource should not be used in a conflicting way with <a href="security-labels.html">security labels in the .meta.security element</a>.
+The Permission resource should not be used in a conflicting way with <a href="http://build.fhir.org/security-labels.html">security labels in the .meta.security element</a>.
 </p>
 
 <!-- (optional):
