@@ -48,3 +48,21 @@ Usage: #example
 * birthDate = "1923-07-25"
 * address.state = "WI"
 * address.country = "USA"
+
+
+/* if I add a profile then sushi fails. It does not mind no snapshot until it needs to profile it.
+
+Sushi: error Structure Definition http://hl7.org/fhir/StructureDefinition/Permission is missing a snapshot. Snapshot is required for import. (00:00.012 / 00:04.930, 50Mb)
+Sushi:   File: C:\Users\johnm\git\HL7\data-access-policies\input\fsh\stuff.fsh                       (00:00.000 / 00:04.930, 50Mb)
+Sushi:   Line: 52 - 56                                                                               (00:00.000 / 00:04.931, 50Mb)
+
+
+*/
+
+/*
+Profile: ex-Profile
+Parent: Permission
+Title: "example profiling"
+Description: "don't do much"
+* identifier MS
+*/
