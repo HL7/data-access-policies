@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Permission xmlns="http://hl7.org/fhir">
+  <id value="ex-overriding-rbac-by-role"/>
+  <meta>
+    <security>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HTEST"/>
+    </security>
+  </meta>
+  <status value="active"/>
+  <asserter>
+    <reference value="Organization/ex-organization"/>
+  </asserter>
+  <date value="2023-12-22"/>
+  <combining value="permit-overrides"/>
+  <rule>
+    <type value="deny"/>
+  </rule>
+  <rule>
+    <type value="permit"/>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Observation"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="AllergyIntolerance"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Condition"/>
+      </resourceType>
+    </data>
+    <activity>
+      <actor>
+        <reference>
+          <reference value="PractitionerRole/DrRole"/>
+        </reference>
+      </actor>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="create"/>
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="read"/>
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="update"/>
+        </coding>
+      </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="TREAT"/>
+        </coding>
+      </purpose>
+    </activity>
+    <limit>
+      <control>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+          <code value="AUDIT"/>
+        </coding>
+      </control>
+    </limit>
+  </rule>
+  <rule>
+    <type value="permit"/>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Practitioner"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="PractitionerRole"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Person"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Patient"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="RelatedPerson"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Organization"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Location"/>
+      </resourceType>
+    </data>
+    <activity>
+      <actor>
+        <reference>
+          <reference value="PractitionerRole/DrRole"/>
+        </reference>
+      </actor>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="read"/>
+        </coding>
+      </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="TREAT"/>
+        </coding>
+      </purpose>
+    </activity>
+    <limit>
+      <control>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+          <code value="AUDIT"/>
+        </coding>
+      </control>
+    </limit>
+  </rule>
+  <rule>
+    <type value="permit"/>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="AllergyIntolerance"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Condition"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Practitioner"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="PractitionerRole"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Person"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Patient"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="RelatedPerson"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Organization"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Location"/>
+      </resourceType>
+    </data>
+    <activity>
+      <actor>
+        <reference>
+          <reference value="PractitionerRole/DieticianRole"/>
+        </reference>
+      </actor>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="read"/>
+        </coding>
+      </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="TREAT"/>
+        </coding>
+      </purpose>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HOPERAT"/>
+        </coding>
+      </purpose>
+    </activity>
+    <limit>
+      <control>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+          <code value="AUDIT"/>
+        </coding>
+      </control>
+    </limit>
+  </rule>
+  <rule>
+    <type value="permit"/>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Person"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Patient"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="RelatedPerson"/>
+      </resourceType>
+    </data>
+    <activity>
+      <actor>
+        <reference>
+          <reference value="PractitionerRole/RegistrationRole"/>
+        </reference>
+      </actor>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="create"/>
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="read"/>
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="update"/>
+        </coding>
+      </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HOPERAT"/>
+        </coding>
+      </purpose>
+    </activity>
+    <limit>
+      <control>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+          <code value="AUDIT"/>
+        </coding>
+      </control>
+    </limit>
+  </rule>
+  <rule>
+    <type value="permit"/>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Practitioner"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="PractitionerRole"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Organization"/>
+      </resourceType>
+    </data>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Location"/>
+      </resourceType>
+    </data>
+    <activity>
+      <actor>
+        <reference>
+          <reference value="PractitionerRole/RegistrationRole"/>
+        </reference>
+      </actor>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="read"/>
+        </coding>
+      </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HOPERAT"/>
+        </coding>
+      </purpose>
+    </activity>
+    <limit>
+      <control>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+          <code value="AUDIT"/>
+        </coding>
+      </control>
+    </limit>
+  </rule>
+  <rule>
+    <type value="permit"/>
+    <activity>
+      <actor>
+        <reference>
+          <reference value="PractitionerRole/AdminRole"/>
+        </reference>
+      </actor>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="delete"/>
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="update"/>
+        </coding>
+      </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HOPERAT"/>
+        </coding>
+      </purpose>
+    </activity>
+    <limit>
+      <control>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+          <code value="AUDIT"/>
+        </coding>
+      </control>
+    </limit>
+  </rule>
+</Permission>

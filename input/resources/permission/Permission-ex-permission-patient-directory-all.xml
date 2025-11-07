@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Permission xmlns="http://hl7.org/fhir">
+  <id value="ex-permission-patient-directory-all"/>
+  <meta>
+    <security>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HTEST"/>
+    </security>
+  </meta>
+  <status value="active"/>
+  <asserter>
+    <reference value="Organization/ex-organization"/>
+  </asserter>
+  <date value="2023-11-22"/>
+  <combining value="deny-unless-permit"/>
+  <rule>
+    <type value="permit"/>
+    <activity>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="read"/>
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="search-type"/>
+        </coding>
+      </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HDIRECT"/>
+        </coding>
+      </purpose>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="PATRQT"/>
+        </coding>
+      </purpose>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="FAMRQT"/>
+        </coding>
+      </purpose>
+    </activity>
+    <limit>
+      <control>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+          <code value="NOAUTH"/>
+        </coding>
+      </control>
+      <tag>
+        <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+        <code value="REL"/>
+      </tag>
+    </limit>
+  </rule>
+  <rule>
+    <type value="permit"/>
+    <activity>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="create"/>
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="read"/>
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="update"/>
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="delete"/>
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction"/>
+          <code value="search-type"/>
+        </coding>
+      </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HSYSADMIN"/>
+        </coding>
+      </purpose>
+    </activity>
+  </rule>
+</Permission>

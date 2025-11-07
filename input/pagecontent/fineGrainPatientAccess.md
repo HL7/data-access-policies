@@ -48,7 +48,7 @@ For example, if we want to restrict access to patients from a specific departmen
   "meta": {
     "security": [
       {
-        "system": "http://your-fhir-server.com/fhir/ValueSet/local-tags",
+        "system": "http://example.org/fhir/ValueSet/local-tags",
         "code": "TAG_1"
       }
     ]
@@ -69,12 +69,12 @@ The Permission resource defines the rules for granting or denying access to spec
 
 In this example, the Permission resource allow consumer to see exclusively Patient resources with the security label `TAG_1` but cannot see Patients with the security label `VIP`. They also cannot see the Patient's given birthdate, address and metadata.
 
-See the [FineGrain Patient Access Example](Permission-ex-fingrained-patient-access.html)
+See the [FineGrain Patient Access Example](Permission-ex-finegrained-patient-access.html)
 
 ```json
 {
   "resourceType" : "Permission",
-  "id" : "ex-fingrained-patient-access",
+  "id" : "ex-finegrained-patient-access",
   "status" : "active",
   "date" : [
     "2023-11-22"
@@ -95,7 +95,7 @@ See the [FineGrain Patient Access Example](Permission-ex-fingrained-patient-acce
           ],
           "security" : [
             {
-              "system" : "http://your-fhir-server.com/fhir/ValueSet/local-tags",
+              "system" : "http://example.org/fhir/ValueSet/local-tags",
               "code" : "TAG_1"
             }
           ]
@@ -133,7 +133,7 @@ See the [FineGrain Patient Access Example](Permission-ex-fingrained-patient-acce
           ],
           "security" : [
             {
-              "system" : "http://your-fhir-server.com/fhir/ValueSet/local-tags",
+              "system" : "http://example.org/fhir/ValueSet/local-tags",
               "code" : "VIP"
             }
           ]
@@ -166,7 +166,7 @@ Patient 1 :
   "meta": {
     "security": [
       {
-        "system": "http://your-fhir-server.com/fhir/ValueSet/local-tags",
+        "system": "http://example.org/fhir/ValueSet/local-tags",
         "code": "VIP"
       }
     ]
@@ -204,7 +204,7 @@ Patient 2 :
   "meta": {
     "security": [
       {
-        "system": "http://your-fhir-server.com/fhir/ValueSet/local-tags",
+        "system": "http://example.org/fhir/ValueSet/local-tags",
         "code": "TAG_1"
       }
     ]

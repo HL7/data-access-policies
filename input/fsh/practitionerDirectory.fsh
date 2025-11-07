@@ -1,3 +1,5 @@
+/* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
+
 Instance: ex-permission-directory-all
 InstanceOf: Permission
 Title: "A Permission with all the Directory rules"
@@ -111,7 +113,7 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#PATRQT
 * rule[=].limit[+].tag = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
 
-
+*/
 
 Instance: ex-practitioner-sensitive
 InstanceOf: Practitioner
@@ -134,7 +136,7 @@ InstanceOf: Practitioner
 Title: "Dummy Practitioner de-sensitive example"
 Description: "Dummy Practitioner example. This Practitioner has has been de-sensitized from [ex-practitioner-sensitive](Practitioner-ex-practitioner-sensitive.html). Note that because the data has been redacted then .meta.security will have tag `PROCESSINLINELABEL`."
 * meta.security = http://terminology.hl7.org/CodeSystem/v3-ActReason#HTEST
-* meta.security = http://terminology.hl7.org/CodeSystem/v3-ActCode#REDACTED
+* meta.security = http://terminology.hl7.org/CodeSystem/v3-ObservationValue#REDACTED
 * telecom[+].system = #email
 * telecom[=].use = #work
 * telecom[=].value = "JohnMoehrke@gmail.com"

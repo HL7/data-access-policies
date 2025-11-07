@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Permission xmlns="http://hl7.org/fhir">
+  <id value="ex-permission-not-bob"/>
+  <meta>
+    <security>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HTEST"/>
+    </security>
+  </meta>
+  <status value="active"/>
+  <date value="2023-11-22"/>
+  <combining value="deny-overrides"/>
+  <rule>
+    <type value="permit"/>
+    <activity>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="TREAT"/>
+        </coding>
+      </purpose>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HPAYMT"/>
+        </coding>
+      </purpose>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HOPERAT"/>
+        </coding>
+      </purpose>
+    </activity>
+  </rule>
+  <rule>
+    <type value="deny"/>
+    <activity>
+      <actor>
+        <reference>
+          <reference value="Practitioner/ex-practitioner"/>
+        </reference>
+      </actor>
+    </activity>
+  </rule>
+</Permission>

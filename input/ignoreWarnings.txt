@@ -25,12 +25,30 @@ Reference to experimental CodeSystem http://hl7.org/fhir/restful-interaction|6.0
 
 # yes it is experimental
 Reference to draft CodeSystem http://hl7.org/fhir/uv/dap/CodeSystem/MyOrgRolesCS|1.0.0-current
+MSG_EXPERIMENTAL
+MSG_DRAFT
 
 # used in examples and know it is not validation
-INFORMATION: Permission/ex-fingrained-patient-access: Permission.rule[0].data[0].security[0]: A definition for CodeSystem 'http://your-fhir-server.com/fhir/ValueSet/local-tags' could not be found, so the code cannot be validated
-WARNING: Permission/ex-fingrained-patient-access: Permission.rule[0].data[0].security[0].system: No definition could be found for URL value 'http://your-fhir-server.com/fhir/ValueSet/local-tags'
-INFORMATION: Permission/ex-fingrained-patient-access: Permission.rule[1].data[0].security[0]: A definition for CodeSystem 'http://your-fhir-server.com/fhir/ValueSet/local-tags' could not be found, so the code cannot be validated
-WARNING: Permission/ex-fingrained-patient-access: Permission.rule[1].data[0].security[0].system: No definition could be found for URL value 'http://your-fhir-server.com/fhir/ValueSet/local-tags'
+INFORMATION: Permission/ex-fingrained-patient-access: Permission.rule[0].data[0].security[0]: A definition for CodeSystem 'http://example.org/fhir/ValueSet/local-tags' could not be found, so the code cannot be validated
+WARNING: Permission/ex-fingrained-patient-access: Permission.rule[0].data[0].security[0].system: No definition could be found for URL value 'http://example.org/fhir/ValueSet/local-tags'
+INFORMATION: Permission/ex-fingrained-patient-access: Permission.rule[1].data[0].security[0]: A definition for CodeSystem 'http://example.org/fhir/ValueSet/local-tags' could not be found, so the code cannot be validated
+WARNING: Permission/ex-fingrained-patient-access: Permission.rule[1].data[0].security[0].system: No definition could be found for URL value 'http://example.org/fhir/ValueSet/local-tags'
 
 # understood pin-canonicals does this
 PIN_VERSION
+
+# TODO THink these are from fhir covered
+VALIDATION_VAL_STATUS_INCONSISTENT_HINT
+
+# TODO might need to correct this, but not going to try now
+VALIDATION_ADDITIONAL_RESOURCE_ABSENT
+
+# TODO think this is okay for now
+Unknown_Code_in_Version
+Type_Specific_Checks_DT_URL_Resolve
+IG_DEPENDENCY_CLASH_PACKAGEID
+
+# duplicate because also found today in core, will be fixed in ballot 4
+TYPE_SPECIFIC_CHECKS_DT_CANONICAL_MULTIPLE_POSSIBLE_VERSIONS
+SD_TYPE_NOT_LOCAL
+CODESYSTEM_THO_CHECK

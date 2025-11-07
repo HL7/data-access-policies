@@ -1,3 +1,5 @@
+/* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
+
 Instance: ex-permission-patient-directory-all
 InstanceOf: Permission
 Title: "A Permission with all the Patient Directory rules"
@@ -42,7 +44,7 @@ Usage: #example
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#delete
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#search-type
 
-
+*/
 
 
 Instance:   ex-patient-religion
@@ -81,6 +83,7 @@ Usage: #example
 * extension[=].valueCodeableConcept.extension[+].url = "http://hl7.org/fhir/uv/security-label-ds4p/StructureDefinition/extension-inline-sec-label"
 * extension[=].valueCodeableConcept.extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
 
+/* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
 
 Instance: ex-permission-patient-authoredby
 InstanceOf: Permission
@@ -117,6 +120,7 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
 * rule[=].data.resource.reference = Reference(Practitioner/ex-practitioner)
 * rule[=].data.resource.meaning = http://hl7.org/fhir/consent-data-meaning#authoredby
+*/
 
 Instance: ex-consent-patientDirectory
 InstanceOf: Consent
@@ -135,7 +139,7 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* provisionReference = Reference(ex-permission-patient-directory-all)
+* provisionReference = Reference(Permission/ex-permission-patient-directory-all)
 * decision = #permit
 
 Instance: ex-consent-patientDirectory-deny
@@ -155,7 +159,7 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* provisionReference = Reference(ex-permission-patient-directory-all)
+* provisionReference = Reference(Permission/ex-permission-patient-directory-all)
 * decision = #deny
 
 
@@ -176,5 +180,6 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-practitioner)
-* provisionReference = Reference(ex-permission-patient-directory-all)
+* provisionReference = Reference(Permission/ex-permission-patient-directory-all)
 * decision = #permit
+

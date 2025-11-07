@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Permission xmlns="http://hl7.org/fhir">
+  <id value="example-vhdir" />
+
+  <status value="active" />
+
+  <date value="2022-08-04" />
+  <combining value="deny-overrides"/>
+
+  <rule>
+    <type value="permit" />
+
+    <data>
+      <security>
+          <system value="https://example.org"/>
+          <code value="WSHELTER"/>
+      </security>
+    </data>
+    <activity>
+      <actor>
+        <reference>
+        <reference value="http://example.com/R4/fhir/CareTeam/example" />
+        </reference>
+      </actor>
+      <action>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/consentaction" />
+          <code value="access" />
+        </coding>
+      </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason" />
+          <code value="HOPERAT" />
+        </coding>
+      </purpose>
+    </activity>
+  </rule>
+</Permission>

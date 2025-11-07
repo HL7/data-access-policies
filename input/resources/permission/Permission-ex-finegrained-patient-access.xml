@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Permission xmlns="http://hl7.org/fhir">
+  <id value="ex-finegrained-patient-access"/>
+  <meta>
+    <security>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HTEST"/>
+    </security>
+  </meta>
+  <status value="active"/>
+  <asserter>
+    <reference value="Organization/ex-organization"/>
+  </asserter>
+  <date value="2023-11-22"/>
+  <combining value="permit-unless-deny"/>
+  <rule>
+    <type value="permit"/>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Patient"/>
+      </resourceType>
+      <security>
+        <system value="http://example.org/fhir/ValueSet/local-tags"/>
+        <code value="TAG_1"/>
+      </security>
+    </data>
+    <limit>
+      <element value="Patient.address"/>
+    </limit>
+    <limit>
+      <element value="Patient.birthDate"/>
+    </limit>
+    <limit>
+      <element value="Patient.meta"/>
+    </limit>
+  </rule>
+  <rule>
+    <type value="deny"/>
+    <data>
+      <resourceType>
+        <system value="http://hl7.org/fhir/fhir-types"/>
+        <code value="Patient"/>
+      </resourceType>
+      <security>
+        <system value="http://example.org/fhir/ValueSet/local-tags"/>
+        <code value="VIP"/>
+      </security>
+    </data>
+  </rule>
+</Permission>

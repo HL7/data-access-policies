@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<List xmlns="http://hl7.org/fhir">
+  <id value="Permission-examples"/>
+  <status value="current"/>
+  <mode value="working"/>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Example of permission"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="permission-example"/>
+    </extension>
+    <item>
+      <reference value="Permission/example"/>
+      <display value="Degenerate permission example"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Example of permission for SANER"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="permission-example-saner"/>
+    </extension>
+    <item>
+      <reference value="Permission/example-saner"/>
+      <display value="SANER permission example"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Example of permission for VhDir"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="permission-example-vhdir"/>
+    </extension>
+    <item>
+      <reference value="Permission/example-vhdir"/>
+      <display value="VhDir permission example"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Example of simple directory admin allowing HR and IT"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="permission-example-directory-admin"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-directory-admin"/>
+      <display value="Directory permission allowing HR and IT full access"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Example of authorizing some data in a directory but excluding sensitive elements"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="permission-example-exclude"/>
+    </extension>
+    <item>
+      <reference value="Permission/example-exclude"/>
+      <display value="Directory permission with excluding sensitive elements"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Example Bundle with included Permission with residual restrictions"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="permission-example-bundle-residual"/>
+    </extension>
+    <item>
+      <reference value="Bundle/ex-SearchSet-withPermission"/>
+      <display value="Bundle with permission expressed residual rules to apply"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Example of a Base Permission Imported in another Permission"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="permission-example-base"/>
+    </extension>
+    <item>
+      <reference value="Permission/example-base"/>
+      <display value="A base permission example."/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Example of a Composite Permission that Imports Another Permission"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="permission-example-composite"/>
+    </extension>
+    <item>
+      <reference value="Permission/example-composite"/>
+      <display value="A composite permission example that imports another permission as one of the rules."/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Fine Grained Patient Access to Data\nThis Permission allows access to Patient resources marked with a TAG_1, but would remove the .address, .birthDate, and .meta\nThis Permission denies access to Patient resources marked with a VIP\n\nTODO [Jira FHIR-51070](https://jira.hl7.org/browse/FHIR-51070) for potential better way to identify type of resource"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-finegrained-patient-access"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-finegrained-patient-access"/>
+      <display value="Fine Grained Patient Access to Data"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="As an overriding policy, this policy needs to express who can READ, who can CREATE, who can UPDATE, who can DELETE."/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-overriding-abac-by-tag"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-overriding-abac-by-tag"/>
+      <display value="Permission expressing an overriding policy using ABAC"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="As an overriding policy, this policy needs to express who can READ, who can CREATE, who can UPDATE, who can DELETE."/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-overriding-rbac-by-resource"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-overriding-rbac-by-resource"/>
+      <display value="Permission expressing an overriding policy using RBAC with Resource first"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="As an overriding policy, this policy needs to express who can READ, who can CREATE, who can UPDATE, who can DELETE."/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-overriding-rbac-by-role"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-overriding-rbac-by-role"/>
+      <display value="Permission expressing an overriding policy using RBAC with Role first"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="This Permission has all the rules for the Directory.\n\nPermission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag\n\nThis Permission encodes:\n\n- combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.\n- rule is #permit for administrative actions on the directory\n    - This enables maintenance by those with directory admin authorization\n- rule is #permit for Treatment, Payment, and Operations\n    - This enables workers to access all workers\n    - BUT includes an .limit.tag to exclude any elements marked with Location Sensitivity (`#LOCIS`)\n- rule is #permit for Patient requested (`#PATRQT`)\n    - permits access by patients (or authorized patient delegate)\n    - BUT only Practitioners that have a PractitionerRole.code=#doctor\n    - BUT includes an .limit.tag to exclude any elements marked with Location Sensitivity (`#LOCIS`)"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-directory-all"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-directory-all"/>
+      <display value="A Permission with all the Directory rules"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="This Permission has all the rules for the Patient Directory.\n\nPermission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag\n\nThis Permission encodes:\n\n- combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.\n- rule is #permit for health directory use, patient requested, or family requested\n    - This enables access all patients, provided Consent Permit is on file\n    - BUT uses .limit.tag to exclude any elements marked with Religious Sensitivity (`#REL`)\n    - Note that the Consent requirement is documented here with a .limit of NOAUTH. Might there be a better way?\n- rule is #permit for administrative actions on the directory\n    - This enables maintenance by those with directory admin authorization"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-directory-doctors-only"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-directory-doctors-only"/>
+      <display value="A Permission with all the Patient Directory rules"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Permission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-directory-exclude-location"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-directory-exclude-location"/>
+      <display value="Permission allowing data to be used, but don't expose sensitive location elements"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Permission allowing data authored by\n\nThere is a Consent that captures the consent ceremony and setting\n- status is active - so it should be enforced\n- scope is privacy \n- category is LOINC 59284-0 Consent\n- date indicated when the consent is recorded\n- patient is identified\n- performer is the patient\n- organization is identified\n- source indicate a DocumentReference (with included text of the policy)\n- policy url points at this Permission\n\nThis Permission encodes\n- base rule is #permit \n- base rule includes TPO so as to be clear this is a consent about TPO\n- Permits access to data authored by [practitioner 1](Practitioner-ex-practitioner.html)\n- Given that there is only one targeted permit rule, then nothing else is allowed."/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-intermediate-authoredby"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-intermediate-authoredby"/>
+      <display value="Permission allowing data authored by a practitioner"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Permission allowing most sharing of data but NOT data authored by a practitioner\n\nThe Consent that captures the consent ceremony and setting:\n- status is active - so it should be enforced\n- scope is privacy \n- category is LOINC 59284-0 Consent\n- date indicated when the consent is recorded\n- patient is identified\n- performer is the patient\n- organization is identified\n- source indicate a DocumentReference (with included text of the policy)\n- policy url points at this Permission\n\nThis Permission encodes\n- base rule includes TPO so as to be clear this is a consent about TPO\n- second rule denying access to data authored by ex-practitioner\n  - [practitioner 1](Practitioner-ex-practitioner.html)\n- nothing else is authorized by this Permission"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-intermediate-not-authoredby"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-intermediate-not-authoredby"/>
+      <display value="Permission allowing most sharing but NOT data authored by a practitioner"/>
+    </item>
+  </entry>
+<!-- TODO not because of use of profile
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Permission allowing use of data but requires exposure meet a given k-anonymity value. \n\nThis Permission encodes\n- base rule includes Research so as to be clear this generally authorizes Research\n- validity is a period of one year"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-k-anonymity"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-k-anonymity"/>
+      <display value="Permission require exposure to meet a given k-anonymity value"/>
+    </item>
+  </entry>
+  -->
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Permission allowing most use of data but NOT a given practitioner\n\nThis Permission encodes\n- base rule includes TPO so as to be clear this generally authorizes TPO\n- second rule denying access to a given ex-practitioner\n  - [practitioner 1](Practitioner-ex-practitioner.html)\n- nothing else is authorized by this Permission"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-not-bob"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-not-bob"/>
+      <display value="Permission allowing most use but NOT a given practitioner"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Permission allowing data authored by\n\nThere is a Consent that captures the consent ceremony and setting\n- status is active - so it should be enforced\n- scope is privacy \n- category is LOINC 59284-0 Consent\n- date indicated when the consent is recorded\n- patient is identified\n- performer is the patient\n- organization is identified\n- source indicate a DocumentReference (with included text of the policy)\n- policy url points at this Permission\n\nThis Permission encodes\n- base rule is #permit \n- base rule includes TPO so as to be clear this is a consent about TPO\n- Permits access to data authored by [practitioner 1](Practitioner-ex-practitioner.html)\n- Given that there is only one targeted permit rule, then nothing else is allowed."/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-patient-authoredby"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-patient-authoredby"/>
+      <display value="Permission allowing data authored by a practitioner"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="This Permission has all the rules for the Patient Directory.\n\nPermission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag\n\nThis Permission encodes:\n\n- combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.\n- rule is #permit for health directory use, patient requested, or family requested\n    - This enables access all patients, provided Consent Permit is on file\n    - BUT uses .limit.tag to exclude any elements marked with Religious Sensitivity (`#REL`)\n    - Note that the Consent requirement is documented here with a .limit of NOAUTH. Might there be a better way?\n- rule is #permit for administrative actions on the directory\n    - This enables maintenance by those with directory admin authorization"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-patient-directory-all"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-patient-directory-all"/>
+      <display value="A Permission with all the Patient Directory rules"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Permission allowing requested use, but restricting redisclosure\n\nThis Permission encodes\n\n- base rule is #permit\n- base rule includes TPO so as to be clear this is authorizes TPO\n- includes a residual (limit) using code NODSCLCDS"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-redisclose-forbidden-without-consent"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-redisclose-forbidden-without-consent"/>
+      <display value="Permission allowing data to be used, but with redisclosure condition"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Permission allowing most use of data but expires in a year. Note that this 'year' indication is based on absolute dates of issuing of the Permission, and use of Permission.validity.\n\nThis Permission encodes\n- base rule includes TPO so as to be clear this generally authorizes TPO\n- validity is a period of one year"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="ex-permission-timeout"/>
+    </extension>
+    <item>
+      <reference value="Permission/ex-permission-timeout"/>
+      <display value="Permission allowing most use but expires in a year"/>
+    </item>
+  </entry>
+
+</List>

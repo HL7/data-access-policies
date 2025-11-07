@@ -1,4 +1,3 @@
-### Download
 
 You can download:
 
@@ -17,23 +16,17 @@ licensing requirements may limit the systems that data captured using certain qu
 
 #### Dependency Table
 
-{% include dependency-table.xhtml %}
+{% lang-fragment dependency-table.xhtml %}
 
 #### Globals Table
 
-{% include globals-table.xhtml %}
+{% lang-fragment globals-table.xhtml %}
 
 #### IP Statements
 
-{% include ip-statements.xhtml %}
-
-### Disclaimer
-
-The specification herewith documented is a demo working specification, and may not be used for any implementation purposes. 
-This draft is provided without warranty of completeness or consistency, and the official publication supersedes this draft.
-No liability can be inferred from the use or misuse of this specification, or its consequences.
+{% lang-fragment ip-statements.xhtml %}
 
 #### Cross Version Analysis
 
-{% include cross-version-analysis.xhtml %}
+{% lang-fragment cross-version-analysis.xhtml %}
 

@@ -28,9 +28,11 @@ Note that the Permission rules would be a subset of all possible Permission rule
 
 In order to make it clear that a Bundle contains a Permission that the Bundle Recipient must enforce, we add an extension to Bundle.meta.security to carry the pointer to this Permission. Thus a Permission in a bundle that is not referenced by a Bundle.meta.security is not a request to enforce. The Bundle.meta.security should also carry `#CPLYPOL` to explain that this policy must be complied with. The Permission would tend to be included in the Bundle as an #include entry, but it is possible the recipient is expected to dereference externally.
 
+<!--- TODO bring this back when we can profile in sushi
 - Extension [on Bundle.meta.security imposing a Permission](StructureDefinition-dap.permissionImposedOnBundle.html)
 - Bundle that [adds the extension](StructureDefinition-dap.bundleWithPermission.html)
 - Example [SearchSet Bundle using the extension](Bundle-ex-SearchSet-withPermission.html)
+-->
 
 <p class="stu-note">TODO: should this be added to FHIR core or to DS4P?</p>
 
@@ -148,7 +150,11 @@ Scenario Outline: Allow only a given K-Anonymity
 
 #### Analysis
 
-<div markdown="1" class="stu-note">
+
+TODO Bring this back when we can profile in sushi
+
+<!--- TODO Bring this back when we can profile in sushi
+
 This Permission requires an extension to express the K-Anonymity value encodes
 
 - base rule includes Research so as to be clear this is allowing only Research
@@ -168,4 +174,4 @@ This Permission requires an extension to express the K-Anonymity value encodes
 [Example Permission allowing Research with a given K-anonymity (4)](Permission-ex-permission-k-anonymity.html)
 </div>
 
-
+-->
