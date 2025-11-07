@@ -1,3 +1,6 @@
+/* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
+
+
 Instance: ex-permission-redisclose-forbidden-without-consent
 InstanceOf: Permission
 Title: "Permission allowing data to be used, but with redisclosure condition"
@@ -22,14 +25,18 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#NODSCLCDS "no disclosure without information subject's consent directive"
 
+
+
+
 Extension: PermissionImposedOnBundle
 Id: dap.permissionImposedOnBundle
 Title: "Permission imposed on a Bundle"
-Description: "When a Bundle carries a Permissiont that must be enforced"
+Description: "When a Bundle carries a Permission that must be enforced"
 * ^context[+].type = #element
 * ^context[=].expression = "Bundle.meta.security"
 * value[x] only Reference(Permission)
 * valueReference 1..1
+
 
 Instance: in-permission-redisclose-forbidden-without-consent
 InstanceOf: Permission
@@ -99,6 +106,9 @@ Usage: #inline
 * valueQuantity = 5 '/d' "wine glasses per day"
 * performer = Reference(Patient/ex-patient)
 
+*/
+
+/* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
 
 Instance: ex-permission-not-bob
 InstanceOf: Permission
@@ -146,7 +156,9 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
 
+*/
 
+/* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
 
 Extension: PermissionKanonymity
 Id: dap.permissionKanonymity
@@ -186,3 +198,4 @@ Usage: #example
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#DEID
 * rule[=].limit.extension[ka].valueInteger = 4
 
+*/

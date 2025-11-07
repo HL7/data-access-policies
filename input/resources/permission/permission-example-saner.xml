@@ -23,7 +23,7 @@
   <status value="active" />
 
   <asserter>
-    <reference value="Organization/f203" />
+    <reference value="Organization/ex-organization" />
   </asserter>
   <date value="2018-12-24" />
   <combining value="deny-overrides" />
@@ -41,7 +41,7 @@
     <activity>
       <actor>
         <reference>
-          <reference value="Organization/f203" />
+          <reference value="Organization/ex-organization" />
         </reference>
       </actor>
       <action>
@@ -79,7 +79,7 @@
     <activity>
       <actor>
         <reference>
-          <reference value="Group/102" />
+          <reference value="http://example.com/R4/fhir/Group/102" />
         </reference>
       </actor>
       <action>

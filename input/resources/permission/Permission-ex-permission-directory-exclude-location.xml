@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Permission xmlns="http://hl7.org/fhir">
+  <id value="ex-permission-directory-exclude-location"/>
+  <meta>
+    <security>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HTEST"/>
+    </security>
+  </meta>
+  <status value="active"/>
+  <asserter>
+    <reference value="Organization/ex-organization"/>
+  </asserter>
+  <date value="2023-11-22"/>
+  <combining value="deny-unless-permit"/>
+  <rule>
+    <type value="permit"/>
+    <activity>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="PATRQT"/>
+        </coding>
+      </purpose>
+    </activity>
+    <limit>
+      <tag>
+        <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+        <code value="LOCIS"/>
+      </tag>
+    </limit>
+  </rule>
+</Permission>

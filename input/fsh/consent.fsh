@@ -1,3 +1,6 @@
+/* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
+
+
 Instance: ex-permission-intermediate-authoredby
 InstanceOf: Permission
 Title: "Permission allowing data authored by a practitioner"
@@ -71,6 +74,8 @@ Usage: #example
 * rule[=].data.resource.reference = Reference(Practitioner/ex-practitioner)
 * rule[=].data.resource.meaning = http://hl7.org/fhir/consent-data-meaning#authoredby
 
+*/
+
 Instance: ex-consent-permission
 InstanceOf: Consent
 Title: "Consent that uses Permission for rules"
@@ -84,7 +89,7 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* policyBasis.reference = Reference(ex-overriding-rbac-by-role)
+* policyBasis.reference = Reference(Permission/ex-overriding-abac-by-tag)
 * decision = #permit
 * provisionReference = Reference(Permission/ex-permission-intermediate-not-authoredby)
 

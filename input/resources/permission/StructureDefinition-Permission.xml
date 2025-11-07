@@ -31,7 +31,7 @@
   <version value="6.0.0"/>
   <name value="Permission"/>
   <title value="Permission"/>
-  <status value="draft"/>
+  <status value="active"/>
   <date value="2021-01-02T08:58:31+11:00"/>
   <publisher value="HL7 International / Security"/>
   <contact>
@@ -107,7 +107,7 @@
         </extension>
         <strength value="required"/>
         <description value="Codes identifying the lifecycle stage of a product."/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/permission-status"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/permission-status-vs"/>
       </binding>
       <mapping>
         <identity value="fhirconsent"/>
@@ -185,7 +185,7 @@
     <element id="Permission.justification.basis">
       <path value="Permission.justification.basis"/>
       <short value="The regulatory grounds upon which this Permission builds"/>
-      <definition value="This would be a codeableconcept, or a coding, which can be constrained to , for example, the 6 grounds for processing in GDPR."/>
+      <definition value="This would be a codeableconcept, or a coding, for example, the 6 grounds for processing in GDPR."/>
       <min value="0"/>
       <max value="*"/>
       <type>
@@ -240,7 +240,7 @@
         </extension>
         <strength value="required"/>
         <description value="How the rules are to be combined."/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/permission-rule-combining"/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/permission-rule-combining-vs"/>
       </binding>
     </element>
     <element id="Permission.rule">

@@ -1,26 +1,4 @@
 
-Extension: PermissionResourceType
-Id: dap.permissionResourceType
-Title: "Permission rule by Resource Type"
-Description: "When defining a Permission.rule where the data is a type of resource.
-Note that this might be possible with Expression, but I don't know how."
-* ^context[+].type = #element
-* ^context[=].expression = "Permission.rule.data"
-* value[x] only code
-* valueCode from http://hl7.org/fhir/ValueSet/resource-types (required)
-* valueCode 1..1
-// TODO Note that code is not used in FHIR R6 as they want to support more resource types not defined today, so now url
-
-
-Profile: PermissionWithResourceType
-Parent: Permission
-Id: dap.permissionWithResourceType
-Title: "Permission with support for rule on Resource-Type"
-Description: "Adds the PermissionResourceType extension to Permission.rule.data"
-* rule.data.extension contains PermissionResourceType named resourceType 0..1
-
-
-
 CodeSystem:  MyOrgRolesCS
 Title: "MyOrg defined Roles CodeSystem"
 Description:  """
@@ -75,8 +53,10 @@ Description: "Admin"
 
 
 
+/* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG
+
 Instance: ex-overriding-rbac-by-role
-InstanceOf: PermissionWithResourceType
+InstanceOf: Permission
 Title: "Permission expressing an overriding policy using RBAC with Role first"
 Description: """
 As an overriding policy, this policy needs to express who can READ, who can CREATE, who can UPDATE, who can DELETE.
@@ -91,9 +71,9 @@ Usage: #example
 
 // Doctor CRU
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Observation
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#AllergyIntolerance
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Condition
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Observation
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#AllergyIntolerance
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Condition
 * rule[=].activity.actor.reference = Reference(DrRole)
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#create
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
@@ -103,13 +83,13 @@ Usage: #example
 
 // Doctor R
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Practitioner
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#PractitionerRole
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Person
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Patient
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#RelatedPerson
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Organization
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Location
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Practitioner
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#PractitionerRole
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Person
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Patient
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#RelatedPerson
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Organization
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Location
 * rule[=].activity.actor.reference = Reference(DrRole)
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
@@ -117,15 +97,15 @@ Usage: #example
 
 // Dietician R
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#AllergyIntolerance
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Condition
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Practitioner
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#PractitionerRole
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Person
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Patient
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#RelatedPerson
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Organization
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Location
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#AllergyIntolerance
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Condition
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Practitioner
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#PractitionerRole
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Person
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Patient
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#RelatedPerson
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Organization
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Location
 * rule[=].activity.actor.reference = Reference(DieticianRole)
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
@@ -134,9 +114,9 @@ Usage: #example
 
 // Registration CRU
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Person
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Patient
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#RelatedPerson
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Person
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Patient
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#RelatedPerson
 * rule[=].activity.actor.reference = Reference(RegistrationRole)
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#create
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
@@ -146,10 +126,10 @@ Usage: #example
 
 // Registration R
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Practitioner
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#PractitionerRole
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Organization
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Location
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Practitioner
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#PractitionerRole
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Organization
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Location
 * rule[=].activity.actor.reference = Reference(RegistrationRole)
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
@@ -165,7 +145,7 @@ Usage: #example
 
 
 Instance: ex-overriding-rbac-by-resource
-InstanceOf: PermissionWithResourceType
+InstanceOf: Permission
 Title: "Permission expressing an overriding policy using RBAC with Resource first"
 Description: """
 As an overriding policy, this policy needs to express who can READ, who can CREATE, who can UPDATE, who can DELETE.
@@ -180,7 +160,7 @@ Usage: #example
 
 // Observation
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Observation
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Observation
 * rule[=].activity[+].actor.reference = Reference(DrRole)
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#create
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
@@ -193,24 +173,7 @@ Usage: #example
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#AllergyIntolerance
-* rule[=].activity[+].actor.reference = Reference(DrRole)
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#create
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#update
-* rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
-* rule[=].activity[+].actor.reference = Reference(DieticianRole)
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
-* rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
-* rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].activity[+].actor.reference = Reference(AdminRole)
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#delete
-* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#update
-* rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
-
-* rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Condition
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#AllergyIntolerance
 * rule[=].activity[+].actor.reference = Reference(DrRole)
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#create
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
@@ -227,7 +190,24 @@ Usage: #example
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Practitioner
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Condition
+* rule[=].activity[+].actor.reference = Reference(DrRole)
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#create
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#update
+* rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
+* rule[=].activity[+].actor.reference = Reference(DieticianRole)
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
+* rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
+* rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
+* rule[=].activity[+].actor.reference = Reference(AdminRole)
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#delete
+* rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#update
+* rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
+* rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
+
+* rule[+].type = #permit
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Practitioner
 * rule[=].activity[+].actor.reference = Reference(DrRole)
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
@@ -244,7 +224,7 @@ Usage: #example
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#PractitionerRole
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#PractitionerRole
 * rule[=].activity[+].actor.reference = Reference(DrRole)
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
@@ -261,7 +241,7 @@ Usage: #example
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Person
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Person
 * rule[=].activity[+].actor.reference = Reference(DrRole)
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
@@ -279,7 +259,7 @@ Usage: #example
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Patient
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Patient
 * rule[=].activity[+].actor.reference = Reference(DrRole)
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
@@ -298,7 +278,7 @@ Usage: #example
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#RelatedPerson
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#RelatedPerson
 * rule[=].activity[+].actor.reference = Reference(DrRole)
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
@@ -316,7 +296,7 @@ Usage: #example
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Organization
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Organization
 * rule[=].activity[+].actor.reference = Reference(DrRole)
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
@@ -333,7 +313,7 @@ Usage: #example
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Location
+* rule[=].data[+].resourceType = http://hl7.org/fhir/fhir-types#Location
 * rule[=].activity[+].actor.reference = Reference(DrRole)
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
@@ -434,6 +414,7 @@ Usage: #example
 * rule[=].activity[=].purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
+*/
 
 Instance: ex-consent-overriding
 InstanceOf: Consent
@@ -448,6 +429,7 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* policyBasis.reference = Reference(ex-overriding-rbac-by-role)
+* policyBasis.reference = Reference(Permission/ex-overriding-rbac-by-role)
 * decision = #permit
 * provision.id = "fooBar"
+

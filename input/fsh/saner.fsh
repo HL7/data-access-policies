@@ -1,3 +1,5 @@
+/* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
+
 Instance: ex-saner
 InstanceOf: Permission
 Title: "Simple Permission of non-patient data"
@@ -19,7 +21,7 @@ Usage: #example
 * rule[=].activity.purpose = http://terminology.hl7.org/CodeSystem/v3-ActReason#HCOMPL
 * rule[=].limit.control = http://terminology.hl7.org/CodeSystem/v3-ActCode#AUDIT
 
-
+*/
 
 Instance: ex-measurereport
 InstanceOf: MeasureReport
@@ -31,3 +33,4 @@ Description: "Dummy MeasureReport example for completeness sake. No actual use o
 * measure = "http://example.org/fhir/uv/saner/Measure/FEMADailyHospitalCOVID19Reporting"
 * period.start = "2020-04-05"
 * period.end = "2020-04-05"
+

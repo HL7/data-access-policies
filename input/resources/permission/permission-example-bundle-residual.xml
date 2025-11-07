@@ -6,18 +6,17 @@
       <code value="HTEST"/>
     </security>
     <security>
-<!-- Need this defined properly in THO, for now CPLYPOL will do
-      <extension
-                 url="http://hl7.org/fhir/uv/dap/StructureDefinition/dap.permissionImposedOnBundle">
-        <valueReference>
-          <reference
-                     value="http://test.fhir.net/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"/>
-        </valueReference>
-      </extension>
-      -->
       <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
       <code value="CPLYPOL"/>
     </security>
+    <!-- TODO add extension that points at the Permission that MUST be enforced -->
+<!-- TODO not yet defined
+    <extension url="http://hl7.org/fhir/StructureDefinition/permissionImposedOnBundle">
+      <valueReference>
+        <reference value="http://example.com/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"/>
+      </valueReference>
+    </extension>
+    -->
   </meta>
   <type value="searchset"/>
   <timestamp value="2023-11-22T09:32:24Z"/>
@@ -25,10 +24,10 @@
   <link>
     <relation value="self"/>
     <url
-         value="http://test.fhir.net/R4/fhir/Observation?patient=example&amp;status=current"/>
+         value="http://example.com/R4/fhir/Observation?patient=example&amp;status=current"/>
   </link>
   <entry>
-    <fullUrl value="http://test.fhir.net/R4/fhir/Observation/in-Observation"/>
+    <fullUrl value="http://example.com/R4/fhir/Observation/in-Observation"/>
     <resource>
       <Observation>
         <id value="in-Observation"/>
@@ -52,11 +51,11 @@
           </coding>
         </code>
         <subject>
-          <reference value="Patient/example"/>
+          <reference value="Patient/ex-patient"/>
         </subject>
         <effectiveDateTime value="2022-06-13"/>
         <performer>
-          <reference value="Patient/example"/>
+          <reference value="Patient/ex-patient"/>
         </performer>
         <valueQuantity>
           <value value="5"/>
@@ -72,7 +71,7 @@
   </entry>
   <entry>
     <fullUrl
-             value="http://test.fhir.net/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"/>
+             value="http://example.com/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"/>
     <resource>
       <Permission>
         <id value="in-permission-redisclose-forbidden-without-consent"/>
@@ -86,7 +85,7 @@
 
         <status value="active"/>
         <asserter>
-          <reference value="Organization/example"/>
+          <reference value="Organization/ex-organization"/>
         </asserter>
         <date value="2023-11-22"/>
         <combining value="deny-unless-permit"/>
@@ -116,13 +115,23 @@
             </purpose>
           </activity>
           <limit>
-            <coding>
-              <system
-                      value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
-              <code value="NODSCLCDS"/>
-              <display
-                       value="no disclosure without information subject's consent directive"/>
-            </coding>
+            <control>
+              <coding>
+                <system
+                        value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+                <code value="DEID"/>
+                <display value="de-identification obligation"/>
+              </coding>
+            </control>
+            <control>
+              <coding>
+                <system
+                        value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+                <code value="NODSCLCDS"/>
+                <display
+                        value="no disclosure without information subject's consent directive"/>
+              </coding>
+            </control>
           </limit>
         </rule>
       </Permission>

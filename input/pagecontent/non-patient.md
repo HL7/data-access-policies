@@ -12,7 +12,7 @@ Permission
 - dataScope - this SANER report
 - accesses must be audit logged
 
-[Example Permission explicitly identifying this SANER report](Permission-ex-saner.html)
+[Example Permission explicitly identifying this SANER report](Permission-example-saner.html)
 
 ### Variations
 

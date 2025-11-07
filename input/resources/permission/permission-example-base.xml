@@ -4,7 +4,7 @@
   <status value="active" />
 
   <asserter>
-    <reference value="Organization/f203" />
+    <reference value="Organization/ex-organization" />
   </asserter>
   <date value="2018-12-24" />
   <combining value="deny-overrides" />

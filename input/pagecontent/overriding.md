@@ -6,7 +6,9 @@ An Overriding policy is an important part of an organization’s overall risk ma
 
 The use-case analysis is still a work in progress. Only the very basis has been described here. Many open-issues need further development, including:
 
-- Not obvious how to define a rule that is on a Resource type (note that Consent has documentType and resourceType) -- expression can do this --> Created [extension PermissionResourceType](StructureDefinition-dap.permissionResourceType.html)   an extension similar to Consent.rule.resourceType. Created [profile PermissionWithResourceType](StructureDefinition-dap.permissionWithResourceType.html). This might need to be added to Permission resource, unless the Expression method works just as well. **[FHIR-51070](https://jira.hl7.org/browse/FHIR-51070)**
+<!--- TODO Bring this back after we can profile in sushi
+- Not obvious how to define a rule that is on a Resource type (note that Consent has documentType and resourceType) -- expression can do this  Created [extension PermissionResourceType](StructureDefinition-dap.permissionResourceType.html)   an extension similar to Consent.rule.resourceType. Created [profile PermissionWithResourceType](StructureDefinition-dap.permissionWithResourceType.html). This might need to be added to Permission resource, unless the Expression method works just as well. **[FHIR-51070](https://jira.hl7.org/browse/FHIR-51070)**
+-->
 - Not obvious how to do security roles. Can use PractitionerRole if that applies, but that does not apply to Patients acting as a User. -- **2024-03-24 - Got close to agreeing to follow the pattern that Consent has.**
 - should the action codes be more CRUD vs current privacy codes? or both? -- **2024-03-24 - Seems to be a better valueSet, but if we switch we should not use the same element name so as to avoid confusion. Given that we both have example binding, it is not clear that the element name needs to be different as example binding allows all codes to be used.**
   - http://hl7.org/fhir/restful-interaction 
@@ -97,9 +99,9 @@ Note that PurposeOfUse is also represented in this Permission instance as part o
 
 // Doctor CRU
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Observation
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#AllergyIntolerance
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Condition
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#Observation
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#AllergyIntolerance
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#Condition
 * rule[=].activity.actor.reference = Reference(DrRole)
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#create
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
@@ -109,13 +111,13 @@ Note that PurposeOfUse is also represented in this Permission instance as part o
 
 // Doctor R
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Practitioner
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#PractitionerRole
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Person
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Patient
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#RelatedPerson
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Organization
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Location
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#Practitioner
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#PractitionerRole
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#Person
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#Patient
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#RelatedPerson
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#Organization
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#Location
 * rule[=].activity.actor.reference = Reference(DrRole)
 * rule[=].activity.action[+] = http://hl7.org/fhir/restful-interaction#read
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
@@ -152,7 +154,7 @@ Traversing [the Permission holding resource first rules](Permission-ex-overridin
 
 // Observation
 * rule[+].type = #permit
-* rule[=].data[+].extension[resourceType].valueCode = https://hl7.org/fhir/codesystem-fhir-types#Observation
+* rule[=].data[+].extension[resourceType].valueCode = http://hl7.org/fhir/fhir-types#Observation
 * rule[=].activity[+].actor.reference = Reference(DrRole)
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#create
 * rule[=].activity[=].action[+] = http://hl7.org/fhir/restful-interaction#read

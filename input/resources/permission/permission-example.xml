@@ -3,7 +3,7 @@
 
   <status value="active" />
   <asserter>
-    <reference value="Organization/example" />
+    <reference value="Organization/ex-organization" />
   </asserter>
   <date value="2022-06-13" />
   <combining value="deny-unless-permit" />
@@ -13,7 +13,7 @@
       <resource>
         <meaning value="authoredby" />
         <reference>
-          <reference value="Practitioner/example" />
+          <reference value="Practitioner/ex-practitioner" />
         </reference>
       </resource>
     </data>

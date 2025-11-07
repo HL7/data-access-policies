@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Permission xmlns="http://hl7.org/fhir">
+  <id value="ex-permission-k-anonymity"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/uv/dap/StructureDefinition/dap.PermissionWithKanonymity"/>
+    <security>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HTEST"/>
+    </security>
+  </meta>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><p class="res-header-id"><b>Generated Narrative: Permission ex-permission-k-anonymity</b></p><a name="ex-permission-k-anonymity"> </a><a name="hcex-permission-k-anonymity"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">Language: en</p><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-dap.PermissionWithKanonymity.html">Permission with K-Anonymity</a></p><p style="margin-bottom: 0px">Security Label: test health data (Details: ActReason code HTEST = 'test health data')</p></div><p><b>status</b>: Active</p><p><b>date</b>: 2023-12-20</p><p><b>combining</b>: Deny-overrides</p><blockquote><p><b>rule</b></p><p><b>type</b>: Permit</p><h3>Activities</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Purpose</b></td></tr><tr><td style="display: none">*</td><td><span title="Codes:{http://terminology.hl7.org/CodeSystem/v3-ActReason HRESCH}">healthcare research</span></td></tr></table><h3>Limits</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Extension</b></td><td><b>Control</b></td></tr><tr><td style="display: none">*</td><td/><td><span title="Codes:{http://terminology.hl7.org/CodeSystem/v3-ActCode DEID}">deidentify</span></td></tr></table></blockquote></div>
+  </text>
+  <status value="active"/>
+  <date value="2023-12-20"/>
+  <combining value="deny-overrides"/>
+  <rule>
+    <type value="permit"/>
+    <activity>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HRESCH"/>
+        </coding>
+      </purpose>
+    </activity>
+    <limit>
+      <extension url="http://hl7.org/fhir/uv/dap/StructureDefinition/dap.permissionKanonymity">
+        <valueInteger value="4"/>
+      </extension>
+      <control>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+          <code value="DEID"/>
+        </coding>
+      </control>
+    </limit>
+  </rule>
+</Permission>
