@@ -423,21 +423,6 @@
         <map value="Consent.provision.dataPeriod"/>
       </mapping>
     </element>
-    <element id="Permission.rule.data.expression">
-      <path value="Permission.rule.data.expression"/>
-      <short value="Expression identifying the data"/>
-      <definition value="Used when other data selection elements are insufficient."/>
-      <min value="0"/>
-      <max value="1"/>
-      <type>
-        <code value="Expression"/>
-      </type>
-      <isSummary value="true"/>
-      <mapping>
-        <identity value="fhirconsent"/>
-        <map value="Consent.provision.class, Consent.provision.code, Consent.provision.expression"/>
-      </mapping>
-    </element>
     <element id="Permission.rule.activity">
       <extension url="http://hl7.org/fhir/build/StructureDefinition/uml-dir">
         <valueCode value="down"/>
