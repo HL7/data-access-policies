@@ -614,9 +614,21 @@
     </element>
     <element id="Permission.rule.limit.element">
       <path value="Permission.rule.limit.element"/>
-      <short value="What data elements that must be removed from the data"/>
-      <definition value="When this rule authorizes data use, the data at the path indicated here, must be redacted from the authorized data provided for that authorized use."/>
-      <comment value="The path identifies the element and is expressed as a `.` separated list of ancestor elements, beginning with the name of the resource or extension."/>
+      <short value="What data elements, by id, must be removed from the data"/>
+      <definition value="When this rule authorizes data use, the data identified by its element id, must be redacted from the authorized data provided for that authorized use."/>
+      <comment value="The .element requires that an `id` be present on the element to be redacted, but does not require the use of FHIRPath. The .element mechanism can target elements in a list."/>
+      <min value="0"/>
+      <max value="*"/>
+      <type>
+        <code value="string"/>
+      </type>
+      <isSummary value="true"/>
+    </element>
+    <element id="Permission.rule.limit.path">
+      <path value="Permission.rule.limit.path"/>
+      <short value="What data elements, by FHIRPath, must be removed from the data"/>
+      <definition value="When this rule authorizes data use, the data identified by the FHIRPath expression, must be redacted from the authorized data provided for that authorized use."/>
+      <comment value="The FHIRPath expression is limited to a the [simple subset](http://hl7.org/fhir/fhirpath.html#simple) with the additional limitation that .resolve() that is not allowed. This is a more sophisticated mechanism of referring to an element than .element but does require the system resolving the item to be able to use at least FHIRPath. If the author of the limit has the ability to ensure an id will be present then .element might be more widely useable."/>
       <min value="0"/>
       <max value="*"/>
       <type>
