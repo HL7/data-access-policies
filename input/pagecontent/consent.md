@@ -80,12 +80,13 @@ Here is how that [Consent could reference the Permission](Consent-ex-consent-per
 
 ##### FHIR R6
 
-There is a [JIRA ticket FHIR-46021](https://jira.hl7.org/browse/FHIR-46021) on file to add clarity for [FHIR R6](https://build.fhir.org/consent.html). This added an `provisionReference` element to Consent that can point at one or more Permission Resources. In this case one would not have any `provision` elements. See Constraint ppc-1 that forces this.
+There is a `permission-from-consent` extension to Consent that can point at a Permission Resources. In this case one would not have any `provision` elements. 
 
 ```fs
 ...
 * decision = #permit
-* provisionReference[+] = Reference(Permission/ex-permission-intermediate-not-authoredby)
+* extension[+].url = "http://hl7.org/fhir/StructureDefinition/permission-from-consent"
+* extension[=].valueReference = Reference(Permission/ex-permission-intermediate-not-authoredby)
 ```
 
 See

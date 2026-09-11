@@ -91,5 +91,6 @@ Usage: #example
 * grantor = Reference(ex-patient)
 * policyBasis.reference = Reference(Permission/ex-overriding-abac-by-tag)
 * decision = #permit
-* provisionReference = Reference(Permission/ex-permission-intermediate-not-authoredby)
+* extension[+].url = "http://hl7.org/fhir/StructureDefinition/permission-from-consent"
+* extension[=].valueReference = Reference(Permission/ex-permission-intermediate-not-authoredby)
 

@@ -139,7 +139,8 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* provisionReference = Reference(Permission/ex-permission-patient-directory-all)
+* extension[+].url = "http://hl7.org/fhir/StructureDefinition/permission-from-consent"
+* extension[=].valueReference = Reference(Permission/ex-permission-patient-directory-all)
 * decision = #permit
 
 Instance: ex-consent-patientDirectory-deny
@@ -159,7 +160,8 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-patient)
-* provisionReference = Reference(Permission/ex-permission-patient-directory-all)
+* extension[+].url = "http://hl7.org/fhir/StructureDefinition/permission-from-consent"
+* extension[=].valueReference = Reference(Permission/ex-permission-patient-directory-all)
 * decision = #deny
 
 
@@ -180,6 +182,7 @@ Usage: #example
 * category = http://loinc.org#59284-0 "Consent Document"
 * subject = Reference(ex-patient)
 * grantor = Reference(ex-practitioner)
-* provisionReference = Reference(Permission/ex-permission-patient-directory-all)
+* extension[+].url = "http://hl7.org/fhir/StructureDefinition/permission-from-consent"
+* extension[=].valueReference = Reference(Permission/ex-permission-patient-directory-all)
 * decision = #permit
 
