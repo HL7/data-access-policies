@@ -10,8 +10,6 @@ The use-case analysis is still a work in progress. Only the very basis has been 
 - Not obvious how to define a rule that is on a Resource type (note that Consent has documentType and resourceType) -- expression can do this  Created [extension PermissionResourceType](StructureDefinition-dap.permissionResourceType.html)   an extension similar to Consent.rule.resourceType. Created [profile PermissionWithResourceType](StructureDefinition-dap.permissionWithResourceType.html). This might need to be added to Permission resource, unless the Expression method works just as well. **[FHIR-51070](https://jira.hl7.org/browse/FHIR-51070)**
 -->
 - Not obvious how to do security roles. Can use PractitionerRole if that applies, but that does not apply to Patients acting as a User. -- **2024-03-24 - Got close to agreeing to follow the pattern that Consent has.**
-- should the action codes be more CRUD vs current privacy codes? or both? -- **2024-03-24 - Seems to be a better valueSet, but if we switch we should not use the same element name so as to avoid confusion. Given that we both have example binding, it is not clear that the element name needs to be different as example binding allows all codes to be used.**
-  - http://hl7.org/fhir/restful-interaction 
 - Not clear how to define permission enabled by relationship to the data. These are easy to express in ABAC as it is simply using the fact that ABAC can address any attribute in a rule. For example 
     - Doctors can Update Observations that they authored, but can't update the Observations created by someone else.
     - Patient can access THEIR data, but not all data

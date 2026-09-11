@@ -169,7 +169,7 @@
     </extension>
     <item>
       <reference value="Permission/ex-permission-directory-doctors-only"/>
-      <display value="A Permission with all the Patient Directory rules"/>
+      <display value="A Permission Directory doctors only"/>
     </item>
   </entry>
   <entry>
@@ -193,7 +193,7 @@
     </extension>
     <item>
       <reference value="Permission/ex-permission-intermediate-authoredby"/>
-      <display value="Permission allowing data authored by a practitioner"/>
+      <display value="Permission Intermediate Authored By"/>
     </item>
   </entry>
   <entry>
@@ -243,7 +243,7 @@
     </extension>
     <item>
       <reference value="Permission/ex-permission-patient-authoredby"/>
-      <display value="Permission allowing data authored by a practitioner"/>
+      <display value="Permission patient authored by"/>
     </item>
   </entry>
   <entry>
@@ -255,7 +255,7 @@
     </extension>
     <item>
       <reference value="Permission/ex-permission-patient-directory-all"/>
-      <display value="A Permission with all the Patient Directory rules"/>
+      <display value="A Permission patient directory all"/>
     </item>
   </entry>
   <entry>

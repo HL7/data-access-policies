@@ -109,7 +109,100 @@ parameters:
   special-url-base: 'http://hl7.org/fhir'
   generate-uml: 'source'
 
+resources:
+  Permission/ex-finegrained-patient-access:
+    name: Fine Grained Patient Access to Data
+    description: Fine Grained Patient Access to Data\nThis Permission allows access to Patient resources marked with a TAG_1, but would remove the .address, .birthDate, and .meta\nThis Permission denies access to Patient resources marked with a VIP\n\nTODO [Jira FHIR-51070](https://jira.hl7.org/browse/FHIR-51070) for potential better way to identify type of resource
+    exampleBoolean: true
+  Permission/example:
+    name: 'Degenerate permission example'
+    description: 'Example of permission'
+    exampleBoolean: true
+  Permission/example-saner:
+    name: 'SANER permission example'
+    description: 'Example of permission for SANER'
+    exampleBoolean: true
+  Permission/example-vhdir:
+    name: 'VhDir permission example'
+    description: 'Example of permission for VhDir'
+    exampleBoolean: true
+  Permission/ex-permission-directory-admin:
+    name: 'Directory permission allowing HR and IT full access'
+    description: 'Example of simple directory admin allowing HR and IT'
+    exampleBoolean: true
+  Permission/example-exclude:
+    name: 'Directory permission with excluding sensitive elements'
+    description: 'Example of authorizing some data in a directory but excluding sensitive elements'
+    exampleBoolean: true
+  Bundle/ex-SearchSet-withPermission:
+    name: 'Bundle with permission expressed residual rules to apply'
+    description: 'Example Bundle with included Permission with residual restrictions'
+    exampleBoolean: true
+  Permission/example-base:
+    name: 'A base permission example.'
+    description: 'Example of a Base Permission Imported in another Permission'
+    exampleBoolean: true
+  Permission/example-composite:
+    name: 'A composite permission example that imports another permission as one of the rules.'
+    description: 'Example of a Composite Permission that Imports Another Permission'
+    exampleBoolean: true
+  Permission/ex-overriding-abac-by-tag:
+    name: 'Permission expressing an overriding policy using ABAC'
+    description: 'As an overriding policy, this policy needs to express who can READ, who can CREATE, who can UPDATE, who can DELETE.'
+    exampleBoolean: true
+  Permission/ex-overriding-rbac-by-resource:
+    name: 'Permission expressing an overriding policy using RBAC with Resource first'
+    description: 'As an overriding policy, this policy needs to express who can READ, who can CREATE, who can UPDATE, who can DELETE.'
+    exampleBoolean: true
+  Permission/ex-overriding-rbac-by-role:
+    name: 'Permission expressing an overriding policy using RBAC with Role first'
+    description: 'As an overriding policy, this policy needs to express who can READ, who can CREATE, who can UPDATE, who can DELETE.'
+    exampleBoolean: true
+  Permission/ex-permission-directory-all:
+    name: 'A Permission with all the Directory rules'
+    description: 'This Permission has all the rules for the Directory.\n\nPermission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag\n\nThis Permission encodes:\n\n- combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.\n- rule is #permit for administrative actions on the directory\n    - This enables maintenance by those with directory admin authorization\n- rule is #permit for Treatment, Payment, and Operations\n    - This enables workers to access all workers\n    - BUT includes an .limit.tag to exclude any elements marked with Location Sensitivity (`#LOCIS`)\n- rule is #permit for Patient requested (`#PATRQT`)\n    - permits access by patients (or authorized patient delegate)\n    - BUT only Practitioners that have a PractitionerRole.code=#doctor\n    - BUT includes an .limit.tag to exclude any elements marked with Location Sensitivity (`#LOCIS`)'
+    exampleBoolean: true
+  Permission/ex-permission-directory-doctors-only:
+    name: 'A Permission with all the Patient Directory rules'
+    description: 'This Permission has all the rules for the Patient Directory.\n\nPermission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag\n\nThis Permission encodes:\n\n- combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.\n- rule is #permit for health directory use, patient requested, or family requested\n    - This enables access all patients, provided Consent Permit is on file\n    - BUT uses .limit.tag to exclude any elements marked with Religious Sensitivity (`#REL`)\n    - Note that the Consent requirement is documented here with a .limit of NOAUTH. Might there be a better way?\n- rule is #permit for administrative actions on the directory\n    - This enables maintenance by those with directory admin authorization'
+    exampleBoolean: true
+  Permission/ex-permission-directory-exclude-location:
+    name: 'Permission allowing data to be used, but don''t expose sensitive location elements'
+    description: 'Permission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag'
+    exampleBoolean: true
+  Permission/ex-permission-intermediate-authoredby:
+    name: 'Permission allowing data authored by a practitioner'
+    description: 'Permission allowing data authored by\n\nThere is a Consent that captures the consent ceremony and setting\n- status is active - so it should be enforced\n- scope is privacy \n- category is LOINC 59284-0 Consent\n- date indicated when the consent is recorded\n- patient is identified\n- performer is the patient\n- organization is identified\n- source indicate a DocumentReference (with included text of the policy)\n- policy url points at this Permission\n\nThis Permission encodes\n- base rule is #permit \n- base rule includes TPO so as to be clear this is a consent about TPO\n- Permits access to data authored by [practitioner 1](Practitioner-ex-practitioner.html)\n- Given that there is only one targeted permit rule, then nothing else is allowed.'
+    exampleBoolean: true
+  Permission/ex-permission-intermediate-not-authoredby:
+    name: 'Permission allowing most sharing but NOT data authored by a practitioner'
+    description: 'Permission allowing most sharing of data but NOT data authored by a practitioner\n\nThe Consent that captures the consent ceremony and setting:\n- status is active - so it should be enforced\n- scope is privacy \n- category is LOINC 59284-0 Consent\n- date indicated when the consent is recorded\n- patient is identified\n- performer is the patient\n- organization is identified\n- source indicate a DocumentReference (with included text of the policy)\n- policy url points at this Permission\n\nThis Permission encodes\n- base rule includes TPO so as to be clear this is a consent about TPO\n- second rule denying access to data authored by ex-practitioner\n  - [practitioner 1](Practitioner-ex-practitioner.html)\n- nothing else is authorized by this Permission'
+    exampleBoolean: true
+  Permission/ex-permission-not-bob:
+    name: 'Permission allowing most use but NOT a given practitioner'
+    description: 'Permission allowing most use of data but NOT a given practitioner\n\nThis Permission encodes\n- base rule includes TPO so as to be clear this generally authorizes TPO\n- second rule denying access to a given ex-practitioner\n - [practitioner 1](Practitioner-ex-practitioner.html)\n- nothing else is authorized by this Permission'
+    exampleBoolean: true
+  Permission/ex-permission-patient-authoredby:
+    name: 'Permission allowing data authored by a practitioner'
+    description: 'Permission allowing data authored by\n\nThere is a Consent that captures the consent ceremony and setting\n- status is active - so it should be enforced\n- scope is privacy \n- category is LOINC 59284-0 Consent\n- date indicated when the consent is recorded\n- patient is identified\n- performer is the patient\n- organization is identified\n- source indicate a DocumentReference (with included text of the policy)\n- policy url points at this Permission\n\nThis Permission encodes\n- base rule is #permit \n- base rule includes TPO so as to be clear this is a consent about TPO\n- Permits access to data authored by [practitioner 1](Practitioner-ex-practitioner.html)\n- Given that there is only one targeted permit rule, then nothing else is allowed.'
+    exampleBoolean: true
+  Permission/ex-permission-patient-directory-all:
+    name: 'A Permission with all the Patient Directory rules'
+    description: 'This Permission has all the rules for the Patient Directory.\n\nPermission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag\n\nThis Permission encodes:\n\n- combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.\n- rule is #permit for health directory use, patient requested, or family requested\n    - This enables access all patients, provided Consent Permit is on file\n    - BUT uses .limit.tag to exclude any elements marked with Religious Sensitivity (`#REL`)\n    - Note that the Consent requirement is documented here with a .limit of NOAUTH. Might there be a better way?\n- rule is #permit for administrative actions on the directory\n    - This enables maintenance by those with directory admin authorization'
+    exampleBoolean: true
+  Permission/ex-permission-redisclose-forbidden-without-consent:
+    name: 'Permission allowing data to be used, but with redisclosure condition'
+    description: 'Permission allowing requested use, but restricting redisclosure\n\nThis Permission encodes\n\n- base rule is #permit\n- base rule includes TPO so as to be clear this is authorizes TPO\n- includes a residual (limit) using code NODSCLCDS'
+    exampleBoolean: true
+  Permission/ex-permission-timeout:
+    name: 'Permission allowing most use but expires in a year'
+    description: 'Permission allowing most use of data but expires in a year. Note that this ''year'' indication is based on absolute dates of issuing of the Permission, and use of Permission.validity.\n\nThis Permission encodes\n- base rule includes TPO so as to be clear this generally authorizes TPO\n- validity is a period of one year'
+    exampleBoolean: true
 
+  # Permission/ex-permission-k-anonymity:
+  #   name: Permission require exposure to meet a given k-anonymity value
+  #   description: Permission allowing use of data but requires exposure meet a given k-anonymity value. \n\nThis Permission encodes\n- base rule includes Research so as to be clear this generally authorizes Research\n- validity is a period of one year
+  #   exampleBoolean: true
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced

@@ -3,12 +3,12 @@
 <a name="bnc"></a>
 <h3>Scope and Usage</h3>
 <p>
-A declarative <a href="security.html#binding">attribute-based access control</a> policy statement.
+A declarative <a href="https://hl7.org/fhir/security.html#binding">attribute-based access control</a> policy statement.
 
 Permission is used to express who has specific rights to specific data under specific conditions. Permission can express rules including
 </p>
 <ul>
-<li>security labels/codes (<a href="security-labels.html#6.1.1.4.0.2">policies, refrains, and obligations</a>),</li>
+<li>security labels/codes (<a href="https://hl7.org/fhir/security-labels.html#6.1.1.4.0.2">policies, refrains, and obligations</a>),</li>
 <li>user identity,</li>
 <li>application being used,</li>
 <li>location of the requester,</li>
@@ -43,7 +43,7 @@ Examples are:
 <li>consent provisions (i.e., `Consent.provision`) encoding in a different rule language (i.e., `Permission.rule`) using `Consent.provisionReference`.</li>
 </ul>
 <p>
-The Permission resource should not be used in a conflicting way with <a href="security-labels.html">security labels in the .meta.security element</a>.
+The Permission resource should not be used in a conflicting way with <a href="https://hl7.org/fhir/security-labels.html">security labels in the .meta.security element</a>.
 </p>
 
 <!-- (optional):

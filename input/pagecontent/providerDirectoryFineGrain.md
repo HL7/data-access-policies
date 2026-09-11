@@ -102,10 +102,6 @@ I did not mock this up, as I expect this is similar to the Patient, with more da
 
 There are actors that would have rights to maintain the directory. HR would be one of these so that they can add new employees, and manage changes over time. There may be other administrative actors that might be responsible for changes not beyond HR. These users would have the role / clearance to use the `HDIRECT` purposeOfUse. The Permission would them indicate that this purposeOfUse has rights to all the actions. 
 
-<div markdown="1" class="stu-note">
-The vocabulary bound to the `.action` element are the Privacy actions. These are good action verbs regarding privacy, but are not sufficient or appropriate at the security level. The vocabulary needs to be changed to the [RESTful Actions (CRUDE)]({{site.data.fhir.path}}valueset-audit-event-action.html), which are defined for AuditEvent.action. Fortunately the current binding is example binding, so it does not keep us from using the CRUDE verbs. But the CRUDE verbs are better for Permission use.
-</div>
-
 ```fs
 * combining = #deny-unless-permit
 * rule[+].type = #permit
