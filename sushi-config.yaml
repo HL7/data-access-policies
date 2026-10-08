@@ -13,7 +13,7 @@ description: Data Access Policies.
 status: active
 license: CC0-1.0
 #date: 2020-02-26
-version: 1.0.0-current
+version: 0.1.0-current
 fhirVersion: 6.0.0-snapshot1
 copyrightYear: 2023+
 releaseLabel: ci-build
