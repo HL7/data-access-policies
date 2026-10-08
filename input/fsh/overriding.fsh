@@ -431,5 +431,5 @@ Usage: #example
 * grantor = Reference(ex-patient)
 * policyBasis.reference = Reference(Permission/ex-overriding-rbac-by-role)
 * decision = #permit
-* provision.id = "fooBar"
+//* provision.id = "fooBar"
 

@@ -13,7 +13,7 @@
 <!-- TODO not yet defined
     <extension url="http://hl7.org/fhir/StructureDefinition/permissionImposedOnBundle">
       <valueReference>
-        <reference value="http://example.com/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"/>
+        <reference value="https://example.org/fhir/Permission/in-permission-redisclose-forbidden-without-consent"/>
       </valueReference>
     </extension>
     -->
@@ -24,10 +24,10 @@
   <link>
     <relation value="self"/>
     <url
-         value="http://example.com/R4/fhir/Observation?patient=example&amp;status=current"/>
+         value="https://example.org/fhir/Observation?patient=example&amp;status=current"/>
   </link>
   <entry>
-    <fullUrl value="http://example.com/R4/fhir/Observation/in-Observation"/>
+    <fullUrl value="https://example.org/fhir/Observation/in-Observation"/>
     <resource>
       <Observation>
         <id value="in-Observation"/>
@@ -71,7 +71,7 @@
   </entry>
   <entry>
     <fullUrl
-             value="http://example.com/R4/fhir/Permission/in-permission-redisclose-forbidden-without-consent"/>
+             value="https://example.org/fhir/Permission/in-permission-redisclose-forbidden-without-consent"/>
     <resource>
       <Permission>
         <id value="in-permission-redisclose-forbidden-without-consent"/>

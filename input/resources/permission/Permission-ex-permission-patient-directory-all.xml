@@ -23,6 +23,26 @@
           <code value="read"/>
         </coding>
       </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HDIRECT"/>
+        </coding>
+      </purpose>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="PATRQT"/>
+        </coding>
+      </purpose>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="FAMRQT"/>
+        </coding>
+      </purpose>
+    </activity>
+    <activity>
       <action>
         <coding>
           <system value="http://hl7.org/fhir/restful-interaction"/>

@@ -45,7 +45,7 @@ There is no elements in the Practitioner resource that can be used by ABAC to fi
 
 ##### Limit by tag
 
-The current Permission has the Permission.rule.limit.tag, are tagged data to be removed from any Resources authorized by this itteration of `.rule` before the response Bundle is assembled. This tagging leverages the [DS4P Inline Security Labels]({{site.data.fhir.ds4p}}/inline_security_labels.html) which defines how to tag individual elements within a Resource, and also tag the Resource as having element level tags.
+The current Permission has the Permission.rule.limit.tag, are tagged data to be removed from any Resources authorized by this itteration of `.rule` before the response Bundle is assembled. This tagging leverages the [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) which defines how to tag individual elements within a Resource, and also tag the Resource as having element level tags.
 
 - Example of a [permission using this extension](Permission-ex-permission-directory-exclude-location.html)
 - Example of [Practitioner with element level tagging](Practitioner-ex-practitioner-sensitive.html)
@@ -81,11 +81,13 @@ Executing a search is possible:
 
 #### rule using Expression
 
+**Note that Expression has been removed as it is unclear how practical it is**
+
 The illustration here is to show that the Patient can't gain access to entries that they should not have access to by way of their authorization. The above search would work, but they would also get the same results if they just searched for "moehrke"
 
 > GET [base]/Practitioner?name=moehrke
 
-For this we use the `Permission.rule.data.expression` to select only those Practitioners that have a PractitionerRole.code=doctor. See [permission using this expression for data selection](Permission-ex-permission-directory-doctors-only.html)
+For this we use the `Permission.rule.data.expression` to select only those Practitioners that have a PractitionerRole.code=doctor. 
 
 ```fs
 * rule[+].permit
@@ -116,6 +118,4 @@ There are actors that would have rights to maintain the directory. HR would be o
 
 - Permission [enabling administrative CRUDE](Permission-ex-permission-directory-admin.html)
 
-### Everything combined
 
-All the above fragments of a Permission would then be [combined into one Permission for the Director](Permission-ex-permission-directory-all.html)

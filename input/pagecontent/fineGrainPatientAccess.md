@@ -243,7 +243,7 @@ Scope: Patient.read EXAMPLE
 
 TODO: Did not fixup the following
 
-## Fine Grained patient access - Version 2
+### Fine Grained patient access - Version 2
 
 In this new version, we've adressed a few points mentioned previously :
 
@@ -419,8 +419,10 @@ In addition to this mandatory change, we've thought of a few search parameters t
 4. `Data.expression.expression`
   The data.expression.expression element is a fhirpath expression used to specify which element we aim to use inside of the List, for now we only use Patient, but once we use several resources we might need to search for Permissions using a specific fhirpath expression.
 
-<div markdown="1" class="dragon">
+
 ### Pending questions
+
+<div markdown="1" class="dragon">
 
 1. Can we make all of these changes ? If so, what is the procedure ?
 2. Should the Data.expressions.expression element be used this way ?

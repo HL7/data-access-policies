@@ -34,7 +34,7 @@
       <resource>
         <meaning value="instance" />
         <reference>
-          <reference value="http://hl7.org/fhir/uv/saner/Measure/CDCHealthcareSupplyPathway" />
+          <reference value="https://example.org/Measure/CDCHealthcareSupplyPathway" />
         </reference>
       </resource>
     </data>
@@ -46,8 +46,14 @@
       </actor>
       <action>
         <coding>
-          <system value="http://terminology.hl7.org/CodeSystem/consentaction" />
-          <code value="access" />
+          <system value="http://hl7.org/fhir/restful-interaction" />
+          <code value="read" />
+        </coding>
+      </action>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction" />
+          <code value="search-type" />
         </coding>
       </action>
       <purpose>
@@ -72,20 +78,39 @@
       <resource>
         <meaning value="instance" />
         <reference>
-          <reference value="http://hl7.org/fhir/uv/saner/Measure/CDCHealthcareSupplyPathway" />
+          <reference value="https://example.org/Measure/CDCHealthcareSupplyPathway" />
         </reference>
       </resource>
     </data>
     <activity>
       <actor>
         <reference>
-          <reference value="http://example.com/R4/fhir/Group/102" />
+          <reference value="https://example.org/fhir/Group/102" />
         </reference>
       </actor>
       <action>
         <coding>
-          <system value="http://terminology.hl7.org/CodeSystem/consentaction" />
-          <code value="access" />
+          <system value="http://hl7.org/fhir/restful-interaction" />
+          <code value="read" />
+        </coding>
+      </action>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason" />
+          <code value="HCOMPL" />
+        </coding>
+      </purpose>
+    </activity>
+    <activity>
+      <actor>
+        <reference>
+          <reference value="https://example.org/fhir/Group/102" />
+        </reference>
+      </actor>
+      <action>
+        <coding>
+          <system value="http://hl7.org/fhir/restful-interaction" />
+          <code value="search-type" />
         </coding>
       </action>
       <purpose>

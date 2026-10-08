@@ -80,16 +80,18 @@ Usage: #example
 * address.country = "USA"
 * extension[+].url = "http://hl7.org/fhir/StructureDefinition/patient-religion"
 * extension[=].valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ReligiousAffiliation#1041 "Roman Catholic Church"
+/* TODO: removing this extension for now 
 * extension[=].valueCodeableConcept.extension[+].url = "http://hl7.org/fhir/uv/security-label-ds4p/StructureDefinition/extension-inline-sec-label"
 * extension[=].valueCodeableConcept.extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#REL
+*/
 
 /* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
 
 Instance: ex-permission-patient-authoredby
 InstanceOf: Permission
-Title: "Permission allowing data authored by a practitioner"
+Title: "Permission allowing data authored by the patient"
 Description: """
-Permission allowing data authored by
+Permission allowing data authored by the patient
 
 There is a Consent that captures the consent ceremony and setting
 - status is active - so it should be enforced
@@ -105,7 +107,7 @@ There is a Consent that captures the consent ceremony and setting
 This Permission encodes
 - base rule is #permit 
 - base rule includes TPO so as to be clear this is a consent about TPO
-- Permits access to data authored by [practitioner 1](Practitioner-ex-practitioner.html)
+- Permits access to data authored by [the patient](Patient/ex-patient)
 - Given that there is only one targeted permit rule, then nothing else is allowed.
 """
 Usage: #example
@@ -118,7 +120,7 @@ Usage: #example
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#TREAT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HPAYMT
 * rule[=].activity.purpose[+] = http://terminology.hl7.org/CodeSystem/v3-ActReason#HOPERAT
-* rule[=].data.resource.reference = Reference(Practitioner/ex-practitioner)
+* rule[=].data.resource.reference = Reference(Patient/ex-patient)
 * rule[=].data.resource.meaning = http://hl7.org/fhir/consent-data-meaning#authoredby
 */
 
