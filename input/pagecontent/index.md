@@ -26,10 +26,9 @@ The use-cases and analysis are found on these pages:
 
 [Permission](StructureDefinition-Permission.html) is a portion of an Access Control environment. It is provided in FHIR form to enable Access Control rules to more naturally utilize the FHIR model.
 
-<figure>
+<div>
 {%include using-rules.svg%}
-<figcaption><b>Figure Using Rules</b></figcaption>
-</figure>
+</div>
 <br clear="all">
 
 ### Intellectual Property Considerations

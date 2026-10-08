@@ -1,5 +1,7 @@
 /* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
 
+TODO Expression has been removed as it is unclear how practical it is
+
 Instance: ex-permission-directory-all
 InstanceOf: Permission
 Title: "A Permission with all the Directory rules"
@@ -127,9 +129,10 @@ Description: "Dummy Practitioner example. This Practitioner has some phone and a
 * telecom[+].system = #email
 * telecom[=].use = #home
 * telecom[=].value = "JohnMoehrke@example.com"
+/* TODO: removing this extension for now 
 * telecom[=].extension[+].url = "http://hl7.org/fhir/uv/security-label-ds4p/StructureDefinition/extension-inline-sec-label"
 * telecom[=].extension[=].valueCoding = http://terminology.hl7.org/CodeSystem/v3-ActCode#LOCIS
-
+*/
 
 Instance: ex-practitioner-de-sensitive
 InstanceOf: Practitioner

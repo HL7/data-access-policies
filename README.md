@@ -16,8 +16,15 @@ This ImplementationGuide is published in the following locations:
 - Continuous Build: https://build.fhir.org/ig/HL7/data-access-policies/
 - Canonical / permanent URL:
 
-### Issues
+### Issues (use-cases to improve Permission)
 
 Issues and change requests are managed here:  
 
 Issues:  https://github.com/HL7/data-access-policies/issues
+
+### Incubator issues
+
+See the later-examples folder for things that are not working.
+
+- Bundles with Permission crash IG Publisher
+- Most things that refered to Permission that originally were FSH, have been commented out and the xml equivilant added to the resources folder. This is due to a sushi issue

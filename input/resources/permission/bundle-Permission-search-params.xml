@@ -12,7 +12,7 @@
         <extension url="http://hl7.org/fhir/build/StructureDefinition/path">
           <valueString value="Permission.status"/>
         </extension>
-        <url value="http://hl7.org/fhir/build/SearchParameter/Permission-status"/>
+        <!-- <url value="http://hl7.org/fhir/build/SearchParameter/Permission-status"/> -->
         <description value="active | entered-in-error | draft | rejected"/>
         <code value="status"/>
         <type value="token"/>
@@ -31,7 +31,7 @@
         <extension url="http://hl7.org/fhir/build/StructureDefinition/path">
           <valueString value="Permission.identifier"/>
         </extension>
-        <url value="http://hl7.org/fhir/build/SearchParameter/Permission-identifier"/>
+        <!-- <url value="http://hl7.org/fhir/build/SearchParameter/Permission-identifier"/> -->
         <description value="The unique id for a particular permission"/>
         <code value="identifier"/>
         <type value="token"/>
@@ -50,7 +50,7 @@
         <extension url="http://hl7.org/fhir/build/StructureDefinition/path">
           <valueString value="Permission.rule.activity.actor.reference"/>
         </extension>
-        <url value="http://hl7.org/fhir/build/SearchParameter/Permission-rule-activity-actor"/>
+        <!-- <url value="http://hl7.org/fhir/build/SearchParameter/Permission-rule-activity-actor"/> -->
         <description value="The activity actor mentioned in a permission rule (permit or deny)."/>
         <code value="rule-activity-actor"/>
         <type value="reference"/>
@@ -69,7 +69,7 @@
         <extension url="http://hl7.org/fhir/build/StructureDefinition/path">
           <valueString value="Permission.rule.data.resource.reference"/>
         </extension>
-        <url value="http://hl7.org/fhir/build/SearchParameter/Permission-rule-data-resource"/>
+        <!-- <url value="http://hl7.org/fhir/build/SearchParameter/Permission-rule-data-resource"/> -->
         <description value="The data resource mentioned in a permission rule (permit or deny)."/>
         <code value="rule-data-resource"/>
         <type value="reference"/>
@@ -88,7 +88,7 @@
         <extension url="http://hl7.org/fhir/build/StructureDefinition/path">
           <valueString value="Permission.rule.data.period"/>
         </extension>
-        <url value="http://hl7.org/fhir/build/SearchParameter/Permission-rule-data-period"/>
+        <!-- <url value="http://hl7.org/fhir/build/SearchParameter/Permission-rule-data-period"/> -->
         <description value="The data period mentioned in a permission rule (permit or deny)."/>
         <code value="rule-data-period"/>
         <type value="date"/>
@@ -107,7 +107,7 @@
         <extension url="http://hl7.org/fhir/build/StructureDefinition/path">
           <valueString value="Permission.rule.limit.element"/>
         </extension>
-        <url value="http://hl7.org/fhir/build/SearchParameter/Permission-rule-limit-element"/>
+        <!-- <url value="http://hl7.org/fhir/build/SearchParameter/Permission-rule-limit-element"/> -->
         <description value="The element limits mentioned in a permission rule (permit or deny)."/>
         <code value="rule-limit-element"/>
         <type value="string"/>

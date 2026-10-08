@@ -52,6 +52,7 @@
       <display value="Directory permission allowing HR and IT full access"/>
     </item>
   </entry>
+  <!--
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
       <valueString value="Example of authorizing some data in a directory but excluding sensitive elements"/>
@@ -64,6 +65,7 @@
       <display value="Directory permission with excluding sensitive elements"/>
     </item>
   </entry>
+  -->
   <!--
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
@@ -152,30 +154,6 @@
   </entry>
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
-      <valueString value="This Permission has all the rules for the Directory.\n\nPermission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag\n\nThis Permission encodes:\n\n- combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.\n- rule is #permit for administrative actions on the directory\n    - This enables maintenance by those with directory admin authorization\n- rule is #permit for Treatment, Payment, and Operations\n    - This enables workers to access all workers\n    - BUT includes an .limit.tag to exclude any elements marked with Location Sensitivity (`#LOCIS`)\n- rule is #permit for Patient requested (`#PATRQT`)\n    - permits access by patients (or authorized patient delegate)\n    - BUT only Practitioners that have a PractitionerRole.code=#doctor\n    - BUT includes an .limit.tag to exclude any elements marked with Location Sensitivity (`#LOCIS`)"/>
-    </extension>
-    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
-      <valueString value="ex-permission-directory-all"/>
-    </extension>
-    <item>
-      <reference value="Permission/ex-permission-directory-all"/>
-      <display value="A Permission with all the Directory rules"/>
-    </item>
-  </entry>
-  <entry>
-    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
-      <valueString value="This Permission has all the rules for the Patient Directory.\n\nPermission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag\n\nThis Permission encodes:\n\n- combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.\n- rule is #permit for health directory use, patient requested, or family requested\n    - This enables access all patients, provided Consent Permit is on file\n    - BUT uses .limit.tag to exclude any elements marked with Religious Sensitivity (`#REL`)\n    - Note that the Consent requirement is documented here with a .limit of NOAUTH. Might there be a better way?\n- rule is #permit for administrative actions on the directory\n    - This enables maintenance by those with directory admin authorization"/>
-    </extension>
-    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
-      <valueString value="ex-permission-directory-doctors-only"/>
-    </extension>
-    <item>
-      <reference value="Permission/ex-permission-directory-doctors-only"/>
-      <display value="A Permission Directory doctors only"/>
-    </item>
-  </entry>
-  <entry>
-    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
       <valueString value="Permission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag"/>
     </extension>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
@@ -238,14 +216,14 @@
   </entry>
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
-      <valueString value="Permission allowing data authored by\n\nThere is a Consent that captures the consent ceremony and setting\n- status is active - so it should be enforced\n- scope is privacy \n- category is LOINC 59284-0 Consent\n- date indicated when the consent is recorded\n- patient is identified\n- performer is the patient\n- organization is identified\n- source indicate a DocumentReference (with included text of the policy)\n- policy url points at this Permission\n\nThis Permission encodes\n- base rule is #permit \n- base rule includes TPO so as to be clear this is a consent about TPO\n- Permits access to data authored by [practitioner 1](Practitioner-ex-practitioner.html)\n- Given that there is only one targeted permit rule, then nothing else is allowed."/>
+      <valueString value="Permission allowing data authored by the patient\n\nThere is a Consent that captures the consent ceremony and setting\n- status is active - so it should be enforced\n- scope is privacy \n- category is LOINC 59284-0 Consent\n- date indicated when the consent is recorded\n- patient is identified\n- performer is the patient\n- organization is identified\n- source indicate a DocumentReference (with included text of the policy)\n- policy url points at this Permission\n\nThis Permission encodes\n- base rule is #permit \n- base rule includes TPO so as to be clear this is a consent about TPO\n- Permits access to data authored by [the patient](Patient/ex-patient)\n- Given that there is only one targeted permit rule, then nothing else is allowed."/>
     </extension>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
       <valueString value="ex-permission-patient-authoredby"/>
     </extension>
     <item>
       <reference value="Permission/ex-permission-patient-authoredby"/>
-      <display value="Permission patient authored by"/>
+      <display value="Permission patient authored by the patient"/>
     </item>
   </entry>
   <entry>

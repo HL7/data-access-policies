@@ -20,7 +20,7 @@
       <resource>
         <meaning value="authoredby"/>
         <reference>
-          <reference value="Practitioner/ex-practitioner"/>
+          <reference value="Patient/ex-patient"/>
         </reference>
       </resource>
     </data>
