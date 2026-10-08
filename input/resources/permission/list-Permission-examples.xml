@@ -64,6 +64,7 @@
       <display value="Directory permission with excluding sensitive elements"/>
     </item>
   </entry>
+  <!--
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
       <valueString value="Example Bundle with included Permission with residual restrictions"/>
@@ -76,6 +77,7 @@
       <display value="Bundle with permission expressed residual rules to apply"/>
     </item>
   </entry>
+  -->
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
       <valueString value="Example of a Base Permission Imported in another Permission"/>
