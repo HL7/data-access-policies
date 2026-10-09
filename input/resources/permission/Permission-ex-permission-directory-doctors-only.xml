@@ -16,7 +16,8 @@
   <combining value="deny-unless-permit"/>
   <rule>
     <type value="permit"/>
-    <data>
+    <activity>
+    <actor>
       <extension url="http://hl7.org/fhir/StructureDefinition/permission-rule-expression">
         <valueExpression>
           <description value="select all Practitioner resources where the Practitioner has a PractitionerRole with code of doctor"/>
@@ -24,14 +25,7 @@
           <expression value="Practitioner?_has:PractitionerRole:practitioner:role=http://terminology.hl7.org/CodeSystem/practitioner-role|doctor"/>
         </valueExpression>
       </extension>
-    </data>
-    <activity>
-      <purpose>
-        <coding>
-          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
-          <code value="PATRQT"/>
-        </coding>
-      </purpose>
+      </actor>
     </activity>
   </rule>
 </Permission>

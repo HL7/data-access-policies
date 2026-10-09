@@ -13,7 +13,7 @@
   </extension>
   <url value="http://hl7.org/fhir/StructureDefinition/permission-rule-expression"/>
   <name value="PermissionRuleExpression"/>
-  <title value="A computable expression for what is controlled by the Permission "/>
+  <title value="A computable expression for what is controlled by the Permission.rule"/>
   <status value="active"/>
   <experimental value="false"/>
   <publisher value="HL7 International / Security"/>
@@ -23,11 +23,11 @@
       <value value="http://www.hl7.org/Special/committees/secure"/>
     </telecom>
   </contact>
-  <description value="Restricts this <code>Permission.rule</code> to only apply when the expression evaluates to <code>true</code>. This enables narrowing down the scope of the <code>Permission.rule</code> based on nuanced and fine-grained criteria expressed through a FHIRPath or CQL expression. This extension should not be used where native elements exist in <code>Permission.rule</code>; as execution of an expression is expensive.
+  <description value="Restricts this `Permission.rule` to only apply when the expression evaluates to `true`. This enables narrowing down the scope of the `Permission.rule` based on nuanced and fine-grained criteria expressed through a FHIRPath or CQL expression. This extension should not be used where native elements exist in `Permission.rule`; as execution of an expression is expensive.
   
-  When the extension is used in <code>Permission.rule.data</code>, it specifies the conditions under which the data is subject to the rule (e.g. Observations of a certain type with a value in a specific range). If on a given <code>Permission.rule</code> iteration, this extension and other <code>.data</code> elements are present, then the other <code>.data</code> elements are understood to make the same statement as the expression. 
+  When the extension is used in `Permission.rule.data`, it specifies the conditions under which the data is subject to the rule (e.g. Observations of a certain type with a value in a specific range). If on a given `Permission.rule` iteration, this extension and other `.data` elements are present, then the other `.data` elements are understood to make the same statement as the expression. 
   
-  When the extension is used in <code>Permission.rule.activity.actor</code>, it specifies the conditions under which the actor is subject to the rule (e.g. Practitioners with a PractitionerRole code of XYZ). If on a given <code>Permission.rule</code> iteration, this extension and other <code>.activity.actor</code> elements are present, then the other <code>.activity.actor</code> elements are understood to make the same statement as the expression."/>
+  When the extension is used in `Permission.rule.activity.actor`, it specifies the conditions under which the actor is subject to the rule (e.g. Practitioners with a PractitionerRole code of XYZ). If on a given `Permission.rule` iteration, this extension and other `.activity.actor` elements are present, then the other `.activity.actor` elements are understood to make the same statement as the expression."/>
   <fhirVersion value="6.0.0"/>
   <mapping>
     <identity value="rim"/>
@@ -39,7 +39,7 @@
   <context>
     <extension url="http://hl7.org/fhir/StructureDefinition/version-specific-use">
       <extension url="startFhirVersion">
-        <valueCode value="4.0"/>
+        <valueCode value="5.0"/>
       </extension>
     </extension>
     <type value="element"/>
@@ -48,7 +48,7 @@
   <context>
     <extension url="http://hl7.org/fhir/StructureDefinition/version-specific-use">
       <extension url="startFhirVersion">
-        <valueCode value="4.0"/>
+        <valueCode value="5.0"/>
       </extension>
     </extension>
     <type value="element"/>
