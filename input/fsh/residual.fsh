@@ -90,22 +90,6 @@ Usage: #example
 * entry[1].resource = in-permission-redisclose-forbidden-without-consent
 * entry[1].search.mode = #include
 
-Instance: in-Observation
-InstanceOf: Observation
-Title: "Observation - SH: Alcohol Use"
-Description: """
-This example Observation resource to represent alcohol use assessment in a patient summary.
-"""
-Usage: #inline
-* meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActCode#ETH
-* meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-Confidentiality#R
-* status = #final
-* code = http://loinc.org#74013-4
-* subject = Reference(Patient/ex-patient)
-* effectiveDateTime = "2022-06-13"
-* valueQuantity = 5 '/d' "wine glasses per day"
-* performer = Reference(Patient/ex-patient)
-
 */
 
 /* TODO: Commented out until sushi supports profiles and examples of an Additional Resource defined within the same IG. So for now these are in XML form. Leaving these in FSH form to use later.
@@ -199,3 +183,20 @@ Usage: #example
 * rule[=].limit.extension[ka].valueInteger = 4
 
 */
+
+Instance: in-Observation
+InstanceOf: Observation
+Title: "Observation - SH: Alcohol Use"
+Description: """
+This example Observation resource to represent alcohol use assessment in a patient summary.
+"""
+Usage: #inline
+* meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-ActCode#ETH
+* meta.security[+] = http://terminology.hl7.org/CodeSystem/v3-Confidentiality#R
+* status = #final
+* code = http://loinc.org#74013-4
+* subject = Reference(Patient/ex-patient)
+* effectiveDateTime = "2022-06-13"
+* valueQuantity = 5 '/d' "wine glasses per day"
+* performer = Reference(Patient/ex-patient)
+

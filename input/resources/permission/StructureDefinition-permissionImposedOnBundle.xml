@@ -1,32 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="permission-from-consent"/>
+  <id value="permission-imposed-on-bundle"/>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics">
+    <valueCode value="can-bind"/>
+  </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
     <valueCode value="sec"/>
   </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-    <valueInteger value="1"/>
+    <valueInteger value="0"/>
   </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
     <valueCode value="trial-use"/>
   </extension>
-  <url value="http://hl7.org/fhir/StructureDefinition/permission-from-consent"/>
-<!--  <version value="0.0.0"/> -->
-  <name value="PermissionFromConsent"/>
-  <title value="Permission From Consent"/>
+  <url value="http://hl7.org/fhir/StructureDefinition/permission-imposed-on-bundle"/>
+  <name value="PermissionImposedOnBundle"/>
+  <title value="Permission imposed on a Bundle"/>
   <status value="active"/>
-  <experimental value="false"/>
-  <date value="2026-09-11T16:55:11+11:00"/>
+  <date value="2025-11-07T13:22:33-06:00"/>
   <publisher value="HL7 International / Security"/>
   <contact>
+    <name value="HL7 International / Security"/>
     <telecom>
       <system value="url"/>
       <value value="http://www.hl7.org/Special/committees/secure"/>
     </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="security-cc@lists.hl7.org"/>
+    </telecom>
   </contact>
-  <description value="When the provisions of a Consent are encoded using a Permission, this extension is used to indicate the Permission from the Consent."/>
-  <fhirVersion value="6.0.0"/>
+  <contact>
+    <name value="HL7 Security Work Group"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://www.hl7.org/Special/committees/secure/index.cfm"/>
+    </telecom>
+  </contact>
+  <description value="When a Bundle carries a Permissiont that must be enforced"/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+    </coding>
+  </jurisdiction>
+  <fhirVersion value="6.0.0-ballot3"/>
   <mapping>
     <identity value="rim"/>
     <uri value="http://hl7.org/v3"/>
@@ -36,7 +55,7 @@
   <abstract value="false"/>
   <context>
     <type value="element"/>
-    <expression value="Consent"/>
+    <expression value="Bundle.meta.security"/>
   </context>
   <type value="Extension"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
@@ -44,10 +63,8 @@
   <differential>
     <element id="Extension">
       <path value="Extension"/>
-      <short value="Permission from Consent"/>
-      <definition value="Consent provisions encoded in a Permission."/>
-      <min value="0"/>
-      <max value="1"/>
+      <short value="Permission imposed on a Bundle"/>
+      <definition value="When a Bundle carries a Permission that must be enforced"/>
     </element>
     <element id="Extension.extension">
       <path value="Extension.extension"/>
@@ -55,7 +72,7 @@
     </element>
     <element id="Extension.url">
       <path value="Extension.url"/>
-      <fixedUri value="http://hl7.org/fhir/StructureDefinition/permission-from-consent"/>
+      <fixedUri value="http://hl7.org/fhir/StructureDefinition/permission-imposed-on-bundle"/>
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]"/>

@@ -52,7 +52,7 @@
       <display value="Directory permission allowing HR and IT full access"/>
     </item>
   </entry>
-  <!--
+  <!--  TODO: Fix when add extension for expressions
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
       <valueString value="Example of authorizing some data in a directory but excluding sensitive elements"/>
@@ -66,20 +66,44 @@
     </item>
   </entry>
   -->
-  <!--
+  <!--   TODO: Fix when publisher can handle Bundles with incubator resources in them
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
-      <valueString value="Example Bundle with included Permission with residual restrictions"/>
+      <valueString value="Example SearchSet Bundle of Permission"/>
     </extension>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
-      <valueString value="permission-example-bundle-residual"/>
+      <valueString value="permission-example-bundle-permission"/>
     </extension>
     <item>
-      <reference value="Bundle/ex-SearchSet-withPermission"/>
-      <display value="Bundle with permission expressed residual rules to apply"/>
+      <reference value="Bundle/example-bundle-permission"/>
+      <display value="SearchSet Bundle with permission"/>
+    </item>
+  </entry>
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Example Bundle with internal Permission with residual restrictions"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="permission-example-bundle-in-residual"/>
+    </extension>
+    <item>
+      <reference value="Bundle/example-bundle-in-residual"/>
+      <display value="Bundle with permission internal residual rules to apply"/>
     </item>
   </entry>
   -->
+  <entry>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
+      <valueString value="Example Bundle with external Permission with residual restrictions"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/build/StructureDefinition/title">
+      <valueString value="permission-example-bundle-ex-residual"/>
+    </extension>
+    <item>
+      <reference value="Bundle/example-bundle-ex-residual"/>
+      <display value="Bundle with permission external residual rules to apply"/>
+    </item>
+  </entry>
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
       <valueString value="Example of a Base Permission Imported in another Permission"/>
