@@ -79,6 +79,7 @@
       <display value="SearchSet Bundle with permission"/>
     </item>
   </entry>
+  -->
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
       <valueString value="Example Bundle with internal Permission with residual restrictions"/>
@@ -91,7 +92,6 @@
       <display value="Bundle with permission internal residual rules to apply"/>
     </item>
   </entry>
-  -->
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
       <valueString value="Example Bundle with external Permission with residual restrictions"/>
