@@ -1,74 +1,13 @@
 <Bundle xmlns="http://hl7.org/fhir">
-  <id value="ex-SearchSet-withPermission"/>
-  <meta>
-    <security>
-      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
-      <code value="HTEST"/>
-    </security>
-    <security>
-      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
-      <code value="CPLYPOL"/>
-    </security>
-    <!-- TODO add extension that points at the Permission that MUST be enforced -->
-<!-- TODO not yet defined
-    <extension url="http://hl7.org/fhir/StructureDefinition/permissionImposedOnBundle">
-      <valueReference>
-        <reference value="https://example.org/fhir/Permission/in-permission-redisclose-forbidden-without-consent"/>
-      </valueReference>
-    </extension>
-    -->
-  </meta>
+  <id value="example-bundle-permission"/>
   <type value="searchset"/>
   <timestamp value="2023-11-22T09:32:24Z"/>
-  <total value="2"/>
+  <total value="1"/>
   <link>
     <relation value="self"/>
     <url
-         value="https://example.org/fhir/Observation?patient=example&amp;status=current"/>
+         value="https://example.org/fhir/Permission?patient=example&amp;status=current"/>
   </link>
-  <entry>
-    <fullUrl value="https://example.org/fhir/Observation/in-Observation"/>
-    <resource>
-      <Observation>
-        <id value="in-Observation"/>
-        <meta>
-          <security>
-            <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
-            <code value="ETH"/>
-          </security>
-          <security>
-            <system
-                    value="http://terminology.hl7.org/CodeSystem/v3-Confidentiality"/>
-            <code value="R"/>
-          </security>
-        </meta>
-
-        <status value="final"/>
-        <code>
-          <coding>
-            <system value="http://loinc.org"/>
-            <code value="74013-4"/>
-          </coding>
-        </code>
-        <subject>
-          <reference value="Patient/ex-patient"/>
-        </subject>
-        <effectiveDateTime value="2022-06-13"/>
-        <performer>
-          <reference value="Patient/ex-patient"/>
-        </performer>
-        <valueQuantity>
-          <value value="5"/>
-          <unit value="wine glasses per day"/>
-          <system value="http://unitsofmeasure.org"/>
-          <code value="/d"/>
-        </valueQuantity>
-      </Observation>
-    </resource>
-    <search>
-      <mode value="match"/>
-    </search>
-  </entry>
   <entry>
     <fullUrl
              value="https://example.org/fhir/Permission/in-permission-redisclose-forbidden-without-consent"/>
@@ -137,7 +76,7 @@
       </Permission>
     </resource>
     <search>
-      <mode value="include"/>
+      <mode value="match"/>
     </search>
   </entry>
 </Bundle>

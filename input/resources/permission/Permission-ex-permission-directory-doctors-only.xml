@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Permission  resourceDefinition="http://hl7.org/fhir/StructureDefinition/Permission|0.1.0" xmlns="http://hl7.org/fhir">
+  <id value="ex-permission-directory-doctors-only"/>
+  <meta>
+    <security>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+      <code value="HTEST"/>
+    </security>
+  </meta>
+  <status value="active"/>
+  <asserter>
+    <reference value="Organization/ex-organization"/>
+  </asserter>
+  <date value="2023-11-22"/>
+  <combining value="deny-unless-permit"/>
+  <rule>
+    <type value="permit"/>
+    <activity>
+    <actor>
+      <extension url="http://hl7.org/fhir/StructureDefinition/permission-rule-expression">
+        <valueExpression>
+          <description value="select all Practitioner resources where the Practitioner has a PractitionerRole with code of doctor"/>
+          <language value="application/x-fhir-query"/>
+          <expression value="Practitioner?_has:PractitionerRole:practitioner:role=http://terminology.hl7.org/CodeSystem/practitioner-role|doctor"/>
+        </valueExpression>
+      </extension>
+      </actor>
+    </activity>
+  </rule>
+</Permission>

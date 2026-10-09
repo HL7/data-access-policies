@@ -13,7 +13,7 @@ description: Data Access Policies.
 status: active
 license: CC0-1.0
 #date: 2020-02-26
-version: 0.1.0-current
+version: 0.1.0
 fhirVersion: 6.0.0-snapshot1
 copyrightYear: 2023+
 releaseLabel: ci-build
@@ -74,6 +74,7 @@ pages:
 
 menu:
   Home: index.html
+  Permission Resource: StructureDefinition-Permission.html
   Analysis:
     "Simple data analytics" : non-patient.html
     "Consent" : consent.html
@@ -135,9 +136,17 @@ resources:
 #    name: 'Directory permission with excluding sensitive elements'
 #    description: 'Example of authorizing some data in a directory but excluding sensitive elements'
 #    exampleBoolean: true
-  Bundle/ex-SearchSet-withPermission:
-    name: 'Bundle with permission expressed residual rules to apply'
-    description: 'Example Bundle with included Permission with residual restrictions'
+#  Bundle/example-bundle-permission:
+#    name: 'Bundle with permission example'
+#    description: 'Example SearchSet Bundle with Permission'
+#    exampleBoolean: true
+  Bundle/example-bundle-in-residual:
+    name: 'Bundle with permission internal residual rules to apply'
+    description: 'Example Bundle with internal Permission with residual restrictions'
+    exampleBoolean: true
+  Bundle/example-bundle-ex-residual:
+    name: 'Bundle with permission external residual rules to apply'
+    description: 'Example Bundle with external Permission with residual restrictions'
     exampleBoolean: true
   Permission/example-base:
     name: 'A base permission example.'
@@ -163,10 +172,10 @@ resources:
 #    name: 'A Permission with all the Directory rules'
 #    description: 'This Permission has all the rules for the Directory.\n\nPermission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag\n\nThis Permission encodes:\n\n- combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.\n- rule is #permit for administrative actions on the directory\n    - This enables maintenance by those with directory admin authorization\n- rule is #permit for Treatment, Payment, and Operations\n    - This enables workers to access all workers\n    - BUT includes an .limit.tag to exclude any elements marked with Location Sensitivity (`#LOCIS`)\n- rule is #permit for Patient requested (`#PATRQT`)\n    - permits access by patients (or authorized patient delegate)\n    - BUT only Practitioners that have a PractitionerRole.code=#doctor\n    - BUT includes an .limit.tag to exclude any elements marked with Location Sensitivity (`#LOCIS`)'
 #    exampleBoolean: true
-#  Permission/ex-permission-directory-doctors-only:
-#    name: 'A Permission with all the Patient Directory rules'
-#    description: 'This Permission has all the rules for the Patient Directory.\n\nPermission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag\n\nThis Permission encodes:\n\n- combining rule is deny-unless-permit, ANY permit authorizes access, so rules do not need to be exhaustively processed, but if no permit is found then access is denied.\n- rule is #permit for health directory use, patient requested, or family requested\n    - This enables access all patients, provided Consent Permit is on file\n    - BUT uses .limit.tag to exclude any elements marked with Religious Sensitivity (`#REL`)\n    - Note that the Consent requirement is documented here with a .limit of NOAUTH. Might there be a better way?\n- rule is #permit for administrative actions on the directory\n    - This enables maintenance by those with directory admin authorization'
-#    exampleBoolean: true
+  Permission/ex-permission-directory-doctors-only:
+    name: 'A Permission with rules for only doctors'
+    description: 'This Permission allows access by Practitioners that have a role of doctor. This example uses an expression to select the appropriate Practitioner resources based on their roles.'
+    exampleBoolean: true
   Permission/ex-permission-directory-exclude-location:
     name: 'Permission allowing data to be used, but don''t expose sensitive location elements'
     description: 'Permission allowing patient requested access to Practitioners, but protects the Practitioner sensitive location elements. \n\nPresumes Practitioner resources are tagged at the element level following [DS4P Inline Security Labels](https://hl7.org/fhir/uv/security-label-ds4p/inline_security_labels.html) that indicate the sensitive location elements using the `LOCIS` tag'
@@ -199,11 +208,10 @@ resources:
     name: 'Permission allowing most use but expires in a year'
     description: 'Permission allowing most use of data but expires in a year. Note that this ''year'' indication is based on absolute dates of issuing of the Permission, and use of Permission.validity.\n\nThis Permission encodes\n- base rule includes TPO so as to be clear this generally authorizes TPO\n- validity is a period of one year'
     exampleBoolean: true
-
-  # Permission/ex-permission-k-anonymity:
-  #   name: Permission require exposure to meet a given k-anonymity value
-  #   description: Permission allowing use of data but requires exposure meet a given k-anonymity value. \n\nThis Permission encodes\n- base rule includes Research so as to be clear this generally authorizes Research\n- validity is a period of one year
-  #   exampleBoolean: true
+  Permission/ex-permission-k-anonymity:
+     name: Permission require exposure to meet a given k-anonymity value
+     description: Permission allowing use of data but requires exposure meet a given k-anonymity value. \n\nThis Permission encodes\n- base rule includes Research so as to be clear this generally authorizes Research\n- validity is a period of one year
+     exampleBoolean: true
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
@@ -266,5 +274,4 @@ resources:
 #    resources:
 #    - StructureDefinition/bark-control
 #    - StructureDefinition/bee-sting
-
 
