@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Permission xmlns="http://hl7.org/fhir">
+<Permission  resourceDefinition="http://hl7.org/fhir/StructureDefinition/Permission|0.1.0" xmlns="http://hl7.org/fhir">
   <id value="ex-permission-redisclose-forbidden-without-consent"/>
   <meta>
     <security>

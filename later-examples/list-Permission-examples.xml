@@ -212,7 +212,6 @@
       <display value="Permission allowing most sharing but NOT data authored by a practitioner"/>
     </item>
   </entry>
-<!-- TODO not because of use of profile
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
       <valueString value="Permission allowing use of data but requires exposure meet a given k-anonymity value. \n\nThis Permission encodes\n- base rule includes Research so as to be clear this generally authorizes Research\n- validity is a period of one year"/>
@@ -225,7 +224,6 @@
       <display value="Permission require exposure to meet a given k-anonymity value"/>
     </item>
   </entry>
-  -->
   <entry>
     <extension url="http://hl7.org/fhir/build/StructureDefinition/description">
       <valueString value="Permission allowing most use of data but NOT a given practitioner\n\nThis Permission encodes\n- base rule includes TPO so as to be clear this generally authorizes TPO\n- second rule denying access to a given ex-practitioner\n  - [practitioner 1](Practitioner-ex-practitioner.html)\n- nothing else is authorized by this Permission"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Permission xmlns="http://hl7.org/fhir">
+<Permission  resourceDefinition="http://hl7.org/fhir/StructureDefinition/Permission|0.1.0" xmlns="http://hl7.org/fhir">
   <id value="per-1.f1.fail" />
   <status value="active" />
   <asserter>

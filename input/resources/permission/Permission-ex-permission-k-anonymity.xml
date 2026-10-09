@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Permission  resourceDefinition="http://hl7.org/fhir/StructureDefinition/Permission|0.1.0" xmlns="http://hl7.org/fhir">
+  <id value="ex-permission-k-anonymity"/>
+  <status value="active"/>
+  <date value="2023-12-20"/>
+  <combining value="deny-overrides"/>
+  <rule>
+    <type value="permit"/>
+    <activity>
+      <purpose>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+          <code value="HRESCH"/>
+        </coding>
+      </purpose>
+    </activity>
+    <limit>
+      <extension url="http://hl7.org/fhir/StructureDefinition/permission-K-anonymity">
+        <valueInteger value="4"/>
+      </extension>
+      <control>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+          <code value="DEID"/>
+        </coding>
+      </control>
+    </limit>
+  </rule>
+</Permission>

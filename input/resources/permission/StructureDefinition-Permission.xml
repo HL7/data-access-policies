@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<StructureDefinition xmlns="http://hl7.org/fhir">
+<StructureDefinition xmlns="http://hl7.org/fhir" resourceDefinition="http://hl7.org/fhir/StructureDefinition/Permission|0.1.0">
   <id value="Permission"/>
-  <meta>
-    <lastUpdated value="2021-01-02T08:58:31.578+11:00"/>
-  </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-category">
     <valueString value="Foundation.Security"/>
   </extension>
@@ -28,7 +25,6 @@
     <system value="urn:ietf:rfc:3986"/>
     <value value="urn:oid:2.16.840.1.113883.4.642.5.1436"/>
   </identifier>
-<!--  <version value="0.0.0"/> -->
   <name value="Permission"/>
   <title value="Permission"/>
   <status value="active"/>

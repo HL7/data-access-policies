@@ -144,19 +144,13 @@ Scenario Outline: Allow only a given K-Anonymity
     Then the Bundle Permission needs to express this limit
 ```
 
-#### Analysis
-
-
-TODO Bring this back when we can profile in sushi
-
-<!--- TODO Bring this back when we can profile in sushi
+#### K Analysis
 
 This Permission requires an extension to express the K-Anonymity value encodes
 
 - base rule includes Research so as to be clear this is allowing only Research
 - this permit has a limit of a given K-anonymity value (4)
-  - Define an [extension to carry a K-Anonymity](StructureDefinition-dap.permissionKanonymity.html) number, which are integers
-  - Define a [profile binding this extension on the Permission.rule.limit](StructureDefinition-dap.PermissionWithKanonymity.html) to be used with either DEID or ANONY obligation code
+  - Define an [extension to carry a K-Anonymity](StructureDefinition-permission-K-anonymity.html) number, which are integers
 - nothing else is authorized by this Permission
 
 ```fs
@@ -168,6 +162,3 @@ This Permission requires an extension to express the K-Anonymity value encodes
 ```
 
 [Example Permission allowing Research with a given K-anonymity (4)](Permission-ex-permission-k-anonymity.html)
-</div>
-
--->

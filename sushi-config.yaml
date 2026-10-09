@@ -13,7 +13,7 @@ description: Data Access Policies.
 status: active
 license: CC0-1.0
 #date: 2020-02-26
-version: 0.1.0-current
+version: 0.1.0
 fhirVersion: 6.0.0-snapshot1
 copyrightYear: 2023+
 releaseLabel: ci-build
@@ -74,6 +74,7 @@ pages:
 
 menu:
   Home: index.html
+  Permission Resource: StructureDefinition-Permission.html
   Analysis:
     "Simple data analytics" : non-patient.html
     "Consent" : consent.html
@@ -208,11 +209,10 @@ resources:
     name: 'Permission allowing most use but expires in a year'
     description: 'Permission allowing most use of data but expires in a year. Note that this ''year'' indication is based on absolute dates of issuing of the Permission, and use of Permission.validity.\n\nThis Permission encodes\n- base rule includes TPO so as to be clear this generally authorizes TPO\n- validity is a period of one year'
     exampleBoolean: true
-
-  # Permission/ex-permission-k-anonymity:
-  #   name: Permission require exposure to meet a given k-anonymity value
-  #   description: Permission allowing use of data but requires exposure meet a given k-anonymity value. \n\nThis Permission encodes\n- base rule includes Research so as to be clear this generally authorizes Research\n- validity is a period of one year
-  #   exampleBoolean: true
+  Permission/ex-permission-k-anonymity:
+     name: Permission require exposure to meet a given k-anonymity value
+     description: Permission allowing use of data but requires exposure meet a given k-anonymity value. \n\nThis Permission encodes\n- base rule includes Research so as to be clear this generally authorizes Research\n- validity is a period of one year
+     exampleBoolean: true
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced

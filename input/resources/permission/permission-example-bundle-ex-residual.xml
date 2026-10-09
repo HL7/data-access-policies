@@ -6,14 +6,14 @@
       <code value="HTEST"/>
     </security>
     <security>
+      <extension url="http://hl7.org/fhir/StructureDefinition/permission-imposed-on-bundle">
+        <valueReference>
+          <reference value="https://example.org/fhir/Permission/ex-permission-redisclose-forbidden-without-consent"/>
+        </valueReference>
+      </extension>
       <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
       <code value="CPLYPOL"/>
     </security>
-    <extension url="http://hl7.org/fhir/StructureDefinition/permission-imposed-on-bundle">
-      <valueReference>
-        <reference value="https://example.org/fhir/Permission/ex-permission-redisclose-forbidden-without-consent"/>
-      </valueReference>
-    </extension>
   </meta>
   <type value="searchset"/>
   <timestamp value="2023-11-22T09:32:24Z"/>
