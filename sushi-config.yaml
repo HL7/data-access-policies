@@ -135,10 +135,10 @@ resources:
 #    name: 'Directory permission with excluding sensitive elements'
 #    description: 'Example of authorizing some data in a directory but excluding sensitive elements'
 #    exampleBoolean: true
-#  Bundle/ex-SearchSet-withPermission:
-#    name: 'Bundle with permission expressed residual rules to apply'
-#    description: 'Example Bundle with included Permission with residual restrictions'
-#    exampleBoolean: true
+  Bundle/ex-SearchSet-withPermission:
+    name: 'Bundle with permission expressed residual rules to apply'
+    description: 'Example Bundle with included Permission with residual restrictions'
+    exampleBoolean: true
   Permission/example-base:
     name: 'A base permission example.'
     description: 'Example of a Base Permission Imported in another Permission'
