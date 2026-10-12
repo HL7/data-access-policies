@@ -140,10 +140,10 @@ resources:
 #    name: 'Bundle with permission example'
 #    description: 'Example SearchSet Bundle with Permission'
 #    exampleBoolean: true
-#  Bundle/example-bundle-in-residual:
-#    name: 'Bundle with permission internal residual rules to apply'
-#    description: 'Example Bundle with internal Permission with residual restrictions'
-#    exampleBoolean: true
+  Bundle/example-bundle-in-residual:
+    name: 'Bundle with permission internal residual rules to apply'
+    description: 'Example Bundle with internal Permission with residual restrictions'
+    exampleBoolean: true
   Bundle/example-bundle-ex-residual:
     name: 'Bundle with permission external residual rules to apply'
     description: 'Example Bundle with external Permission with residual restrictions'
@@ -274,5 +274,4 @@ resources:
 #    resources:
 #    - StructureDefinition/bark-control
 #    - StructureDefinition/bee-sting
-
 
